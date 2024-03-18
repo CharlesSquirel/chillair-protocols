@@ -6,7 +6,10 @@ const config: Config = {
     extend: {
       colors: {
         white: '#fff',
-        black: '#000',
+        black: '#222222',
+        primary: '#1e73be',
+        secondary: '#002d38e6',
+        gray: '#ebebeb',
       },
     },
   },

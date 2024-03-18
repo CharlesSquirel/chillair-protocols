@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl" data-theme="corporate">
-      <body className={`${poppins.className} w-screen h-screen flex flex-colr items-center justify-center`}>{children}</body>
+      <body className={`${poppins.className} w-screen h-screen flex flex-colr items-center justify-center bg-gray`}>{children}</body>
     </html>
   );
 }

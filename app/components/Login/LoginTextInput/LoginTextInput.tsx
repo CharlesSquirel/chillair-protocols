@@ -6,9 +6,9 @@ interface LoginTextInputProps {
 
 const LoginTextInput = ({ children, type = 'text', placeholder }: LoginTextInputProps) => {
   return (
-    <label className="input input-bordered flex items-center gap-2 focus:outline-none focus-within:outline-none w-full">
+    <label className="input input-bordered border-2 flex items-center gap-2 focus:outline-none focus-within:outline-none w-full focus-within:border-primary ">
       {children}
-      <input type={type} className="grow" placeholder={placeholder} />
+      <input type={type} className="grow  " placeholder={placeholder} />
     </label>
   );
 };

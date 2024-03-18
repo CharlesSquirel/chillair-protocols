@@ -1,6 +1,6 @@
 const LoginSubmitButton = () => {
   return (
-    <button type="submit" className="btn btn-wide btn-accent text-white font-semibold uppercase rounded-md">
+    <button type="submit" className="btn btn-wide bg-primary text-white border-primary font-semibold uppercase rounded-md ">
       Zaloguj się
     </button>
   );
