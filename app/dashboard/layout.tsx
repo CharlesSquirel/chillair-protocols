@@ -1,4 +1,5 @@
-import SideMenu from '../components/SideMenu/SideMenu';
+import Header from "../components/Header/Header";
+import SideMenu from "../components/SideMenu/SideMenu";
 
 export default function Layout({
   children,
@@ -8,6 +9,7 @@ export default function Layout({
   return (
     <>
       <SideMenu />
+      <Header />
       {children}
     </>
   );
