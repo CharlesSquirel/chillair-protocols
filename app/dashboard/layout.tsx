@@ -1,4 +1,5 @@
 import Header from "../components/Header/Header";
+import NavBar from "../components/NavBar/NavBar";
 import SideMenu from "../components/SideMenu/SideMenu";
 
 export default function Layout({
@@ -9,8 +10,11 @@ export default function Layout({
   return (
     <>
       <SideMenu />
-      <Header />
-      {children}
+      <section className='w-full h-screen flex flex-col'>
+        <Header />
+        <NavBar />
+        {children}
+      </section>
     </>
   );
 }

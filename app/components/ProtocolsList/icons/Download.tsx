@@ -1,4 +1,4 @@
-const Envelope = () => {
+export default function Download() {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -6,15 +6,13 @@ const Envelope = () => {
       viewBox='0 0 24 24'
       strokeWidth={1.5}
       stroke='currentColor'
-      className='w-6 h-6 absolute right-6 top-[50%] translate-y-[-50%]'
+      className='w-6 h-6 cursor-pointer'
     >
       <path
         strokeLinecap='round'
         strokeLinejoin='round'
-        d='m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z'
+        d='M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3'
       />
     </svg>
   );
-};
-
-export default Envelope;
+}

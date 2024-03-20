@@ -1,3 +1,5 @@
+import ProtocolsList from "../components/ProtocolsList/ProtocolsList";
+
 export default function Dashboard() {
-  return <h1>dashboard</h1>;
+  return <ProtocolsList />;
 }
