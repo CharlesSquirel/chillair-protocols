@@ -2,14 +2,21 @@ import Search from "./icons/Search";
 
 export default function Searchbar() {
   return (
-    <label className="input input-border border-2 h-[62px] rounded-full placeholder:pl-3 border-secondary">
+    <div className="relative">
+      <label
+        htmlFor="search"
+        className="absolute w-[1px] h-[1px] m-[-1px] p-0 overflow-hidden border-0"
+      >
+        Wyszukaj
+      </label>
       <Search />
       <input
         type="text"
         placeholder="Wyszukaj..."
         name="search"
-        className="grow"
+        id="search"
+        className="border h-[62px] rounded-full pl-4 border-secondary text-secondary  w-[558px] text-xl focus:border-primary focus:border-[3px] outline-none"
       />
-    </label>
+    </div>
   );
 }

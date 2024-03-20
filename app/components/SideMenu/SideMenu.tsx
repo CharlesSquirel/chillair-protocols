@@ -5,7 +5,7 @@ import Signature from "./icons/Signature";
 
 export default function SideMenu() {
   return (
-    <aside className="h-screen bg-gray fixed left-0 flex flex-col shadow-lg w-[10%] py-[90px] px-4 gap-[60px] z-10">
+    <aside className="h-screen bg-white fixed left-0 flex flex-col shadow-lg w-[10%] py-[90px] px-4 gap-[60px] z-10">
       {/* <Image src={logo} alt="Chillair logo" /> */}
       <h1 className="text-primary  flex flex-col">
         <span className="uppercase font-bold text-4xl">Chillair</span>

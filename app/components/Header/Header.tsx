@@ -1,14 +1,11 @@
-import LoginTextInput from "../Login/LoginTextInput/LoginTextInput";
 import Searchbar from "./Searchbar.tsx/Searchbar";
-import
+import UserInfo from "./UserInfo/UserInfo";
 
 export default function Header() {
   return (
-    <header className="fixed top-0 py-[90px] border w-full flex justify-end px-4">
+    <header className="fixed top-0 py-[90px] w-full flex justify-end px-4 items-center gap-5">
       <Searchbar />
-      <LoginTextInput>
-        <Search/>
-      </LoginTextInput>
+      <UserInfo />
     </header>
   );
 }
