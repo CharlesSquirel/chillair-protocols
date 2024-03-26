@@ -12,15 +12,25 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "baseUrl": ".",
     "plugins": [
       {
         "name": "next"
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/components/*": ["app/components/*"],
+      "@/assets/*": ["app/assets/*"],
+      "@/icons/*": ["app/assets/icons/*"],
+      "@/data/*": ["app/data/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/components/Login/LoginSubmitButton"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "app/components/Login/LoginSubmitButton"
+  ],
   "exclude": ["node_modules"]
 }
