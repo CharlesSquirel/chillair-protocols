@@ -30,7 +30,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/components/Login/LoginSubmitButton"
+    "app/components/Login/LoginSubmitButton",
+    "app/components/Header/Searchbar"
   ],
   "exclude": ["node_modules"]
 }
