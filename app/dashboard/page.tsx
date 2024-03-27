@@ -1,8 +1,8 @@
-import { dummyData } from "@/data/dummyData";
-import TableContainer from "@/components/TableContainer/TableContainer";
-import ActionTableButtons from "@/components/ActionTableButtons/ActionTableButtons";
+import { dummyData } from '@/data/dummyData';
+import TableContainer from '@/components/TableContainer/TableContainer';
+import ActionTableButtons from '@/components/ActionTableButtons/ActionTableButtons';
 
-const headersAll = ["Data", "Rodzaj", "Autor", "Uwagi"];
+const headersAll = ['Data', 'Rodzaj', 'Autor', 'Uwagi'];
 
 export default function Dashboard() {
   return (
@@ -10,8 +10,7 @@ export default function Dashboard() {
       headers={headersAll}
       renderRows={() =>
         dummyData.map((data, index) => (
-          <tr key={index} className='hover:text-primary hover:cursor-pointer'>
-            <td>{data.signature}</td>
+          <tr key={index} className="hover:text-primary hover:cursor-pointer">
             <td>{data.date}</td>
             <td>{data.genre}</td>
             <td>{data.author}</td>
