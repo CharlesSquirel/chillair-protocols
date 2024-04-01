@@ -1,4 +1,6 @@
-const Envelope = () => {
+import { SvgProps } from "app/utils/types/svgProps";
+
+const Envelope = ({ className }: SvgProps) => {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -6,7 +8,7 @@ const Envelope = () => {
       viewBox='0 0 24 24'
       strokeWidth={1.5}
       stroke='currentColor'
-      className='w-6 h-6 absolute right-6 top-[50%] translate-y-[-50%]'
+      className={`${className} w-6 h-6`}
     >
       <path
         strokeLinecap='round'

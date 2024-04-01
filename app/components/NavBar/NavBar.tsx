@@ -7,7 +7,7 @@ export default function NavBar() {
   const pathname = usePathname();
   return (
     <nav className='pl-[300px]'>
-      <ul className='flex gap-7 text-secondary text-xl'>
+      <ul className='flex gap-7 text-secondary text-2xl'>
         <Link
           href='/dashboard'
           className={`hover:text-primary ${pathname === "/dashboard" && "font-semibold text-primary border-b"}`}

@@ -1,6 +1,6 @@
-import Header from '@/components/Header/Header';
-import NavBar from '@/components/NavBar/NavBar';
-import SideMenu from '@/components/SideMenu/SideMenu';
+import Header from "@/components/Header/Header";
+import NavBar from "@/components/NavBar/NavBar";
+import SideMenu from "@/components/SideMenu/SideMenu";
 
 export default function Layout({
   children,
@@ -10,7 +10,7 @@ export default function Layout({
   return (
     <>
       <SideMenu />
-      <section className="w-full h-screen flex flex-col">
+      <section className='w-full h-screen flex flex-col pb-8'>
         <Header />
         <NavBar />
         {children}
