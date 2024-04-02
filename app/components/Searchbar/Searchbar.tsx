@@ -2,21 +2,21 @@ import Search from "@/assets/icons/Search";
 
 export default function Searchbar() {
   return (
-    <div className='relative'>
+    <div className="relative">
       <label
-        htmlFor='search'
-        className='absolute w-[1px] h-[1px] m-[-1px] p-0 overflow-hidden border-0'
+        htmlFor="search"
+        className="absolute m-[-1px] h-[1px] w-[1px] overflow-hidden border-0 p-0"
       >
         Wyszukaj
       </label>
-      <Search className='absolute right-6 top-[50%] translate-y-[-50%]' />
+      <Search className="absolute right-6 top-[50%] translate-y-[-50%]" />
       <input
-        autoComplete='off'
-        type='text'
-        placeholder='Wyszukaj...'
-        name='search'
-        id='search'
-        className='border h-[62px] rounded-full pl-4 border-secondary text-secondary  w-[558px] text-xl focus:border-primary focus:border-[3px] outline-none'
+        autoComplete="off"
+        type="text"
+        placeholder="Wyszukaj..."
+        name="search"
+        id="search"
+        className="h-[62px] w-[558px] rounded-full border border-secondary pl-4  text-xl text-secondary outline-none focus:border-[3px] focus:border-primary"
       />
     </div>
   );

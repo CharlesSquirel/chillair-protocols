@@ -11,7 +11,7 @@ export default function Dashboard() {
       renderRows={() => (
         <>
           {dummyData.map((data, index) => (
-            <tr key={index} className='hover:text-primary hover:cursor-pointer'>
+            <tr key={index} className="hover:cursor-pointer hover:text-primary">
               <td>{data.date}</td>
               <td>{data.genre}</td>
               <td>{data.author}</td>

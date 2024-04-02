@@ -7,30 +7,33 @@ interface TableContainerProps {
   renderRows: () => React.ReactNode;
 }
 
-export default function TableContainer({ headers, renderRows }: TableContainerProps) {
+export default function TableContainer({
+  headers,
+  renderRows,
+}: TableContainerProps) {
   return (
-    <main className='overflow-x-auto pl-[300px] pr-14 mt-5 overflow-y-auto relative flex flex-col pb-8 gap-3'>
-      <div className='flex justify-between items-center gap-3 sticky top-0 right-0'>
+    <main className="relative mt-5 flex flex-col gap-3 overflow-x-auto overflow-y-auto pb-8 pl-[300px] pr-14">
+      <div className="sticky right-0 top-0 flex items-center justify-between gap-3">
         <AddButton />
         <Searchbar />
       </div>
-      <table className='table bg-white shadow-lg rounded-md text-secondary relative'>
-        <thead className='font-medium text-lg sticky top-0 bg-white after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-secondary after:block after:content-"" '>
-          <tr className='bg-white h-[65px]'>
+      <table className="table relative rounded-md bg-white text-secondary shadow-lg">
+        <thead className='after:content-"" sticky top-0 bg-white text-lg font-medium after:absolute after:bottom-0 after:left-0 after:block after:h-[1px] after:w-full after:bg-secondary '>
+          <tr className="h-[65px] bg-white">
             {headers.map((header) => (
               <th key={header}>{header}</th>
             ))}
-            <th className='absolute right-8 top-3 z-10 text-secondary cursor-pointer flex p-0 gap-3'>
-              <button className='btn bg-primary text-white hover:bg-white hover:text-primary hover:border hover:border-primary text-2xl rounded-md h-[40px] min-h-0 w-[40px]'>
+            <th className="absolute right-8 top-3 z-10 flex cursor-pointer gap-3 p-0 text-secondary">
+              <button className="btn h-[40px] min-h-0 w-[40px] rounded-md bg-primary text-2xl text-white hover:border hover:border-primary hover:bg-white hover:text-primary">
                 +
               </button>
-              <button className='border-none bg-transparent hover:opacity-70'>
+              <button className="border-none bg-transparent hover:opacity-70">
                 <Filter />
               </button>
             </th>
           </tr>
         </thead>
-        <tbody className='text-lg'>{renderRows()}</tbody>
+        <tbody className="text-lg">{renderRows()}</tbody>
       </table>
     </main>
   );

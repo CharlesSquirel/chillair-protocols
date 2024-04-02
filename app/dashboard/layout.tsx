@@ -10,7 +10,7 @@ export default function Layout({
   return (
     <>
       <SideMenu />
-      <section className='w-full h-screen flex flex-col pb-8'>
+      <section className="flex h-screen w-full flex-col pb-8">
         <Header />
         <NavBar />
         {children}

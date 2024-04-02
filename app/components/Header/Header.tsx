@@ -3,7 +3,7 @@ import UserInfo from "./UserInfo/UserInfo";
 
 export default function Header() {
   return (
-    <header className='py-[90px] w-full flex justify-end px-9 items-center gap-5'>
+    <header className="flex w-full items-center justify-end gap-5 px-9 py-[90px]">
       <UserInfo />
     </header>
   );
