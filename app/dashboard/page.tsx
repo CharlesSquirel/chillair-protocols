@@ -7,6 +7,7 @@ const headersAll = ["Data", "Rodzaj", "Autor", "Uwagi"];
 export default function Dashboard() {
   return (
     <TableContainer
+      tableName="all"
       headers={headersAll}
       renderRows={() => (
         <>

@@ -13,6 +13,7 @@ const valvesHeaders: string[] = [
 export default function Valves() {
   return (
     <TableContainer
+      tableName="valves"
       headers={valvesHeaders}
       renderRows={() => (
         <>
