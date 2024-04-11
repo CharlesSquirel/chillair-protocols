@@ -1,3 +1,6 @@
+import Close from "@/assets/icons/Close";
+import Link from "next/link";
+
 interface FormContainerProps {
   title: string;
   children: React.ReactNode;
@@ -10,6 +13,9 @@ export default function FormContainer({ title, children }: FormContainerProps) {
         {title}
       </h2>
       {children}
+      <Link href="/dashboard/valves" className="absolute right-6 top-6 z-10">
+        <Close />
+      </Link>
     </form>
   );
 }
