@@ -28,41 +28,41 @@ export default function ExtraValvesInfo() {
           <InputRow>
             <TextInput
               label="Miejsce instalowania zaworu"
-              name={`valveLocation_${index + 1}`}
+              name={`infoBlocks.${index}.valveLocation`}
               placeholder="Wpisz nazwę"
             />
             <SelectInput
               data={["Typ A", "Typ B"]}
               label="Typ"
-              name={`type_${index + 1}`}
+              name={`infoBlocks.${index}.type`}
               placeholder="Wybierz typ"
             />
             <TextInput
               label="Nr fabryczny"
-              name={`fabricNumber_${index + 1}`}
+              name={`infoBlocks.${index}.fabricNumber`}
               placeholder="Wpisz nr"
             />
           </InputRow>
           <InputRow title="Ciśnienia (MPa)">
             <NumberInput
               label="Nastawa"
-              name={`pressureSetting_${index + 1}`}
+              name={`infoBlocks.${index}.pressureSetting`}
               placeholder="MPa"
             />
             <NumberInput
               label="Otwarcie"
-              name={`pressureOpen_${index + 1}`}
+              name={`infoBlocks.${index}.pressureOpen`}
               placeholder="MPa"
             />
             <NumberInput
               label="Zamknięcie"
-              name={`pressureClose_${index + 1}`}
+              name={`infoBlocks.${index}.pressureClose`}
               placeholder="MPa"
             />
           </InputRow>
           <TextareaInput
             label="Uwagi"
-            name={`valvesInfo_${index + 1}`}
+            name={`infoBlocks.${index}.valvesInfo`}
             placeholder="Wpisz swoje uwagi"
           />
         </InputGroup>

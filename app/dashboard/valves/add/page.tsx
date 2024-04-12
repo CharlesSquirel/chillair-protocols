@@ -37,7 +37,7 @@ export default function ValvesAdd() {
       </FormFieldset>
       <FormFieldset title="Opcje wysyłki">
         <InputGroup>
-          <CheckboxInput label="Wyślij do mnie" name="checkEmail" />
+          <CheckboxInput label="Wyślij do mnie" name="userEmailPerm" />
           <SendClientEmail />
         </InputGroup>
       </FormFieldset>

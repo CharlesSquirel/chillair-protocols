@@ -14,7 +14,7 @@ export default function SendClientEmail() {
     <InputRow>
       <CheckboxInput
         label="Wyślij do klienta"
-        name="checkClientEmail"
+        name="clientEmailPerm"
         onCheck={handleOnCheck}
       />
       <TextInput placeholder="Email" name="clientEmail" disabled={!isActive} />
