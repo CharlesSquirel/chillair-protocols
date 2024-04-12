@@ -7,12 +7,20 @@ import InputRow from "@/components/InputRow/InputRow";
 import CheckboxInput from "@/components/CheckboxInput/CheckboxInput";
 import SendClientEmail from "@/components/SendClientEmail/SendClientEmail";
 import SubmitFormButton from "@/components/SubmitFormButton/SubmitFormButton";
+import SelectInput from "@/components/SelectInput/SelectInput";
 
 export default function ValvesAdd() {
   return (
     <FormContainer title="Protokół badania zaworów bezpieczeństwa">
       <FormFieldset title="Informacje podstawowe">
         <InputGroup>
+          <SelectInput
+            placeholder="Wybierz obiekt"
+            name="valvesLocation"
+            label="Obiekt"
+            data={["Obiekt 1", "Obiekt 2", "Obiekt 3"]}
+            className="w-[520px]"
+          />
           <TextInput
             placeholder="Wpisz typ urządzenia"
             name="type"
@@ -34,7 +42,7 @@ export default function ValvesAdd() {
           <SendClientEmail />
         </InputGroup>
       </FormFieldset>
-      <SubmitFormButton />
+      <SubmitFormButton label="Utwórz i pobierz" />
     </FormContainer>
   );
 }

@@ -6,6 +6,9 @@ import InputRow from "../InputRow/InputRow";
 import TextInput from "../TextInput/TextInput";
 import PlusIcon from "@/assets/icons/PlusIcon";
 import MinusIcon from "@/assets/icons/MinusIcon";
+import TextareaInput from "../TextareaInput/TextareaInput";
+import NumberInput from "../NumberInput/NumberInput";
+import SelectInput from "../SelectInput/SelectInput";
 
 export default function ExtraValvesInfo() {
   const [infoCount, setInfoCount] = useState(1);
@@ -28,6 +31,12 @@ export default function ExtraValvesInfo() {
               name={`valveLocation_${index + 1}`}
               placeholder="Wpisz nazwę"
             />
+            <SelectInput
+              data={["Typ A", "Typ B"]}
+              label="Typ"
+              name={`type_${index + 1}`}
+              placeholder="Wybierz typ"
+            />
             <TextInput
               label="Nr fabryczny"
               name={`fabricNumber_${index + 1}`}
@@ -35,18 +44,27 @@ export default function ExtraValvesInfo() {
             />
           </InputRow>
           <InputRow title="Ciśnienia (MPa)">
-            <TextInput
+            <NumberInput
               label="Nastawa"
               name={`pressureSetting_${index + 1}`}
               placeholder="MPa"
             />
-            <TextInput label="Otwarcie" name="pressureOpen" placeholder="MPa" />
-            <TextInput
+            <NumberInput
+              label="Otwarcie"
+              name={`pressureOpen_${index + 1}`}
+              placeholder="MPa"
+            />
+            <NumberInput
               label="Zamknięcie"
               name={`pressureClose_${index + 1}`}
               placeholder="MPa"
             />
           </InputRow>
+          <TextareaInput
+            label="Uwagi"
+            name={`valvesInfo_${index + 1}`}
+            placeholder="Wpisz swoje uwagi"
+          />
         </InputGroup>
       ))}
       <button
