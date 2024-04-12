@@ -22,7 +22,7 @@ export default function TextInput({
         type="text"
         placeholder={placeholder}
         id={name}
-        className="w-[520px] rounded-md border border-primary bg-inputBg p-3 placeholder:text-placeholder focus:border-green focus:bg-white focus:outline-none disabled:opacity-50"
+        className="h-[50px] w-[520px] rounded-md border border-primary bg-inputBg p-3 placeholder:text-placeholder focus:border-green focus:bg-white focus:outline-none disabled:opacity-50"
         disabled={disabled}
       />
       <p role="alert" className="text-error">

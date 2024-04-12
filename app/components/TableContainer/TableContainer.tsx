@@ -2,6 +2,7 @@ import Filter from "@/icons/Filter";
 import Searchbar from "@/components/Searchbar/Searchbar";
 import AddButton from "@/components/AddButton/AddButton";
 import { TableNames } from "@/utils/types/tableNames";
+import Link from "next/link";
 
 interface TableContainerProps {
   headers: string[];
@@ -29,9 +30,12 @@ export default function TableContainer({
               <th key={header}>{header}</th>
             ))}
             <th className="absolute right-8 top-3 z-10 flex cursor-pointer gap-3 p-0 text-secondary">
-              <button className="btn h-[40px] min-h-0 w-[40px] rounded-md bg-primary text-2xl text-white hover:border hover:border-primary hover:bg-white hover:text-primary">
+              <Link
+                href={`/dashboard/${tableName}/add`}
+                className="btn h-[40px] min-h-0 w-[40px] rounded-md bg-primary text-2xl text-white hover:border hover:border-primary hover:bg-white hover:text-primary"
+              >
                 +
-              </button>
+              </Link>
               <button className="border-none bg-transparent hover:opacity-70">
                 <Filter />
               </button>

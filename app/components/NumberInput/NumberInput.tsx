@@ -20,7 +20,8 @@ export default function NumberInput({
         type="number"
         placeholder={placeholder}
         id={name}
-        className="w-[520px] rounded-md border border-primary bg-inputBg p-3 placeholder:text-placeholder focus:border-green focus:bg-white focus:outline-none"
+        step={0.1}
+        className="h-[50px] w-[520px] rounded-md border border-primary bg-inputBg p-3 placeholder:text-placeholder focus:border-green focus:bg-white focus:outline-none"
       />
       <p role="alert" className="text-error">
         Nieprawidłowy {label}!

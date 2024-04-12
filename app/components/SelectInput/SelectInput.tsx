@@ -18,9 +18,9 @@ export default function SelectInput({
       <label htmlFor={name}>{label}</label>
       <select
         name={name}
-        className={`flex flex-col gap-1 rounded-md border border-primary bg-inputBg p-3 placeholder:text-placeholder focus:border-green focus:bg-white focus:outline-none ${className}`}
+        className={`flex h-[50px] flex-col gap-1 rounded-md border border-primary bg-inputBg p-3 text-placeholder placeholder:text-placeholder focus:border-green focus:bg-white focus:outline-none ${className}`}
       >
-        <option value="" disabled selected className="text-placeholder">
+        <option value="" disabled selected>
           {`${placeholder}`}
         </option>
         {data.map((data) => (
