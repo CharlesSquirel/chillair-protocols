@@ -12,7 +12,7 @@ export default function InputRow({ children, title }: InputRowProps) {
           <div className="flex gap-4">{children}</div>
         </div>
       ) : (
-        <div className="flex gap-4">
+        <div className="flex items-center gap-4">
           {title && <p>{title}</p>}
           {children}
         </div>

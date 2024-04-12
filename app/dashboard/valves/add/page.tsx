@@ -1,8 +1,12 @@
 import FormFieldset from "@/components/FormFieldset/FormFieldset";
 import InputGroup from "@/components/InputGroup/InputGroup";
-import InputRow from "@/components/InputRow/InputRow";
 import TextInput from "@/components/TextInput/TextInput";
 import FormContainer from "@/components/FormContainer/FormContainer";
+import ExtraValvesInfo from "@/components/ExtraValvesInfo/ExtraValvesInfo";
+import InputRow from "@/components/InputRow/InputRow";
+import CheckboxInput from "@/components/CheckboxInput/CheckboxInput";
+import SendClientEmail from "@/components/SendClientEmail/SendClientEmail";
+import SubmitFormButton from "@/components/SubmitFormButton/SubmitFormButton";
 
 export default function ValvesAdd() {
   return (
@@ -22,34 +26,15 @@ export default function ValvesAdd() {
         </InputGroup>
       </FormFieldset>
       <FormFieldset title="Informacje dodatkowe">
+        <ExtraValvesInfo />
+      </FormFieldset>
+      <FormFieldset title="Opcje wysyłki">
         <InputGroup>
-          <InputRow>
-            <TextInput
-              label="Miejsce instalowania zaworu"
-              name="valveLocation"
-              placeholder="Wpisz nazwę"
-            />
-            <TextInput
-              label="Nr fabryczny"
-              name="fabricNumber"
-              placeholder="Wpisz nr"
-            />
-          </InputRow>
-          <InputRow title="Ciśnienia (MPa)">
-            <TextInput
-              label="Nastawa"
-              name="pressureSetting"
-              placeholder="MPa"
-            />
-            <TextInput label="Otwarcie" name="pressureOpen" placeholder="MPa" />
-            <TextInput
-              label="Zamknięcie"
-              name="pressureClose"
-              placeholder="MPa"
-            />
-          </InputRow>
+          <CheckboxInput label="Wyślij do mnie" name="checkEmail" />
+          <SendClientEmail />
         </InputGroup>
       </FormFieldset>
+      <SubmitFormButton />
     </FormContainer>
   );
 }
