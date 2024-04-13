@@ -1,5 +1,6 @@
 "use client";
 
+import { ErrorMessage } from "@hookform/error-message";
 import { useFormContext } from "react-hook-form";
 
 interface SelectInputProps {
@@ -17,7 +18,10 @@ export default function SelectInput({
   data,
   className,
 }: SelectInputProps) {
-  const { register } = useFormContext();
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
   return (
     <div className="flex flex-col gap-2">
       <label htmlFor={name}>{label}</label>
@@ -35,9 +39,15 @@ export default function SelectInput({
           </option>
         ))}
       </select>
-      <p role="alert" className="text-error">
-        Invalid {label}!
-      </p>
+      <ErrorMessage
+        errors={errors}
+        name={name}
+        render={({ message }) => (
+          <p role="alert" className="text-error">
+            {message}
+          </p>
+        )}
+      />
     </div>
   );
 }

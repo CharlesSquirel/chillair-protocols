@@ -4,6 +4,7 @@ import Close from "@/assets/icons/Close";
 import { ValvesValidationSchema } from "@/utils/zod/valvesValidationSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { FieldValues, FormProvider, useForm } from "react-hook-form";
 
 interface FormContainerProps {
@@ -12,8 +13,16 @@ interface FormContainerProps {
 }
 
 export default function FormContainer({ title, children }: FormContainerProps) {
+  const router = useRouter();
   const methods = useForm({ resolver: zodResolver(ValvesValidationSchema) });
-  const onSubmit = (data: FieldValues) => console.log(data);
+  const handleCloseForm = () => {
+    router.back();
+    methods.reset();
+  };
+  const onSubmit = (data: FieldValues) => {
+    console.log(data);
+    handleCloseForm();
+  };
 
   return (
     <FormProvider {...methods}>

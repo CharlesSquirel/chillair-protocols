@@ -15,7 +15,7 @@ export default function ValvesAdd() {
         <InputGroup>
           <SelectInput
             placeholder="Wybierz obiekt"
-            name="valvesLocation"
+            name="firma"
             label="Obiekt"
             data={["Obiekt 1", "Obiekt 2", "Obiekt 3"]}
             className="w-[520px]"

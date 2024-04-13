@@ -34,12 +34,12 @@ export default function ExtraValvesInfo() {
             <SelectInput
               data={["Typ A", "Typ B"]}
               label="Typ"
-              name={`infoBlocks.${index}.type`}
+              name={`infoBlocks.${index}.valveType`}
               placeholder="Wybierz typ"
             />
             <TextInput
               label="Nr fabryczny"
-              name={`infoBlocks.${index}.fabricNumber`}
+              name={`infoBlocks.${index}.valveSerialNumber`}
               placeholder="Wpisz nr"
             />
           </InputRow>
@@ -62,7 +62,7 @@ export default function ExtraValvesInfo() {
           </InputRow>
           <TextareaInput
             label="Uwagi"
-            name={`infoBlocks.${index}.valvesInfo`}
+            name={`infoBlocks.${index}.description`}
             placeholder="Wpisz swoje uwagi"
           />
         </InputGroup>

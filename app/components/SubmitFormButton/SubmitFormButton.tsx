@@ -1,8 +1,10 @@
+import { useFormContext } from "react-hook-form";
+
 interface SubmitButtonProps {
-    label: string;
+  label: string;
 }
 
-export default function SubmitFormButton({label}:SubmitButtonProps) {
+export default function SubmitFormButton({ label }: SubmitButtonProps) {
   return (
     <button
       type="submit"

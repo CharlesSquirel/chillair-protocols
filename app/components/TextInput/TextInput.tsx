@@ -19,14 +19,10 @@ export default function TextInput({
     register,
     formState: { errors },
   } = useFormContext();
-  console.log(errors);
+
   return (
     <div className="h-min-[106px] flex flex-col gap-1">
-      {label && (
-        <label htmlFor={name} className="">
-          {label}
-        </label>
-      )}
+      {label && <label htmlFor={name}>{label}</label>}
       <input
         type="text"
         placeholder={placeholder}

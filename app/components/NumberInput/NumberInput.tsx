@@ -1,3 +1,6 @@
+import { ErrorMessage } from "@hookform/error-message";
+import { useFormContext } from "react-hook-form";
+
 interface NumberInputProps {
   label: string;
   placeholder: string;
@@ -9,6 +12,10 @@ export default function NumberInput({
   placeholder,
   name,
 }: NumberInputProps) {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
   return (
     <div className="h-min-[106px] flex flex-col gap-1">
       {label && (
@@ -22,10 +29,17 @@ export default function NumberInput({
         id={name}
         step={0.1}
         className="h-[50px] w-[520px] rounded-md border border-primary bg-inputBg p-3 placeholder:text-placeholder focus:border-green focus:bg-white focus:outline-none"
+        {...register(name)}
       />
-      <p role="alert" className="text-error">
-        Nieprawidłowy {label}!
-      </p>
+      <ErrorMessage
+        errors={errors}
+        name={name}
+        render={({ message }) => (
+          <p role="alert" className="text-error">
+            {message}
+          </p>
+        )}
+      />
     </div>
   );
 }
