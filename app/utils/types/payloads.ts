@@ -6,6 +6,23 @@ interface ValvesRecord {
   another: string;
 }
 
+interface ValvesInfoBlock {
+  valveLocation: string;
+  valveType: string;
+  valveSerialNumber: string;
+  pressureOpen: number;
+  pressureClose: number;
+  pressureSetting: number;
+  description?: string;
+}
+
+export interface ValvesCredentials {
+  firma: string;
+  type: string;
+  serialNumber: string;
+  infoBlock: ValvesInfoBlock[];
+}
+
 export type ValvesRecords = ValvesRecord[];
 
 interface AllProtocolsRecord {
