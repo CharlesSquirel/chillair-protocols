@@ -34,3 +34,9 @@ interface AllProtocolsRecord {
 }
 
 export type AllProtocolsRecords = AllProtocolsRecord[];
+
+export interface UserCredentials {
+  name: string;
+  email: string;
+  password: string;
+}
