@@ -65,9 +65,9 @@ model Valve {
   createdAt     DateTime          @default(now())
   updatedAt     DateTime          @updatedAt
   userId        String
-  email         String            @map("email")
-  userSignature String            @map("userSignature")
-  infoBlock     ValvesInfoBlock[]
+  email         String
+  userSignature String
+  infoBlocks    ValvesInfoBlock[]
 }
 
 model ValvesInfoBlock {
@@ -79,6 +79,6 @@ model ValvesInfoBlock {
   pressureClose     String
   pressureSetting   String
   description       String?
-  valveId           String  @map("valveId")
-  valve             Valve   @relation(fields: [valveId], references: [id])
+  Valve             Valve?  @relation(fields: [valveId], references: [id])
+  valveId           String?
 }

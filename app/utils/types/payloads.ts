@@ -20,7 +20,17 @@ export interface ValvesCredentials {
   firma: string;
   type: string;
   serialNumber: string;
-  infoBlock: ValvesInfoBlock[];
+  infoBlocks: ValvesInfoBlock[];
+}
+
+export interface CreateValveCredentials {
+  firma: string;
+  type: string;
+  serialNumber: string;
+  infoBlocks: ValvesInfoBlock[];
+  email: string;
+  userSignature: string;
+  userId: string;
 }
 
 export type ValvesRecords = ValvesRecord[];
