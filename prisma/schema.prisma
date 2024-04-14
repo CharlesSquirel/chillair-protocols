@@ -36,13 +36,14 @@ model Session {
 }
 
 model User {
-  id        String    @id @default(cuid()) @map("_id")
-  name      String
-  email     String    @unique
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  accounts  Account[]
-  sessions  Session[]
+  id            String    @id @default(cuid()) @map("_id")
+  name          String
+  email         String    @unique
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  accounts      Account[]
+  sessions      Session[]
+  userSignature String
 }
 
 model VerificationRequest {
@@ -54,4 +55,30 @@ model VerificationRequest {
   updatedAt  DateTime @updatedAt
 
   @@unique([identifier, token])
+}
+
+model Valve {
+  id            String            @id @default(cuid()) @map("_id")
+  firma         String
+  type          String
+  serialNumber  String
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+  userId        String
+  email         String            @map("email")
+  userSignature String            @map("userSignature")
+  infoBlock     ValvesInfoBlock[]
+}
+
+model ValvesInfoBlock {
+  id                String  @id @default(cuid()) @map("_id")
+  valveLocation     String
+  valveType         String
+  valveSerialNumber String
+  pressureOpen      String
+  pressureClose     String
+  pressureSetting   String
+  description       String?
+  valveId           String  @map("valveId")
+  valve             Valve   @relation(fields: [valveId], references: [id])
 }

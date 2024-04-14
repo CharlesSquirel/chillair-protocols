@@ -1,6 +1,8 @@
 "use client";
 
 import Close from "@/assets/icons/Close";
+import { createValve } from "@/data/creatingFunc/createValve";
+import { ValvesCredentials } from "@/utils/types/payloads";
 import { ValvesValidationSchema } from "@/utils/zod/valvesValidationSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
@@ -20,7 +22,18 @@ export default function FormContainer({ title, children }: FormContainerProps) {
     methods.reset();
   };
   const onSubmit = (data: FieldValues) => {
-    console.log(data);
+    const dummyUserInfo = {
+      userSignature: "asdasd",
+      email: "jan@kowalski.pl",
+      userId: "234234",
+    };
+    const valvesData: ValvesCredentials = {
+      firma: data.firma,
+      type: data.type,
+      serialNumber: data.serialNumber,
+      infoBlock: data.infoBlocks, // Zakładając, że te dane są prawidłowe
+    };
+    createValve(dummyUserInfo, valvesData);
     handleCloseForm();
   };
 
