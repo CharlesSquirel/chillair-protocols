@@ -1,17 +1,12 @@
-"use client";
-
-import { ValvesCredentials } from "@/utils/types/payloads";
+import { createValve } from "@/data/creatingFunc/createValve";
 import { db } from "lib/db";
+import { NextRequest, NextResponse } from "next/server";
 
-export interface CreateValveCredentials extends ValvesCredentials {
-  email: string;
-  userSignature: string;
-  userId: string;
-}
-
-export const createValve = async (credentials: CreateValveCredentials) => {
-  console.log("przed createValve");
+export async function POST(request: NextRequest) {
   try {
+    console.log("przed route");
+    const body = await request.json();
+    console.log("po body");
     const {
       firma,
       type,
@@ -20,7 +15,7 @@ export const createValve = async (credentials: CreateValveCredentials) => {
       email,
       userSignature,
       userId,
-    } = credentials;
+    } = body.data;
 
     const newValve = await db.valve.create({
       data: {
@@ -38,8 +33,10 @@ export const createValve = async (credentials: CreateValveCredentials) => {
       },
     });
     console.log("Utworzono nowy rekord zaworu dla użytkownika:", newValve);
-    return newValve;
+
+    return NextResponse.json(newValve, { status: 201 });
   } catch (error) {
-    console.log(error);
+    console.log(`Error occurred: ${error}`);
+    return NextResponse.json("error occured");
   }
-};
+}

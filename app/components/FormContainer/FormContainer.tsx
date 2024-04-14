@@ -1,7 +1,10 @@
 "use client";
 
 import Close from "@/assets/icons/Close";
-import { createValve } from "@/data/creatingFunc/createValve";
+import {
+  CreateValveCredentials,
+  createValve,
+} from "@/data/creatingFunc/createValve";
 import { ValvesCredentials } from "@/utils/types/payloads";
 import { ValvesValidationSchema } from "@/utils/zod/valvesValidationSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -21,20 +24,37 @@ export default function FormContainer({ title, children }: FormContainerProps) {
     router.back();
     methods.reset();
   };
-  const onSubmit = (data: FieldValues) => {
-    const dummyUserInfo = {
+  const onSubmit = async (data: FieldValues) => {
+    const valvesData: CreateValveCredentials = {
       userSignature: "asdasd",
       email: "jan@kowalski.pl",
       userId: "234234",
-    };
-    const valvesData: ValvesCredentials = {
       firma: data.firma,
       type: data.type,
       serialNumber: data.serialNumber,
-      infoBlock: data.infoBlocks, // Zakładając, że te dane są prawidłowe
+      infoBlock: data.infoBlocks,
     };
-    createValve(dummyUserInfo, valvesData);
-    handleCloseForm();
+    try {
+      console.log("przed fetchem");
+      const response = await fetch("/api/valves", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ data: valvesData }),
+      });
+      console.log("po fetchu");
+
+      if (!response.ok) {
+        throw new Error("Failed to create valve");
+      }
+
+      // Jeśli żądanie powiodło się, możesz zamknąć formularz
+      handleCloseForm();
+      console.log("fetch wykonany");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
