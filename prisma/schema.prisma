@@ -82,3 +82,44 @@ model ValvesInfoBlock {
   Valve             Valve?  @relation(fields: [valveId], references: [id])
   valveId           String?
 }
+
+model Humidifier {
+  id String  @id @default(cuid()) @map("_id")
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+  firma String
+  type String
+  serialNumber String
+  email String
+  userId String
+  userSingature String
+  protectionType String
+  ratedCurrent String
+  description String?
+  nameplateVoltage String
+  nameplatePhase String
+  nameplateCurrentDraw String
+  cylinders Cylinder[]
+  materials HumidifierMaterial[]
+}
+
+model Cylinder {
+  id                String  @id @default(cuid()) @map("_id")
+  humidifier Humidifier @relation(fields: [cylinderId], references: [id])
+  cylinderId String
+  cylinderNumber String
+  voltage1 String
+  voltage2 String
+  voltage3 String
+  amper1 String
+  amper2 String
+  amper3 String
+}
+
+model HumidifierMaterial {
+  id                String  @id @default(cuid()) @map("_id")
+  materialDecription String
+  materialAmount String
+  materialId String
+  humidifier Humidifier @relation(fields: [materialId], references: [id])
+}

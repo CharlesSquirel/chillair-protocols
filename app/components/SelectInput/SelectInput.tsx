@@ -18,16 +18,16 @@ export default function SelectInput({
   data,
   className,
 }: SelectInputProps) {
-  const {
-    register,
-    formState: { errors },
-  } = useFormContext();
+  // const {
+  //   register,
+  //   formState: { errors },
+  // } = useFormContext();
   return (
     <div className="flex flex-col gap-2">
       <label htmlFor={name}>{label}</label>
       <select
         defaultValue=""
-        {...register(name)}
+        // {...register(name)}
         className={`flex h-[50px] flex-col gap-1 rounded-md border border-primary bg-inputBg p-3 text-placeholder placeholder:text-placeholder focus:border-green focus:bg-white focus:outline-none ${className}`}
       >
         <option value="" disabled>
@@ -39,7 +39,7 @@ export default function SelectInput({
           </option>
         ))}
       </select>
-      <ErrorMessage
+      {/* <ErrorMessage
         errors={errors}
         name={name}
         render={({ message }) => (
@@ -47,7 +47,7 @@ export default function SelectInput({
             {message}
           </p>
         )}
-      />
+      /> */}
     </div>
   );
 }
