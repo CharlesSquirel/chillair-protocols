@@ -1,6 +1,5 @@
 "use client";
 
-import Close from "@/assets/icons/Close";
 import ExtraMaterialsInfo from "@/components/ExtraMaterialsInfo/ExtraMaterialsInfo";
 import FormContainer from "@/components/FormContainer/FormContainer";
 import FormFieldset from "@/components/FormFieldset/FormFieldset";
@@ -20,6 +19,7 @@ export default function HumidifiersAdd() {
       title="Protokół przeglądu nawilżacza"
       onSubmitForm={createHumidifier}
       validationSchema={HumidifierValidationSchema}
+      closeUrl="/dashboard/humidifiers"
     >
       <FormFieldset title="Informacje podstawowe">
         <InputGroup>
