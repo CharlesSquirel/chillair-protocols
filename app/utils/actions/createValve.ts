@@ -1,7 +1,7 @@
 "use server";
 
 import { prisma } from "lib/db";
-import { CreateValveCredentials } from "../types/payloads";
+import { CreateValveCredentials } from "../types/valves";
 
 export async function createValve(data: CreateValveCredentials) {
   const valvesData: CreateValveCredentials = {

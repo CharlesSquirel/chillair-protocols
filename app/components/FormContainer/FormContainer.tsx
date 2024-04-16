@@ -1,10 +1,8 @@
 "use client";
 
 import Close from "@/assets/icons/Close";
-import { SchemaTypeHumidifier } from "@/utils/zod/humidifierValidation";
-import { ValvesValidationSchema } from "@/utils/zod/valvesValidationSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z, ZodType } from "Zod";
+import { ZodType } from "Zod";
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -23,6 +21,7 @@ interface FormContainerProps<T extends FieldValues> {
   children: React.ReactNode;
   onSubmitForm: SubmitFunction<T>;
   validationSchema: ZodType<any, any, any>;
+  closeUrl: string;
 }
 
 export default function FormContainer<T extends FieldValues>({
@@ -30,6 +29,7 @@ export default function FormContainer<T extends FieldValues>({
   children,
   onSubmitForm,
   validationSchema,
+  closeUrl,
 }: FormContainerProps<T>) {
   const router = useRouter();
   const methods = useForm<T>({
@@ -54,7 +54,7 @@ export default function FormContainer<T extends FieldValues>({
           {title}
         </h2>
         {children}
-        <Link href="/dashboard/valves" className="absolute right-6 top-6 z-10">
+        <Link href={closeUrl} className="absolute right-6 top-6 z-10">
           <Close />
         </Link>
       </form>

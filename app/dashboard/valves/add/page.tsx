@@ -18,6 +18,7 @@ export default function ValvesAdd() {
       title="Protokół badania zaworów bezpieczeństwa"
       onSubmitForm={createValve}
       validationSchema={ValvesValidationSchema}
+      closeUrl="/dashboard/valves"
     >
       <FormFieldset title="Informacje podstawowe">
         <InputGroup>
