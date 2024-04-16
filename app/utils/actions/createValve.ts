@@ -24,22 +24,23 @@ export async function createValve(data: CreateValveCredentials) {
     infoBlocks,
   } = valvesData;
   try {
-    await prisma.valve.create({
-      data: {
-        userSignature,
-        email,
-        userId,
-        firma,
-        type,
-        serialNumber,
-        infoBlocks: {
-          createMany: {
-            data: infoBlocks,
-          },
-        },
-      },
-    });
+    // await prisma.valve.create({
+    //   data: {
+    //     userSignature,
+    //     email,
+    //     userId,
+    //     firma,
+    //     type,
+    //     serialNumber,
+    //     infoBlocks: {
+    //       createMany: {
+    //         data: infoBlocks,
+    //       },
+    //     },
+    //   },
+    // });
     console.log("created");
+    console.log(valvesData);
   } catch (error) {
     console.log(error);
   }

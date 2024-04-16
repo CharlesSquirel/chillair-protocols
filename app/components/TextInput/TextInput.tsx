@@ -15,10 +15,10 @@ export default function TextInput({
   label,
   disabled,
 }: TextInputProps) {
-  // const {
-  //   register,
-  //   formState: { errors },
-  // } = useFormContext();
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
 
   return (
     <div className="h-min-[106px] flex flex-col gap-1">
@@ -29,9 +29,9 @@ export default function TextInput({
         id={name}
         className="h-[50px] w-[520px] rounded-md border border-primary bg-inputBg p-3 placeholder:text-placeholder focus:border-green focus:bg-white focus:outline-none disabled:opacity-50"
         disabled={disabled}
-        // {...register(name)}
+        {...register(name)}
       />
-      {/* <ErrorMessage
+      <ErrorMessage
         errors={errors}
         name={name}
         render={({ message }) => (
@@ -39,7 +39,7 @@ export default function TextInput({
             {message}
           </p>
         )}
-      /> */}
+      />
     </div>
   );
 }

@@ -1,37 +1,26 @@
+"use client";
+
 import Close from "@/assets/icons/Close";
+import ExtraMaterialsInfo from "@/components/ExtraMaterialsInfo/ExtraMaterialsInfo";
+import FormContainer from "@/components/FormContainer/FormContainer";
 import FormFieldset from "@/components/FormFieldset/FormFieldset";
 import InputGroup from "@/components/InputGroup/InputGroup";
 import InputRow from "@/components/InputRow/InputRow";
+import NumberInput from "@/components/NumberInput/NumberInput";
 import SelectInput from "@/components/SelectInput/SelectInput";
 import SubmitFormButton from "@/components/SubmitFormButton/SubmitFormButton";
 import TextInput from "@/components/TextInput/TextInput";
-import { HumidifierDTO } from "@/utils/types/humidifier";
-import Link from "next/link";
+import TextareaInput from "@/components/TextareaInput/TextareaInput";
+import { createHumidifier } from "@/utils/actions/createHumidifier";
+import { HumidifierValidationSchema } from "@/utils/zod/humidifierValidation";
 
 export default function HumidifiersAdd() {
-  async function handleSubmit(formData: FormData) {
-    "use server";
-    const data = {
-      firma: formData.get("firma") as string,
-      type: formData.get("type") as string,
-      serialNumber: formData.get("serialNumber") as string,
-      nameplateVoltage: formData.get("nameplateVoltage") as string,
-      nameplatePhase: formData.get("nameplatePhase") as string,
-      nameplateCurrentDraw: formData.get("nameplateCurrentDraw") as string,
-    };
-    console.log(data);
-  }
   return (
-    <form
-      className="absolute left-[50%] top-[90px] z-10 flex w-[1844px] translate-x-[-50%] flex-col gap-6 rounded-md bg-white p-6 shadow-md"
-      action={handleSubmit}
+    <FormContainer
+      title="Protokół przeglądu nawilżacza"
+      onSubmitForm={createHumidifier}
+      validationSchema={HumidifierValidationSchema}
     >
-      <h2 className="relative block text-3xl font-bold text-primary after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-[40%] after:bg-primary after:content-['']">
-        Protokół przeglądu nawilżacza
-      </h2>
-      <Link href="/dashboard" className="absolute right-6 top-6 z-10">
-        <Close />
-      </Link>
       <FormFieldset title="Informacje podstawowe">
         <InputGroup>
           <SelectInput
@@ -74,7 +63,107 @@ export default function HumidifiersAdd() {
           </InputRow>
         </InputGroup>
       </FormFieldset>
-      <SubmitFormButton label="Utwórz" />
-    </form>
+      <FormFieldset title="Parametry zasilania pomierzone">
+        <InputGroup title="Napięcie">
+          <InputRow title="Cylinder 1">
+            <NumberInput
+              placeholder="(V)"
+              label="L1-L2"
+              name="cylinders.0.voltage1"
+            />
+            <NumberInput
+              placeholder="(V)"
+              label="L1-L3"
+              name="cylinders.0.voltage2"
+            />
+            <NumberInput
+              placeholder="(V)"
+              label="L2-L3"
+              name="cylinders.0.voltage3"
+            />
+          </InputRow>
+          <InputRow title="Cylinder 2">
+            <NumberInput
+              placeholder="(V)"
+              label="L1-L2"
+              name="cylinders.1.voltage1"
+            />
+            <NumberInput
+              placeholder="(V)"
+              label="L1-L3"
+              name="cylinders.1.voltage2"
+            />
+            <NumberInput
+              placeholder="(V)"
+              label="L2-L3"
+              name="cylinders.1.voltage3"
+            />
+          </InputRow>
+        </InputGroup>
+        <InputGroup title="Natężenie">
+          <InputRow title="Cylinder 1">
+            <NumberInput
+              placeholder="(A)"
+              label="L1"
+              name="cylinders.0.amper1"
+            />
+            <NumberInput
+              placeholder="(A)"
+              label="L2"
+              name="cylinders.0.amper2"
+            />
+            <NumberInput
+              placeholder="(A)"
+              label="L3"
+              name="cylinders.0.amper3"
+            />
+          </InputRow>
+          <InputRow title="Cylinder 2">
+            <NumberInput
+              placeholder="(A)"
+              label="L1"
+              name="cylinders.1.amper1"
+            />
+            <NumberInput
+              placeholder="(A)"
+              label="L2"
+              name="cylinders.1.amper2"
+            />
+            <NumberInput
+              placeholder="(A)"
+              label="L3"
+              name="cylinders.1.amper3"
+            />
+          </InputRow>
+        </InputGroup>
+      </FormFieldset>
+      <FormFieldset title="Zabezpieczenie zasilania">
+        <InputGroup>
+          <InputRow>
+            <TextInput
+              placeholder="Wpisz typ zabezpieczenia"
+              label="Typ zabezpieczenia"
+              name="protectionType"
+            />
+            <NumberInput
+              placeholder="(A)"
+              label="Prąd znamionowy (A)"
+              name="ratedCurrent"
+            />
+          </InputRow>
+        </InputGroup>
+      </FormFieldset>
+      <FormFieldset>
+        <InputGroup>
+          <TextareaInput
+            placeholder="Wpisz uwagi"
+            label="Uwagi (opcjonalnie)"
+            name="description"
+          />
+        </InputGroup>
+      </FormFieldset>
+      <ExtraMaterialsInfo />
+      <SubmitFormButton label="Utwórz i pobierz" />
+    </FormContainer>
   );
 }

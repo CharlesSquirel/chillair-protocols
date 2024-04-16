@@ -1,4 +1,7 @@
 export interface HumidifierDTO {
+  email: string;
+  userSignature: string;
+  userId: string;
   firma: string;
   type: string;
   serialNumber: string;
@@ -22,7 +25,7 @@ interface Cylinder {
   amper3: string;
 }
 
-interface Material {
-  materialDecription: string;
+export interface Material {
+  materialDescription: string;
   materialAmount: string;
 }

@@ -26,5 +26,7 @@ export const HumidifierValidationSchema = z.object({
   nameplatePhase: z.number().min(0, "To pole musi być większe od zera"),
   nameplateCurrentDraw: z.number().min(0, "To pole musi być większe od zera"),
   cylinders: z.array(CylinderInfoSchema).length(2),
-  materials: z.array(MaterialInfoSchema),
+  materials: z.array(MaterialInfoSchema).min(1),
 });
+
+export type SchemaTypeHumidifier = z.infer<typeof HumidifierValidationSchema>;

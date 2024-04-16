@@ -1,31 +1,46 @@
 "use client";
 
 import Close from "@/assets/icons/Close";
-import { createValve } from "@/utils/actions/createValve";
-import { CreateValveCredentials } from "@/utils/types/payloads";
+import { SchemaTypeHumidifier } from "@/utils/zod/humidifierValidation";
 import { ValvesValidationSchema } from "@/utils/zod/valvesValidationSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { z, ZodType } from "Zod";
+
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import {
+  FieldValues,
+  FormProvider,
+  SubmitHandler,
+  useForm,
+} from "react-hook-form";
 
-interface FormContainerProps {
+type SubmitFunction<T> = (data: T) => void;
+type T = any;
+
+interface FormContainerProps<T extends FieldValues> {
   title: string;
   children: React.ReactNode;
+  onSubmitForm: SubmitFunction<T>;
+  validationSchema: ZodType<any, any, any>;
 }
 
-export default function FormContainer({ title, children }: FormContainerProps) {
+export default function FormContainer<T extends FieldValues>({
+  title,
+  children,
+  onSubmitForm,
+  validationSchema,
+}: FormContainerProps<T>) {
   const router = useRouter();
-  const methods = useForm<CreateValveCredentials>({
-    resolver: zodResolver(ValvesValidationSchema),
+  const methods = useForm<T>({
+    resolver: zodResolver(validationSchema),
   });
   const handleCloseForm = () => {
     router.back();
     methods.reset();
   };
-  const onSubmit: SubmitHandler<CreateValveCredentials> = async (data) => {
-    console.log(data);
-    createValve(data);
+  const onSubmit: SubmitHandler<T> = async (data) => {
+    onSubmitForm(data);
     handleCloseForm();
   };
 
