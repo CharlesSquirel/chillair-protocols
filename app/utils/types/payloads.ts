@@ -10,9 +10,9 @@ interface ValvesInfoBlock {
   valveLocation: string;
   valveType: string;
   valveSerialNumber: string;
-  pressureOpen: number;
-  pressureClose: number;
-  pressureSetting: number;
+  pressureOpen: string;
+  pressureClose: string;
+  pressureSetting: string;
   description?: string;
 }
 
@@ -20,7 +20,17 @@ export interface ValvesCredentials {
   firma: string;
   type: string;
   serialNumber: string;
-  infoBlock: ValvesInfoBlock[];
+  infoBlocks: ValvesInfoBlock[];
+}
+
+export interface CreateValveCredentials {
+  firma: string;
+  type: string;
+  serialNumber: string;
+  infoBlocks: ValvesInfoBlock[];
+  email: string;
+  userSignature: string;
+  userId: string;
 }
 
 export type ValvesRecords = ValvesRecord[];
@@ -34,3 +44,9 @@ interface AllProtocolsRecord {
 }
 
 export type AllProtocolsRecords = AllProtocolsRecord[];
+
+export interface UserCredentials {
+  name: string;
+  email: string;
+  password: string;
+}

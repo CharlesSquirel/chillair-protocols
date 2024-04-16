@@ -40,11 +40,12 @@ export default function NavBar() {
         >
           Klimatyzatory
         </li>
-        <li
-          className={`hover:text-primary ${pathname === "" && "border-b font-semibold text-primary"}`}
+        <Link
+          href="/dashboard/humidifiers"
+          className={`hover:text-primary ${pathname === "/dashboard/humidifiers" && "border-b font-semibold text-primary"}`}
         >
           Nawilżacze
-        </li>
+        </Link>
         <li
           className={`hover:text-primary ${pathname === "" && "border-b font-semibold text-primary"}`}
         >

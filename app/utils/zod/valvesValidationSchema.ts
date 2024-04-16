@@ -34,3 +34,5 @@ export const ValvesValidationSchema = z.object({
     .min(1, { message: "To pole jest wymagane!" }),
   infoBlocks: z.array(ValvesInfoBlockSchema).min(1),
 });
+
+export type SchemaTypeValves = z.infer<typeof ValvesValidationSchema>;

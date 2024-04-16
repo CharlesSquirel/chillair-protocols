@@ -1,3 +1,5 @@
+"use client";
+
 import FormFieldset from "@/components/FormFieldset/FormFieldset";
 import InputGroup from "@/components/InputGroup/InputGroup";
 import TextInput from "@/components/TextInput/TextInput";
@@ -7,10 +9,16 @@ import CheckboxInput from "@/components/CheckboxInput/CheckboxInput";
 import SendClientEmail from "@/components/SendClientEmail/SendClientEmail";
 import SubmitFormButton from "@/components/SubmitFormButton/SubmitFormButton";
 import SelectInput from "@/components/SelectInput/SelectInput";
+import { createValve } from "@/utils/actions/createValve";
+import { ValvesValidationSchema } from "@/utils/zod/valvesValidationSchema";
 
 export default function ValvesAdd() {
   return (
-    <FormContainer title="Protokół badania zaworów bezpieczeństwa">
+    <FormContainer
+      title="Protokół badania zaworów bezpieczeństwa"
+      onSubmitForm={createValve}
+      validationSchema={ValvesValidationSchema}
+    >
       <FormFieldset title="Informacje podstawowe">
         <InputGroup>
           <SelectInput
