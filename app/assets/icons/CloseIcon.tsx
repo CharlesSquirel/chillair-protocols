@@ -1,6 +1,6 @@
 import { SvgProps } from "app/utils/types/svgProps";
 
-export default function Close({ className }: SvgProps) {
+export default function CloseIcon({ className }: SvgProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

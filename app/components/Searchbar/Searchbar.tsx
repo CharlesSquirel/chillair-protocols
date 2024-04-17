@@ -1,4 +1,4 @@
-import Search from "@/assets/icons/Search";
+import SearchIcon from "@/assets/icons/SearchIcon";
 
 export default function Searchbar() {
   return (
@@ -9,7 +9,7 @@ export default function Searchbar() {
       >
         Wyszukaj
       </label>
-      <Search className="absolute right-6 top-[50%] translate-y-[-50%]" />
+      <SearchIcon className="absolute right-6 top-[50%] translate-y-[-50%]" />
       <input
         autoComplete="off"
         type="text"

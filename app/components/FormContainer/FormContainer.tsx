@@ -1,6 +1,6 @@
 "use client";
 
-import Close from "@/assets/icons/Close";
+import CloseIcon from "@/assets/icons/CloseIcon";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ZodType } from "Zod";
 
@@ -55,7 +55,7 @@ export default function FormContainer<T extends FieldValues>({
         </h2>
         {children}
         <Link href={closeUrl} className="absolute right-6 top-6 z-10">
-          <Close />
+          <CloseIcon />
         </Link>
       </form>
     </FormProvider>

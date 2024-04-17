@@ -1,4 +1,4 @@
-export const Home = () => {
+export default function SignatureIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6,7 +6,7 @@ export const Home = () => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="#1e73be"
-      className="w-6 h-6"
+      className="h-6 w-6"
     >
       <path
         strokeLinecap="round"
@@ -15,6 +15,4 @@ export const Home = () => {
       />
     </svg>
   );
-};
-
-export default Home;
+}

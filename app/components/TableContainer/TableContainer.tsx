@@ -1,4 +1,4 @@
-import Filter from "@/icons/Filter";
+import Filter from "@/assets/icons/FilterIcon";
 import Searchbar from "@/components/Searchbar/Searchbar";
 import AddButton from "@/components/AddButton/AddButton";
 import { TableNames } from "@/utils/types/tableNames";

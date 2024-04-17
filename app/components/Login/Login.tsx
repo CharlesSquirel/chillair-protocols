@@ -1,8 +1,8 @@
 import Image from "next/image";
 import LoginSubmitButton from "./LoginSubmitButton/LoginSubmitButton";
 import LoginTextInput from "./LoginTextInput/LoginTextInput";
-import Envelope from "@/assets/icons/Envelope";
-import Key from "@/assets/icons/Key";
+import EnvelopeIcon from "@/assets/icons/EnvelopeIcon";
+import KeyIcon from "@/assets/icons/KeyIcon";
 import logo from "@/assets/images/chillair_logo.png";
 
 interface LoginFormData {
@@ -26,10 +26,10 @@ const Login = () => {
     >
       <Image src={logo} alt="Chillair logo" />
       <LoginTextInput placeholder="Email" name="email">
-        <Envelope />
+        <EnvelopeIcon />
       </LoginTextInput>
       <LoginTextInput type="password" placeholder="Hasło" name="password">
-        <Key />
+        <KeyIcon />
       </LoginTextInput>
       <LoginSubmitButton />
     </form>

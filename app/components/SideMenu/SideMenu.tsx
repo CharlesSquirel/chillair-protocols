@@ -1,6 +1,6 @@
-import Home from "@/icons/Home";
-import Local from "@/icons/Local";
-import User from "@/icons/User";
+import HomeIcon from "@/assets/icons/HomeIcon";
+import LocalIcon from "@/assets/icons/LocalIcon";
+import UserIcon from "@/assets/icons/UserIcon";
 import Link from "next/link";
 
 export default function SideMenu() {
@@ -13,19 +13,19 @@ export default function SideMenu() {
       </h1>
       <ul className="flex flex-col gap-[15px] uppercase">
         <li className="flex cursor-pointer gap-3 text-lg text-secondary hover:font-medium hover:text-primary">
-          <Home /> Home
+          <HomeIcon /> Home
         </li>
         <Link
           href="/dashboard/firma/add"
           className="flex cursor-pointer gap-3 text-lg text-secondary hover:font-medium hover:text-primary"
         >
-          <Local /> Obiekty
+          <LocalIcon /> Obiekty
         </Link>
         {/* <li className="cursor-pointer text-secondary text-lg hover:text-primary hover:font-medium flex gap-3">
           <Signature /> Sygnatury
         </li> */}
         <li className="flex cursor-pointer gap-3 text-lg text-secondary hover:font-medium hover:text-primary">
-          <User /> Użytkownicy
+          <UserIcon /> Użytkownicy
         </li>
       </ul>
     </aside>
