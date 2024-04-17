@@ -8,24 +8,24 @@ export interface HumidifierDTO {
   protectionType: string;
   ratedCurrent: string;
   description?: string;
-  nameplateVoltage: string;
-  nameplatePhase: string;
-  nameplateCurrentDraw: string;
+  nameplateVoltage: number;
+  nameplatePhase: number;
+  nameplateCurrentDraw: number;
   cylinders: Cylinder[];
   materials: Material[];
 }
 
 interface Cylinder {
   cylinderNumber: string;
-  voltage1: string;
-  voltage2: string;
-  voltage3: string;
-  amper1: string;
-  amper2: string;
-  amper3: string;
+  voltage1: number;
+  voltage2: number;
+  voltage3: number;
+  amper1: number;
+  amper2: number;
+  amper3: number;
 }
 
 export interface Material {
   materialDescription: string;
-  materialAmount: string;
+  materialAmount: number;
 }

@@ -16,6 +16,9 @@ export default function NumberInput({
     register,
     formState: { errors },
   } = useFormContext();
+
+  console.log(errors);
+
   return (
     <div className="h-min-[106px] flex flex-col gap-1">
       {label && (
@@ -29,7 +32,7 @@ export default function NumberInput({
         id={name}
         step={0.1}
         className="h-[50px] w-[520px] rounded-md border border-primary bg-inputBg p-3 placeholder:text-placeholder focus:border-green focus:bg-white focus:outline-none"
-        {...register(name)}
+        {...register(name, { valueAsNumber: true })}
       />
       <ErrorMessage
         errors={errors}

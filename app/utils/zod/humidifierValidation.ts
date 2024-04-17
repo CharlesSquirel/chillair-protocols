@@ -1,30 +1,31 @@
 import { z } from "Zod";
+import { createNumberValidator, createStringValidator } from "./zodHelpers";
 
 const CylinderInfoSchema = z.object({
-  cylinderNumber: z.string().min(1, "To pole jest wymagane!"),
-  voltage1: z.string().min(0, "To pole jest wymagane!"),
-  voltage2: z.string().min(0, "To pole jest wymagane!"),
-  voltage3: z.string().min(0, "To pole jest wymagane!"),
-  amper1: z.string().min(0, "To pole jest wymagane!"),
-  amper2: z.string().min(0, "To pole jest wymagane!"),
-  amper3: z.string().min(0, "To pole jest wymagane!"),
+  cylinderNumber: createStringValidator(),
+  voltage1: createNumberValidator(),
+  voltage2: createNumberValidator(),
+  voltage3: createNumberValidator(),
+  amper1: createNumberValidator(),
+  amper2: createNumberValidator(),
+  amper3: createNumberValidator(),
 });
 
 const MaterialInfoSchema = z.object({
-  materialDecription: z.string().min(1, "To pole jest wymagane!"),
-  materialAmount: z.number().min(0, "To pole nie może być ujemne!"),
+  materialDecription: createStringValidator(),
+  materialAmount: createNumberValidator(),
 });
 
 export const HumidifierValidationSchema = z.object({
-  firma: z.string().min(1, "To pole jest wymagane!"),
-  type: z.string().min(1, "To pole jest wymagane!"),
-  serialNumber: z.string().min(1, "To pole jest wymagane!"),
-  protectionType: z.string().min(1, "To pole jest wymagane!"),
-  ratedCurrent: z.string().min(1, "To pole jest wymagane!"),
+  firma: createStringValidator(),
+  type: createStringValidator(),
+  serialNumber: createStringValidator(),
+  protectionType: createStringValidator(),
+  ratedCurrent: createStringValidator(),
   description: z.string().optional(),
-  nameplateVoltage: z.number().min(0, "To pole musi być większe od zera"),
-  nameplatePhase: z.number().min(0, "To pole musi być większe od zera"),
-  nameplateCurrentDraw: z.number().min(0, "To pole musi być większe od zera"),
+  nameplateVoltage: createNumberValidator(),
+  nameplatePhase: createNumberValidator(),
+  nameplateCurrentDraw: createNumberValidator(),
   cylinders: z.array(CylinderInfoSchema).length(2),
   materials: z.array(MaterialInfoSchema).min(1),
 });

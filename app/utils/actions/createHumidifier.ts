@@ -1,7 +1,8 @@
+"use server";
+
 import { HumidifierDTO } from "../types/humidifier";
 
 export async function createHumidifier(data: HumidifierDTO) {
-  "use server";
   const humidifiersdata: HumidifierDTO = {
     email: "jan.kowalski@.pl",
     userSignature: "asdasdasd",

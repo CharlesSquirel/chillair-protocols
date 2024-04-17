@@ -10,9 +10,9 @@ interface ValvesInfoBlock {
   valveLocation: string;
   valveType: string;
   valveSerialNumber: string;
-  pressureOpen: string;
-  pressureClose: string;
-  pressureSetting: string;
+  pressureOpen: number;
+  pressureClose: number;
+  pressureSetting: number;
   description?: string;
 }
 

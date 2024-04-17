@@ -45,17 +45,17 @@ export default function HumidifiersAdd() {
       <FormFieldset title="Parametry zasilania tabliczki znamionowej">
         <InputGroup>
           <InputRow>
-            <TextInput
+            <NumberInput
               placeholder="Wpisz napięcie"
               label="Napięcie (V)"
               name="nameplateVoltage"
             />
-            <TextInput
+            <NumberInput
               placeholder="Wpisz fazę(y)"
               label="Faza(y)"
               name="nameplatePhase"
             />
-            <TextInput
+            <NumberInput
               placeholder="Wpisz pobór"
               label="Znamionowy pobór prądu (A)"
               name="nameplateCurrentDraw"
