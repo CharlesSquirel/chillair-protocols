@@ -11,9 +11,11 @@ const config: Config = {
       colors: {
         white: "#fff",
         black: "#222222",
+        blackPrint: "#222234",
         primary: "#1e73be",
         secondary: "#002d38e6",
         gray: "#ebebeb",
+        grayPrint: "#6F6F84",
         placeholder: "#8D98AA",
         inputBg: "#EDF2F6",
         green: "#009000",
