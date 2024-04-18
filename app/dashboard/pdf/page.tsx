@@ -4,33 +4,35 @@ import { PDFDocument, PDFPage, StandardFonts, rgb } from "pdf-lib";
 import download from "downloadjs";
 import { chillairInfo } from "@/data/chillairInfo";
 import createBase64FromPNG from "@/utils/actions/createBase64FromPNG";
+import { usePathname } from "next/navigation";
+import { downloadPDFFromPage } from "@/utils/fetch/downloadPDFFromPage";
 
-function printAndSaveAsPDF() {
-  // Sprawdź, czy przeglądarka wspiera funkcję Blob()
-  if (window.Blob) {
-    // Uzyskaj zawartość widoku do wydrukowania (cała strona)
-    const printableContent = document.body.innerHTML;
+// function printAndSaveAsPDF() {
+//   // Sprawdź, czy przeglądarka wspiera funkcję Blob()
+//   if (window.Blob) {
+//     // Uzyskaj zawartość widoku do wydrukowania (cała strona)
+//     const printableContent = document.body.innerHTML;
 
-    // Utwórz nowy obiekt Blob z zawartością widoku do wydrukowania
-    const blob = new Blob([printableContent], { type: "application/pdf" });
+//     // Utwórz nowy obiekt Blob z zawartością widoku do wydrukowania
+//     const blob = new Blob([printableContent], { type: "application/pdf" });
 
-    // Utwórz link do pobrania pliku PDF
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "printable-content.pdf";
+//     // Utwórz link do pobrania pliku PDF
+//     const link = document.createElement("a");
+//     link.href = URL.createObjectURL(blob);
+//     link.download = "printable-content.pdf";
 
-    // Dodaj link do dokumentu i automatycznie kliknij go
-    document.body.appendChild(link);
-    link.click();
+//     // Dodaj link do dokumentu i automatycznie kliknij go
+//     document.body.appendChild(link);
+//     link.click();
 
-    // Zwolnij zasoby
-    URL.revokeObjectURL(link.href);
-    document.body.removeChild(link);
-  } else {
-    // Przeglądarka nie obsługuje funkcji Blob(), obsłuż wyjątek
-    console.error("Przeglądarka nie obsługuje funkcji Blob()");
-  }
-}
+//     // Zwolnij zasoby
+//     URL.revokeObjectURL(link.href);
+//     document.body.removeChild(link);
+//   } else {
+//     // Przeglądarka nie obsługuje funkcji Blob(), obsłuż wyjątek
+//     console.error("Przeglądarka nie obsługuje funkcji Blob()");
+//   }
+// }
 
 // async function createFooter(pdfDoc: PDFDocument, page: PDFPage) {
 //   const font = await pdfDoc.embedFont(StandardFonts.TimesRoman); // Użyj Helvetica zamiast TimesRoman
@@ -67,6 +69,7 @@ function printAndSaveAsPDF() {
 // }
 
 export default function PDFView() {
+  const pathname = usePathname();
   // async function createPdf() {
   //   const pdfDoc = await PDFDocument.create();
   //   const timesRomanFont = await pdfDoc.embedFont(StandardFonts.TimesRoman);
@@ -94,7 +97,10 @@ export default function PDFView() {
       <p>
         Click the button to create a new PDF document with <code>pdf-lib</code>
       </p>
-      <button onClick={printAndSaveAsPDF} className="bg-red ml-[500px]">
+      <button
+        onClick={() => downloadPDFFromPage(pathname)}
+        className="bg-red ml-[500px]"
+      >
         Create PDF
       </button>
       <p>(Your browser will download the resulting file)</p>
