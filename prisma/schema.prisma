@@ -37,8 +37,10 @@ model Session {
 
 model User {
   id            String    @id @default(cuid()) @map("_id")
-  name          String
+  firstName          String
+  lastName String
   email         String    @unique
+  password String
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   accounts      Account[]

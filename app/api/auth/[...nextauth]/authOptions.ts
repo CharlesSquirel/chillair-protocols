@@ -1,22 +1,46 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import { compare } from "bcrypt";
-import { db } from "lib/db";
+import { prisma } from "lib/db";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { UserCredentials } from "@/utils/types/payloads";
-import { NextApiRequest } from "next";
+import { UserLoginDTO, UserDTO } from "@/utils/types/user";
+import { NextAuthConfig } from "next-auth";
 
-const authOptions = {
+const authOptions: NextAuthConfig = {
   adapter: PrismaAdapter(prisma),
   session: {
     strategy: "jwt",
   },
   pages: {
-    signIn: "/",
+    signIn: "/dashboard/user/add",
   },
   providers: [
     CredentialsProvider({
-      name: "Credentials",
-      async authorize(credentials, request) {},
+      name: "credentials",
+      credentials: {
+        email: {},
+        password: {},
+        userSignature: {},
+        firstName: {},
+        lastName: {},
+      },
+      async authorize(credentials: UserLoginDTO, request) {
+        try {
+          if (!credentials.email || !credentials.password) {
+            throw new Error("Lack of required fields");
+          }
+          const user = await prisma.user.findUnique({
+            where: {
+              email: credentials.email,
+            },
+          });
+          if (!user || !user?.password) {
+            throw new Error("No user found");
+          }
+        } catch (error: any) {
+          const errorMessage = error.response.data.message;
+          throw new Error(errorMessage);
+        }
+      },
     }),
   ],
 };
