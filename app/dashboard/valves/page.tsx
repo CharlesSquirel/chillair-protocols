@@ -1,30 +1,38 @@
 import ActionTableButtons from "@/components/ActionTableButtons/ActionTableButtons";
 import TableContainer from "@/components/TableContainer/TableContainer";
 import { dummyValves } from "@/data/dummyDatas";
+import { formatDateToString } from "@/utils/helpers/formatDateToString";
+import { prisma } from "lib/db";
 
 const valvesHeaders: string[] = [
   "Data",
   "Obiekt",
   "Autor",
-  "Numer seryjny",
+  "Sygnatura",
   "Uwagi",
 ];
 
-export default function Valves() {
+export default async function Valves() {
+  const valves = await prisma.valve.findMany({
+    orderBy: { createdAt: "desc" },
+  });
+
   return (
     <TableContainer
       tableName="valves"
       headers={valvesHeaders}
       renderRows={() => (
         <>
-          {dummyValves.map((data, index) => (
+          {valves.map((data, index) => (
             <tr key={index} className="hover:cursor-pointer hover:text-primary">
-              <td>{data.date}</td>
+              <td>{formatDateToString(data.createdAt)}</td>
               <td>{data.firma}</td>
-              <td>{data.author}</td>
-              <td>{data.serialNumber}</td>
-              <td>{data.another}</td>
-              <ActionTableButtons />
+              <td>
+                {data.firstName} {data.lastName}
+              </td>
+              <td>{data.userSignature}</td>
+              <td>{data.description}</td>
+              <ActionTableButtons id={data.id} />
             </tr>
           ))}
         </>

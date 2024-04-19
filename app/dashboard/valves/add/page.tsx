@@ -11,6 +11,7 @@ import SubmitFormButton from "@/components/SubmitFormButton/SubmitFormButton";
 import SelectInput from "@/components/SelectInput/SelectInput";
 import { createValve } from "@/utils/actions/createValve";
 import { ValvesValidationSchema } from "@/utils/zod/valvesValidationSchema";
+import TextareaInput from "@/components/TextareaInput/TextareaInput";
 
 export default function ValvesAdd() {
   return (
@@ -44,9 +45,17 @@ export default function ValvesAdd() {
       <FormFieldset title="Informacje dodatkowe">
         <ExtraValvesInfo />
       </FormFieldset>
+      <FormFieldset>
+        <InputGroup title="Uwagi">
+          <TextareaInput
+            placeholder="Wpisz swoje uwagi"
+            label=""
+            name="description"
+          />
+        </InputGroup>
+      </FormFieldset>
       <FormFieldset title="Opcje wysyłki">
         <InputGroup>
-          <CheckboxInput label="Wyślij do mnie" name="userEmailPerm" />
           <SendClientEmail />
         </InputGroup>
       </FormFieldset>

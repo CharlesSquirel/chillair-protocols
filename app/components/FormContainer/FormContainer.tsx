@@ -14,7 +14,6 @@ import {
 } from "react-hook-form";
 
 type SubmitFunction<T> = (data: T) => void;
-type T = any;
 
 interface FormContainerProps<T extends FieldValues> {
   title: string;
@@ -42,6 +41,7 @@ export default function FormContainer<T extends FieldValues>({
   const onSubmit: SubmitHandler<T> = async (data) => {
     onSubmitForm(data);
     handleCloseForm();
+    // console.log(data);
   };
 
   return (
