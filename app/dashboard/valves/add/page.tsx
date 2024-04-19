@@ -22,6 +22,11 @@ export default function ValvesAdd() {
     >
       <FormFieldset title="Informacje podstawowe">
         <InputGroup>
+          <TextInput
+            placeholder="Wpisz typ urządzenia"
+            name="test"
+            label="Typ urządzenia"
+          />
           <SelectInput
             placeholder="Wybierz obiekt"
             name="firma"

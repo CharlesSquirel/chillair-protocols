@@ -11,6 +11,6 @@ export const dummyValves = Array(40).fill({
   serialNumber: "FHO8574NGH678",
   firma: "Siedziba ul. Sucza",
   author: "Jan Kowalski",
-  date: "2.04.2023",
+  createdAt: "2.04.2023",
   another: "asdasdasd",
 });
