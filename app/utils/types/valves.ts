@@ -34,10 +34,9 @@ export interface CreateValveCredentials {
   lastName: string;
   userSignature: string;
   userId: string;
-  clientEmail: string | undefined;
+  clientEmail?: string;
   clientEmailPerm: boolean;
-  userEmailPerm: boolean;
-  test: string;
+  description?: string;
 }
 
 export type ValvesRecords = ValvesRecord[];

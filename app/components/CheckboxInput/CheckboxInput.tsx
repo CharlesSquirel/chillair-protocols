@@ -10,7 +10,11 @@ interface CheckboxProps {
 }
 
 export default function CheckboxInput({ label, name, onCheck }: CheckboxProps) {
-  const { register } = useFormContext();
+  const { register, setValue } = useFormContext();
+
+  // useEffect(() => {
+  //   setValue(name, false);
+  // }, []);
 
   return (
     <div className="flex items-center gap-2">

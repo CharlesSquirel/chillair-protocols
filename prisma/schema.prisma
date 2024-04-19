@@ -69,9 +69,9 @@ model Valve {
   userSignature   String
   firstName       String
   lastName        String
-  userEmailPerm   Boolean
-  clientEmail     String?
+  description     String?
   clientEmailPerm Boolean
+  clientEmail     String?
   infoBlocks      ValvesInfoBlock[]
 }
 

@@ -41,6 +41,7 @@ export default function FormContainer<T extends FieldValues>({
   const onSubmit: SubmitHandler<T> = async (data) => {
     onSubmitForm(data);
     handleCloseForm();
+    // console.log(data);
   };
 
   return (

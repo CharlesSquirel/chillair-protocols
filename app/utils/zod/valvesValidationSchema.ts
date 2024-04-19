@@ -16,6 +16,9 @@ export const ValvesValidationSchema = z.object({
   type: createStringValidator(),
   serialNumber: createStringValidator(),
   infoBlocks: z.array(ValvesInfoBlockSchema).min(1),
+  description: z.string().optional(),
+  clientEmailPerm: z.boolean().optional(),
+  clientEmail: z.string().optional(),
 });
 
 export type SchemaTypeValves = z.infer<typeof ValvesValidationSchema>;

@@ -2,6 +2,7 @@
 
 import { prisma } from "lib/db";
 import { CreateValveCredentials } from "../types/valves";
+import { revalidatePath } from "next/cache";
 
 export async function createValve(data: CreateValveCredentials) {
   console.log(data);
@@ -15,10 +16,9 @@ export async function createValve(data: CreateValveCredentials) {
     type: data.type,
     serialNumber: data.serialNumber,
     infoBlocks: data.infoBlocks,
-    userEmailPerm: data.userEmailPerm,
     clientEmail: data.clientEmail,
     clientEmailPerm: data.clientEmailPerm,
-    test: data.test,
+    description: data.description,
   };
 
   const {
@@ -31,16 +31,16 @@ export async function createValve(data: CreateValveCredentials) {
     infoBlocks,
     firstName,
     lastName,
-    userEmailPerm,
     clientEmail,
     clientEmailPerm,
+    description,
   } = valvesData;
   try {
     await prisma.valve.create({
       data: {
-        clientEmailPerm,
+        description,
         clientEmail,
-        userEmailPerm,
+        clientEmailPerm,
         firstName,
         lastName,
         userSignature,
@@ -56,6 +56,7 @@ export async function createValve(data: CreateValveCredentials) {
         },
       },
     });
+    revalidatePath("/dashboard/valves");
     console.log("created");
     console.log(valvesData);
   } catch (error) {
