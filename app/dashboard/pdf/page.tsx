@@ -1,7 +1,5 @@
 "use client";
 
-import { PDFDocument, PDFPage, StandardFonts, rgb } from "pdf-lib";
-import download from "downloadjs";
 import { chillairInfo } from "@/data/chillairInfo";
 import createBase64FromPNG from "@/utils/actions/createBase64FromPNG";
 import { usePathname } from "next/navigation";
