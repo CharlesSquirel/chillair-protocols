@@ -7,6 +7,7 @@ import ProtocolHeader from "@/components/ProtocolHeader/ProtocolHeader";
 import ProtocolTable from "@/components/ProtocolTable/ProtocolTable";
 import ProtocolUserSign from "@/components/ProtocolUserSign/ProtocolUserSign";
 import { formatDateToString } from "@/utils/helpers/formatDateToString";
+import { getValve } from "@/utils/prisma/getValve";
 import { ValvesInfoBlock } from "@prisma/client";
 import { inter } from "app/layout";
 import { prisma } from "lib/db";
@@ -38,30 +39,32 @@ const valveHeaders: ValveHeader[] = [
   ValveHeader.PRESSURE_CLOSE,
 ];
 
-const getValve = cache(async (id: string) => {
-  const valve = await prisma.valve.findUnique({
-    where: {
-      id,
-    },
-  });
-  return valve;
-});
+// const getValve = cache(async (id: string) => {
+//   const valve = await prisma.valve.findUnique({
+//     where: {
+//       id,
+//     },
+//   });
 
-const getValveInfoBlocks = cache(async (id: string) => {
-  const valveBlock: ValvesInfoBlock[] = await prisma.valvesInfoBlock.findMany({
-    where: {
-      valveId: id,
-    },
-  });
-  return valveBlock;
-});
+//   return valve;
+// });
+
+// const getValveInfoBlocks = cache(async (id: string) => {
+//   const valveBlocks: ValvesInfoBlock[] = await prisma.valvesInfoBlock.findMany({
+//     where: {
+//       valveId: id,
+//     },
+//   });
+//   return valveBlocks;
+// });
 
 export default async function ValveProtocol({
   params: { id },
 }: ValveProtocolProps) {
-  const valve = await getValve(id);
-  const valveInfoBlock = await getValveInfoBlocks(id);
-  if (!valve || !valveInfoBlock) {
+  const { valve, valveBlocks } = await getValve(id);
+  // const valve = await getValve(id);
+  // const valveBlocks = await getValveInfoBlocks(id);
+  if (!valve || !valveBlocks) {
     throw new Error("Nie znaleziono rekordu w bazie danych");
   }
 
@@ -85,7 +88,7 @@ export default async function ValveProtocol({
       <ProtocolTable
         title="Zawory"
         headers={valveHeaders}
-        infoBlock={valveInfoBlock}
+        infoBlock={valveBlocks}
       />
       <ProtocolUserSign text="podpis technika" />
       <ProtocolDownloadButton />

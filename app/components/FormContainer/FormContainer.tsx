@@ -1,12 +1,14 @@
 "use client";
 
 import CloseIcon from "@/assets/icons/CloseIcon";
+import { CreateValveCredentials } from "@/utils/types/valves";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ZodType } from "Zod";
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
+  DefaultValues,
   FieldValues,
   FormProvider,
   SubmitHandler,
@@ -21,6 +23,7 @@ interface FormContainerProps<T extends FieldValues> {
   onSubmitForm: SubmitFunction<T>;
   validationSchema: ZodType<any, any, any>;
   closeUrl: string;
+  defaultValues?: DefaultValues<T>;
 }
 
 export default function FormContainer<T extends FieldValues>({
@@ -29,12 +32,14 @@ export default function FormContainer<T extends FieldValues>({
   onSubmitForm,
   validationSchema,
   closeUrl,
+  defaultValues,
 }: FormContainerProps<T>) {
   const router = useRouter();
   const methods = useForm<T>({
     resolver: zodResolver(validationSchema),
+    defaultValues: defaultValues,
   });
-  const handleCloseForm = () => {
+  const handleCloseForm = (): void => {
     router.back();
     methods.reset();
   };
