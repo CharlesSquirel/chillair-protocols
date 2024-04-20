@@ -1,9 +1,11 @@
 import InputRow from "@/components/InputRow/InputRow";
+import ProtocolBackButton from "@/components/ProtocolBackButton/ProtocolBackButton";
 import ProtocolBasicInfo from "@/components/ProtocolBasicInfo/ProtocolBasicInfo";
 import ProtocolDownloadButton from "@/components/ProtocolDownloadButton/ProtocolDownloadButton";
 import ProtocolField from "@/components/ProtocolField/ProtocolField";
 import ProtocolHeader from "@/components/ProtocolHeader/ProtocolHeader";
 import ProtocolTable from "@/components/ProtocolTable/ProtocolTable";
+import ProtocolUserSign from "@/components/ProtocolUserSign/ProtocolUserSign";
 import { formatDateToString } from "@/utils/helpers/formatDateToString";
 import { ValvesInfoBlock } from "@prisma/client";
 import { inter } from "app/layout";
@@ -16,14 +18,24 @@ interface ValveProtocolProps {
   };
 }
 
-const valveHeaders = [
-  "Lp",
-  "Miejsce instalowania zaworu",
-  "Typ",
-  "Nr fabryczny",
-  "Nastawa (MPa)",
-  "Otwarcie (MPa)",
-  "Zamknięcie (MPa)",
+enum ValveHeader {
+  LP = "Lp",
+  VALVE_LOCATION = "Miejsce instalowania zaworu",
+  TYPE = "Typ",
+  SERIAL_NUMBER = "Nr fabryczny",
+  PRESSURE_SETTING = "Nastawa (Bar)",
+  PRESSURE_OPEN = "Otwarcie (Bar)",
+  PRESSURE_CLOSE = "Zamknięcie (Bar)",
+}
+
+const valveHeaders: ValveHeader[] = [
+  ValveHeader.LP,
+  ValveHeader.VALVE_LOCATION,
+  ValveHeader.TYPE,
+  ValveHeader.SERIAL_NUMBER,
+  ValveHeader.PRESSURE_SETTING,
+  ValveHeader.PRESSURE_OPEN,
+  ValveHeader.PRESSURE_CLOSE,
 ];
 
 const getValve = cache(async (id: string) => {
@@ -55,8 +67,9 @@ export default async function ValveProtocol({
 
   return (
     <article
-      className={`${inter.className} absolute top-0 z-20 flex w-full flex-col gap-[30px] bg-white px-[27px] py-[25px]`}
+      className={`${inter.className} absolute top-0 z-20 flex h-screen w-full flex-col gap-[30px] bg-white px-[27px] py-[25px]`}
     >
+      <ProtocolBackButton />
       <ProtocolHeader title="badania zaworów bezpieczeństwa" />
       <ProtocolBasicInfo
         userFirstName={valve.firstName}
@@ -74,6 +87,7 @@ export default async function ValveProtocol({
         headers={valveHeaders}
         infoBlock={valveInfoBlock}
       />
+      <ProtocolUserSign text="podpis technika" />
       <ProtocolDownloadButton />
     </article>
   );

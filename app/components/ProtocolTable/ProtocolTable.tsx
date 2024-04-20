@@ -14,9 +14,9 @@ export default function ProtocolTable({
 }: ProtocolTableProps) {
   return (
     <div className="flex w-full flex-col gap-3">
-      <h3 className="text-[16px] font-semibold">{title}</h3>
-      <table className="table w-full rounded-md border border-grayStroke bg-grayTable p-[13px] text-[12px] text-grayPrint">
-        <thead>
+      <h3 className="text-[20px] font-semibold">{title}</h3>
+      <table className="table w-full rounded-md border border-grayStroke bg-grayTable p-[13px] text-[16px] text-grayPrint">
+        <thead className="text-[16px]">
           <tr>
             {headers.map((header) => (
               <th key={header}>{header}</th>
@@ -27,7 +27,7 @@ export default function ProtocolTable({
           {infoBlock.map((block, index) => (
             <React.Fragment key={index}>
               <tr>
-                <td className="font-medium">{index + 1}</td>
+                <td className="font-medium">{index + 1 + "."}</td>
                 <td>{block.valveLocation}</td>
                 <td>{block.valveType}</td>
                 <td>{block.valveSerialNumber}</td>
@@ -35,8 +35,14 @@ export default function ProtocolTable({
                 <td>{block.pressureOpen}</td>
                 <td>{block.pressureClose}</td>
               </tr>
-              <tr>
-                <td>{`Uwagi: ${block.description}`}</td>
+              <tr
+                className={
+                  index < infoBlock.length - 1
+                    ? `border-b-[1px] border-b-black`
+                    : ""
+                }
+              >
+                <td>{`Uwagi: ${block.description} `}</td>
               </tr>
             </React.Fragment>
           ))}

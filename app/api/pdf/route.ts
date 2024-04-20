@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
     await page.goto(`http://localhost:3000${pathname}`, {
       waitUntil: "networkidle0",
     });
-    await page.emulateMediaType("screen");
+    await page.emulateMediaType("print");
 
     const pdfBuffer = await page.pdf({ format: "A4" });
 

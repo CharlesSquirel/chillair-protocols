@@ -43,21 +43,21 @@ export default function ExtraValvesInfo() {
               placeholder="Wpisz nr"
             />
           </InputRow>
-          <InputRow title="Ciśnienia (MPa)">
+          <InputRow title="Ciśnienia (Bar)">
             <NumberInput
               label="Nastawa"
               name={`infoBlocks.${index}.pressureSetting`}
-              placeholder="MPa"
+              placeholder="Bar"
             />
             <NumberInput
               label="Otwarcie"
               name={`infoBlocks.${index}.pressureOpen`}
-              placeholder="MPa"
+              placeholder="Bar"
             />
             <NumberInput
               label="Zamknięcie"
               name={`infoBlocks.${index}.pressureClose`}
-              placeholder="MPa"
+              placeholder="Bar"
             />
           </InputRow>
           <TextareaInput
