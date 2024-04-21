@@ -6,8 +6,9 @@ import ProtocolField from "@/components/ProtocolField/ProtocolField";
 import ProtocolHeader from "@/components/ProtocolHeader/ProtocolHeader";
 import ProtocolTable from "@/components/ProtocolTable/ProtocolTable";
 import ProtocolUserSign from "@/components/ProtocolUserSign/ProtocolUserSign";
+import getValve from "@/utils/actions/getValve";
 import { formatDateToString } from "@/utils/helpers/formatDateToString";
-import { getValve } from "@/utils/prisma/getValve";
+
 import { ValvesInfoBlock } from "@prisma/client";
 import { inter } from "app/layout";
 import { prisma } from "lib/db";

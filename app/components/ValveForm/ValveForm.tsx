@@ -9,25 +9,33 @@ import SubmitFormButton from "../SubmitFormButton/SubmitFormButton";
 import TextInput from "../TextInput/TextInput";
 import TextareaInput from "../TextareaInput/TextareaInput";
 import { DefaultValues, FieldValues } from "react-hook-form";
+import { FormType } from "@/utils/types/form";
+import { getSubmitHandler } from "@/utils/switch/getSubmitHandler";
+import { CreateValveCredentials } from "@/utils/types/valves";
 
 type SubmitFunction<T> = (data: T) => void;
 
 interface ValveFormProps<T extends FieldValues> {
-  onSubmitForm: SubmitFunction<T>;
+  //   onSubmitForm: SubmitFunction<T>;
   defaultValues?: DefaultValues<T>;
+  formType: FormType;
 }
 
 export default function ValveForm<T extends FieldValues>({
-  onSubmitForm,
+  //   onSubmitForm,
   defaultValues,
+  formType,
 }: ValveFormProps<T>) {
+  const onSubmitForm = getSubmitHandler(formType);
+
   return (
     <FormContainer
       title="Protokół badania zaworów bezpieczeństwa"
       onSubmitForm={onSubmitForm}
       validationSchema={ValvesValidationSchema}
       closeUrl="/dashboard/valves"
-      defaultValues={defaultValues}
+      defaultValues={defaultValues as CreateValveCredentials}
+      //   formType={formType}
     >
       <FormFieldset title="Informacje podstawowe">
         <InputGroup>

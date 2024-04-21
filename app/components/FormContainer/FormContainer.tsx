@@ -1,6 +1,8 @@
 "use client";
 
 import CloseIcon from "@/assets/icons/CloseIcon";
+import { getSubmitHandler } from "@/utils/switch/getSubmitHandler";
+import { FormType } from "@/utils/types/form";
 import { CreateValveCredentials } from "@/utils/types/valves";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ZodType } from "Zod";
@@ -24,6 +26,7 @@ interface FormContainerProps<T extends FieldValues> {
   validationSchema: ZodType<any, any, any>;
   closeUrl: string;
   defaultValues?: DefaultValues<T>;
+  // formType: FormType;
 }
 
 export default function FormContainer<T extends FieldValues>({
@@ -33,6 +36,7 @@ export default function FormContainer<T extends FieldValues>({
   validationSchema,
   closeUrl,
   defaultValues,
+  // formType,
 }: FormContainerProps<T>) {
   const router = useRouter();
   const methods = useForm<T>({
@@ -44,6 +48,7 @@ export default function FormContainer<T extends FieldValues>({
     methods.reset();
   };
   const onSubmit: SubmitHandler<T> = async (data) => {
+    // const onSubmitForm = getSubmitHandler(formType);
     onSubmitForm(data);
     handleCloseForm();
     // console.log(data);
