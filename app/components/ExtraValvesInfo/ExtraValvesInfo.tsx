@@ -9,9 +9,27 @@ import MinusIcon from "@/assets/icons/MinusIcon";
 import TextareaInput from "../TextareaInput/TextareaInput";
 import NumberInput from "../NumberInput/NumberInput";
 import SelectInput from "../SelectInput/SelectInput";
+import { ValvesInfoBlock } from "@prisma/client";
+import { useFormContext } from "react-hook-form";
 
-export default function ExtraValvesInfo() {
-  const [infoCount, setInfoCount] = useState(1);
+interface ExtraValvesInfoProps {
+  extraValvesDataEdit?: ValvesInfoBlock[];
+}
+
+export default function ExtraValvesInfo({
+  extraValvesDataEdit,
+}: ExtraValvesInfoProps) {
+  const { getValues, setValue } = useFormContext();
+  const [infoCount, setInfoCount] = useState(
+    extraValvesDataEdit ? extraValvesDataEdit.length : 1,
+  );
+  const handleOnMinus = () => {
+    setInfoCount(infoCount - 1);
+    if (extraValvesDataEdit) {
+      const infoBlocks = getValues("infoBlocks").slice(0, infoCount - 1);
+      setValue("infoBlocks", infoBlocks);
+    }
+  };
   return (
     <>
       {Array.from({ length: infoCount }, (_, index) => (
@@ -20,7 +38,7 @@ export default function ExtraValvesInfo() {
             <button
               className="absolute right-4 top-4 h-7 w-7"
               type="button"
-              onClick={() => setInfoCount(infoCount - 1)}
+              onClick={handleOnMinus}
             >
               <MinusIcon />
             </button>
@@ -43,21 +61,21 @@ export default function ExtraValvesInfo() {
               placeholder="Wpisz nr"
             />
           </InputRow>
-          <InputRow title="Ciśnienia (MPa)">
+          <InputRow title="Ciśnienia (Bar)">
             <NumberInput
               label="Nastawa"
               name={`infoBlocks.${index}.pressureSetting`}
-              placeholder="MPa"
+              placeholder="Bar"
             />
             <NumberInput
               label="Otwarcie"
               name={`infoBlocks.${index}.pressureOpen`}
-              placeholder="MPa"
+              placeholder="Bar"
             />
             <NumberInput
               label="Zamknięcie"
               name={`infoBlocks.${index}.pressureClose`}
-              placeholder="MPa"
+              placeholder="Bar"
             />
           </InputRow>
           <TextareaInput

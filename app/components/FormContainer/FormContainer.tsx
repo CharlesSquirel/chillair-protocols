@@ -3,24 +3,25 @@
 import CloseIcon from "@/assets/icons/CloseIcon";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ZodType } from "Zod";
-
+import { SubmitHandlerType } from "@/utils/types/form";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
+  DefaultValues,
   FieldValues,
   FormProvider,
   SubmitHandler,
   useForm,
 } from "react-hook-form";
 
-type SubmitFunction<T> = (data: T) => void;
-
 interface FormContainerProps<T extends FieldValues> {
   title: string;
   children: React.ReactNode;
-  onSubmitForm: SubmitFunction<T>;
+  onSubmitForm: SubmitHandlerType<T>;
   validationSchema: ZodType<any, any, any>;
   closeUrl: string;
+  defaultValues?: DefaultValues<T>;
+  id?: string;
 }
 
 export default function FormContainer<T extends FieldValues>({
@@ -29,19 +30,26 @@ export default function FormContainer<T extends FieldValues>({
   onSubmitForm,
   validationSchema,
   closeUrl,
+  defaultValues,
+  id,
 }: FormContainerProps<T>) {
   const router = useRouter();
   const methods = useForm<T>({
     resolver: zodResolver(validationSchema),
+    defaultValues: defaultValues,
   });
-  const handleCloseForm = () => {
-    router.back();
+  const handleCloseForm = (): void => {
+    router.push(`/dashboard/valves`);
     methods.reset();
   };
   const onSubmit: SubmitHandler<T> = async (data) => {
-    onSubmitForm(data);
+    if (id) {
+      onSubmitForm(data, id);
+    } else {
+      onSubmitForm(data, undefined as any);
+    }
     handleCloseForm();
-    // console.log(data);
+    console.log(methods.formState.errors);
   };
 
   return (

@@ -5,7 +5,6 @@ import { CreateValveCredentials } from "../types/valves";
 import { revalidatePath } from "next/cache";
 
 export async function createValve(data: CreateValveCredentials) {
-  console.log(data);
   const valvesData: CreateValveCredentials = {
     userSignature: "asdasd",
     email: "jan@kowalski.pl",

@@ -1,9 +1,14 @@
 interface InputRowProps {
   children: React.ReactNode;
   title?: string;
+  className?: string;
 }
 
-export default function InputRow({ children, title }: InputRowProps) {
+export default function InputRow({
+  children,
+  title,
+  className,
+}: InputRowProps) {
   return (
     <>
       {title ? (
@@ -12,7 +17,7 @@ export default function InputRow({ children, title }: InputRowProps) {
           <div className="flex gap-4">{children}</div>
         </div>
       ) : (
-        <div className="flex items-center gap-4">
+        <div className={`flex items-center gap-4 ${className + "gap-0 "}`}>
           {title && <p>{title}</p>}
           {children}
         </div>
