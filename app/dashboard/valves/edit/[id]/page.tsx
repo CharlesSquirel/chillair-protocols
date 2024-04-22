@@ -45,6 +45,8 @@ const ValveEdit: React.FC<ValveEditProps> = ({ params: { id } }) => {
     <ValveForm
       defaultValues={editValues}
       formType={FormType.VALVE_EDIT}
+      id={id}
+      extraValvesDataEdit={valveBlocks}
       //   onSubmitForm={createValve}
     />
   );

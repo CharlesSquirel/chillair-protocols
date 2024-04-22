@@ -19,7 +19,7 @@ export default function TextInput({
     register,
     formState: { errors },
   } = useFormContext();
-
+  console.log(errors, name);
   return (
     <div className="h-min-[106px] flex flex-col gap-1">
       {label && <label htmlFor={name}>{label}</label>}
@@ -33,7 +33,7 @@ export default function TextInput({
       />
       <ErrorMessage
         errors={errors}
-        name={name}
+        name={name.includes("infoBlocks") ? `${name}.root` : name}
         render={({ message }) => (
           <p role="alert" className="text-error">
             {message}

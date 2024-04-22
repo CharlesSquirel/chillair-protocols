@@ -12,19 +12,22 @@ import { DefaultValues, FieldValues } from "react-hook-form";
 import { FormType } from "@/utils/types/form";
 import { getSubmitHandler } from "@/utils/switch/getSubmitHandler";
 import { CreateValveCredentials } from "@/utils/types/valves";
-
-type SubmitFunction<T> = (data: T) => void;
+import { ValvesInfoBlock } from "@prisma/client";
 
 interface ValveFormProps<T extends FieldValues> {
   //   onSubmitForm: SubmitFunction<T>;
   defaultValues?: DefaultValues<T>;
   formType: FormType;
+  id?: string;
+  extraValvesDataEdit?: ValvesInfoBlock[];
 }
 
 export default function ValveForm<T extends FieldValues>({
   //   onSubmitForm,
   defaultValues,
   formType,
+  id,
+  extraValvesDataEdit,
 }: ValveFormProps<T>) {
   const onSubmitForm = getSubmitHandler(formType);
 
@@ -35,6 +38,7 @@ export default function ValveForm<T extends FieldValues>({
       validationSchema={ValvesValidationSchema}
       closeUrl="/dashboard/valves"
       defaultValues={defaultValues as CreateValveCredentials}
+      id={id}
       //   formType={formType}
     >
       <FormFieldset title="Informacje podstawowe">
@@ -59,7 +63,7 @@ export default function ValveForm<T extends FieldValues>({
         </InputGroup>
       </FormFieldset>
       <FormFieldset title="Informacje dodatkowe">
-        <ExtraValvesInfo />
+        <ExtraValvesInfo extraValvesDataEdit={extraValvesDataEdit} />
       </FormFieldset>
       <FormFieldset>
         <InputGroup title="Uwagi">

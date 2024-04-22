@@ -1,6 +1,5 @@
 import ActionTableButtons from "@/components/ActionTableButtons/ActionTableButtons";
 import TableContainer from "@/components/TableContainer/TableContainer";
-import { dummyValves } from "@/data/dummyDatas";
 import { formatDateToString } from "@/utils/helpers/formatDateToString";
 import { prisma } from "lib/db";
 

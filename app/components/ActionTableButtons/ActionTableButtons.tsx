@@ -8,15 +8,20 @@ import { deleteValve } from "@/utils/actions/deleteValve";
 import Link from "next/link";
 
 interface ActionButtonProps {
-  id: string;
+  id?: string;
 }
 
 export default function ActionTableButtons({ id }: ActionButtonProps) {
+  const handleOnDelete = () => {
+    if (id) {
+      deleteValve(id);
+    }
+  };
   return (
     <td className="-z-10 flex gap-2 bg-white">
       <DownloadIcon />
       <EditIcon />
-      <button onClick={() => deleteValve(id)}>
+      <button onClick={handleOnDelete}>
         <DeleteIcon />
       </button>
       <Link href={`/dashboard/valves/${id}`}>
