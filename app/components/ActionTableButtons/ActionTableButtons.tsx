@@ -12,18 +12,8 @@ interface ActionButtonProps {
 }
 
 export default function ActionTableButtons({ id }: ActionButtonProps) {
-  const handleOnDelete = () => {
-    if (id) {
-      deleteValve(id);
-    }
-  };
   return (
     <td className="-z-10 flex gap-2 bg-white">
-      <DownloadIcon />
-      <EditIcon />
-      <button onClick={handleOnDelete}>
-        <DeleteIcon />
-      </button>
       <Link href={`/dashboard/valves/${id}`}>
         <ArrowRightIcon />
       </Link>
