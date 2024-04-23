@@ -13,19 +13,16 @@ export default function SideMenu() {
       </h1>
       <ul className="flex flex-col gap-[15px] uppercase">
         <li className="flex cursor-pointer gap-3 text-lg text-secondary hover:font-medium hover:text-primary">
-          <HomeIcon /> Home
+          <HomeIcon className="h-6 w-6" /> Home
         </li>
         <Link
           href="/dashboard/firma/add"
           className="flex cursor-pointer gap-3 text-lg text-secondary hover:font-medium hover:text-primary"
         >
-          <LocalIcon /> Obiekty
+          <LocalIcon className="h-6 w-6" /> Obiekty
         </Link>
-        {/* <li className="cursor-pointer text-secondary text-lg hover:text-primary hover:font-medium flex gap-3">
-          <Signature /> Sygnatury
-        </li> */}
         <li className="flex cursor-pointer gap-3 text-lg text-secondary hover:font-medium hover:text-primary">
-          <UserIcon /> Użytkownicy
+          <UserIcon className="h-6 w-6" /> Użytkownicy
         </li>
       </ul>
     </aside>

@@ -9,7 +9,7 @@ export default function AddButton({ tableName }: AddButtonProps) {
   return (
     <Link
       href={`/dashboard/${tableName}/add`}
-      className="btn btn-wide rounded-md bg-primary text-lg font-semibold text-white hover:border hover:border-primary hover:bg-white hover:text-primary"
+      className="btn btn-wide h-[62px] rounded-xl bg-primary text-lg font-semibold text-white hover:border hover:border-primary hover:bg-white hover:text-primary"
     >
       DODAJ +
     </Link>

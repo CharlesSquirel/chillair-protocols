@@ -8,7 +8,7 @@ export default function LogoutIcon({ className }: SvgProps) {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="#1e73be"
-      className={`h-11 w-11 hover:opacity-70 ${className}`}
+      className={`${className} hover:opacity-70 `}
     >
       <path
         strokeLinecap="round"

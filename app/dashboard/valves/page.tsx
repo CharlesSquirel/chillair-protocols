@@ -23,7 +23,10 @@ export default async function Valves() {
       renderRows={() => (
         <>
           {valves.map((data, index) => (
-            <tr key={index} className="hover:cursor-pointer hover:text-primary">
+            <tr
+              key={index}
+              className="relative hover:cursor-pointer hover:text-primary"
+            >
               <td>{formatDateToString(data.createdAt)}</td>
               <td>{data.firma}</td>
               <td>

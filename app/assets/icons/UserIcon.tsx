@@ -1,4 +1,6 @@
-export default function UserIcon() {
+import { SvgProps } from "@/utils/types/svgProps";
+
+export default function UserIcon({ className }: SvgProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6,7 +8,7 @@ export default function UserIcon() {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="#1e73be"
-      className="h-6 w-6"
+      className={className}
     >
       <path
         strokeLinecap="round"
