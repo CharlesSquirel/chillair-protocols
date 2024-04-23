@@ -16,7 +16,7 @@ export default function TableContainer({
   tableName,
 }: TableContainerProps) {
   return (
-    <main className="relative mt-5 flex flex-col gap-3 overflow-x-auto overflow-y-auto pb-8 pl-[300px] pr-14">
+    <main className="relative mt-5 flex flex-col gap-3 overflow-x-auto overflow-y-auto px-8 pb-8 lg:pl-[300px] lg:pr-14">
       <div
         className={`sticky right-0 top-0 flex items-center gap-3 ${tableName !== "all" ? "justify-between" : "justify-end"}`}
       >
@@ -32,7 +32,7 @@ export default function TableContainer({
             <th className="absolute right-8 top-3 z-10 flex cursor-pointer gap-3 p-0 text-secondary">
               <Link
                 href={`/dashboard/${tableName}/add`}
-                className="btn h-[40px] min-h-0 w-[40px] rounded-md bg-primary text-2xl text-white hover:border hover:border-primary hover:bg-white hover:text-primary"
+                className="btn hidden h-[40px] min-h-0 w-[40px] rounded-md bg-primary text-2xl text-white hover:border hover:border-primary hover:bg-white hover:text-primary lg:inline-flex"
               >
                 +
               </Link>

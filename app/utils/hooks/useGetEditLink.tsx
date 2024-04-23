@@ -1,6 +1,6 @@
 import { usePathname } from "next/navigation";
 
-export const useGetEditLink = () => {
+export const useGetEditLink = (): string => {
   const pathname = usePathname();
   switch (true) {
     case pathname.includes("valves"):

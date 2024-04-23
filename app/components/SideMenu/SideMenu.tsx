@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function SideMenu() {
   return (
-    <aside className="absolute left-0 z-10 flex h-screen w-[10%] flex-col gap-[60px] bg-white px-4 py-[90px] shadow-lg">
+    <aside className="absolute left-0 z-10  hidden h-screen flex-col gap-[60px] bg-white px-4 py-[90px] shadow-lg lg:flex lg:w-[200px]">
       {/* <Image src={logo} alt="Chillair logo" /> */}
       <h1 className="flex  flex-col text-primary">
         <span className="text-4xl font-bold uppercase">Chillair</span>
