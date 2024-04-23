@@ -20,7 +20,7 @@ export default function InputRow({
         </div>
       ) : (
         <div
-          className={`flex gap-4 min-[1680px]:items-center ${className + "gap-0 "} flex-col min-[1680px]:flex-row`}
+          className={`flex gap-4 min-[1680px]:items-center ${className + " gap-0 "} w-full flex-col min-[1680px]:flex-row print:flex-row`}
         >
           {title && <p>{title}</p>}
           {children}

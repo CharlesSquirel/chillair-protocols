@@ -70,7 +70,7 @@ export default async function ValveProtocol({
     <article
       className={`${inter.className} absolute top-0 z-20 flex h-screen w-full flex-col gap-[30px] bg-white px-[27px] py-[25px]`}
     >
-      <div className="absolute right-[27px] top-[25px] flex gap-3 print:hidden">
+      <div className="absolute right-[27px] top-[35px] flex gap-3 print:hidden">
         <ProtocolDeleteButton id={id} />
         <ProtocolEditButton id={id} />
         <ProtocolBackButton />
@@ -82,7 +82,7 @@ export default async function ValveProtocol({
         userSignature={valve.userSignature}
         createdAt={formatDateToString(valve.createdAt)}
       />
-      <InputRow className="w-full justify-between ">
+      <InputRow className="w-full justify-between">
         <ProtocolField title="Obiekt" value={valve.firma} />
         <ProtocolField title="Typ urządzenia" value={valve.type} />
         <ProtocolField title="Numer seryjny" value={valve.serialNumber} />

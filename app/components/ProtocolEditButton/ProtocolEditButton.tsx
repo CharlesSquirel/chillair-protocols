@@ -12,7 +12,7 @@ export default function ProtocolEditButton({ id }: ProtocolEditButtonProps) {
   const path = useGetEditLink();
   return (
     <Link href={path + id}>
-      <EditIcon />
+      <EditIcon className="h-8 w-8 cursor-pointer hover:stroke-primary" />
     </Link>
   );
 }

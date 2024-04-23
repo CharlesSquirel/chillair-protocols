@@ -7,7 +7,7 @@ export default function ProtocolBackButton() {
   const router = useRouter();
   return (
     <button type="button" onClick={() => router.back()}>
-      <BackIcon />
+      <BackIcon className="h-8 w-8 cursor-pointer hover:stroke-primary" />
     </button>
   );
 }

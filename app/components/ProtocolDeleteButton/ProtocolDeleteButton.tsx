@@ -20,7 +20,7 @@ export default function ProtocolDeleteButton({
   };
   return (
     <button onClick={handleOnDelete}>
-      <DeleteIcon />
+      <DeleteIcon className="h-8 w-8 cursor-pointer hover:stroke-primary" />
     </button>
   );
 }

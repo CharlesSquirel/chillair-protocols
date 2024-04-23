@@ -8,7 +8,7 @@ interface ProtocolHeaderProps {
 
 export default function ProtocolHeader({ title }: ProtocolHeaderProps) {
   return (
-    <header className="flex items-center justify-between">
+    <header className="mr-[170px] flex items-center justify-between print:mr-0">
       <Image src={logoImg} alt="Chillair logo" />
       <ProtocolTitle title={title} />
     </header>
