@@ -13,6 +13,7 @@ import { FormType } from "@/utils/types/form";
 import { getSubmitHandler } from "@/utils/switch/getSubmitHandler";
 import { CreateValveCredentials } from "@/utils/types/valves";
 import { ValvesInfoBlock } from "@prisma/client";
+import InputRow from "../InputRow/InputRow";
 
 interface ValveFormProps<T extends FieldValues> {
   //   onSubmitForm: SubmitFunction<T>;
@@ -66,12 +67,14 @@ export default function ValveForm<T extends FieldValues>({
         <ExtraValvesInfo extraValvesDataEdit={extraValvesDataEdit} />
       </FormFieldset>
       <FormFieldset>
-        <InputGroup title="Uwagi">
-          <TextareaInput
-            placeholder="Wpisz swoje uwagi"
-            label=""
-            name="description"
-          />
+        <InputGroup>
+          <InputRow title="Uwagi">
+            <TextareaInput
+              placeholder="Wpisz swoje uwagi"
+              label=""
+              name="description"
+            />
+          </InputRow>
         </InputGroup>
       </FormFieldset>
       <FormFieldset title="Opcje wysyłki">

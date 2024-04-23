@@ -36,7 +36,7 @@ export default function ExtraValvesInfo({
         <InputGroup key={index}>
           {index !== 0 && (
             <button
-              className="absolute right-4 top-4 h-7 w-7"
+              className="absolute right-3 top-2 h-6 w-6 md:right-4 md:top-4 md:h-7 md:w-7"
               type="button"
               onClick={handleOnMinus}
             >

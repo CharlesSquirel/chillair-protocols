@@ -5,7 +5,7 @@ interface InputGroupProps {
 
 export default function InputGroup({ children, title }: InputGroupProps) {
   return (
-    <div className="relative flex flex-col gap-5 rounded-md border p-5">
+    <div className="relative flex flex-col gap-5 rounded-md border p-5 ">
       {title ? title : null}
       {children}
     </div>
