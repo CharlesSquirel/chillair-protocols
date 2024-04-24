@@ -16,7 +16,7 @@ export default function Searchbar() {
         placeholder="Wyszukaj..."
         name="search"
         id="search"
-        className="h-[62px] w-[400px] rounded-full border border-secondary pl-4  text-xl text-secondary outline-none focus:border-[3px] focus:border-primary min-[1180px]:w-[558px]"
+        className="h-[50px] w-[400px] rounded-full border border-secondary pl-4 text-xl  text-secondary outline-none focus:border-[3px] focus:border-primary md:h-[62px] min-[1180px]:w-[558px]"
       />
     </div>
   );

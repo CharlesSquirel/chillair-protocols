@@ -12,7 +12,7 @@ export default function ProtocolTitle({ title }: ProtocolTitleProps) {
   const titleFromPath = getProtocolTitleFromPath(pathname);
   return (
     <div
-      className={`flex flex-col gap-1  lg:text-left print:text-left ${!title ? "text-left" : "text-center"}`}
+      className={`flex flex-col gap-1 lg:text-left print:text-left ${!title ? "text-left lg:pl-[195px]" : "text-center"}`}
     >
       <h1 className="text-[36px] font-semibold leading-none tracking-wide text-primary lg:text-[50px] print:text-[40px]">
         {!title ? "Protokoły" : "Protokół"}

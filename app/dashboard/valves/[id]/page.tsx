@@ -82,7 +82,7 @@ export default async function ValveProtocol({
         userSignature={valve.userSignature}
         createdAt={formatDateToString(valve.createdAt)}
       />
-      <div className="flex w-full justify-between gap-4">
+      <div className="flex w-full flex-col justify-between gap-4 md:flex-row print:flex-row">
         <ProtocolField title="Obiekt" value={valve.firma} />
         <ProtocolField title="Typ urządzenia" value={valve.type} />
         <ProtocolField title="Numer seryjny" value={valve.serialNumber} />

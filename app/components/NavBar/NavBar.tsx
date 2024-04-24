@@ -10,8 +10,8 @@ export default function NavBar() {
   const [isMobileActive, setIsMobileActive] = useState(false);
   const pathname = usePathname();
   return (
-    <nav className="relative lg:pl-[250px]">
-      <ul className="flex items-center gap-7 px-8 text-[22px] text-secondary lg:px-0 lg:text-2xl">
+    <nav className="relative px-2 md:px-8 lg:pl-[225px]">
+      <ul className="flex items-center justify-start gap-7 text-[22px] text-secondary md:justify-between lg:px-0 lg:text-2xl">
         <Link
           href="/dashboard"
           className={`hover:text-primary ${pathname === "/dashboard" && "border-b font-semibold text-primary"}`}
@@ -20,12 +20,12 @@ export default function NavBar() {
         </Link>
         <Link
           href="/dashboard/valves"
-          className={`hover:text-primary ${pathname === "/dashboard/valves" && "border-b font-semibold text-primary"}`}
+          className={`hover:text-primary ${pathname === "/dashboard/valves" && "border-b font-semibold text-primary"} hidden md:list-item`}
         >
           Zawory bezpieczeństwa
         </Link>
         <li
-          className={`hover:text-primary ${pathname === "" && "border-b font-semibold text-primary"} `}
+          className={`hover:text-primary ${pathname === "" && "border-b font-semibold text-primary"} hidden md:list-item`}
         >
           Awaria urządzenia
         </li>
@@ -64,7 +64,7 @@ export default function NavBar() {
           className="min-[1980px]:hidden"
           onClick={() => setIsMobileActive(true)}
         >
-          <MoreIcon />
+          <MoreIcon className="h-11 w-11" />
         </li>
       </ul>
       {isMobileActive && <MobileNavbar onClick={setIsMobileActive} />}

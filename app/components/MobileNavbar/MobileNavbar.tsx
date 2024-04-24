@@ -21,7 +21,7 @@ export default function MobileNavbar({ onClick }: MobileNavbarProps) {
       <ul className="flex flex-col gap-[15px] text-[22px]">
         <Link
           href="/dashboard"
-          className={`hover:text-primary ${pathname === "/dashboard/valves" && "border-b font-semibold text-primary"}`}
+          className={`hover:text-primary ${pathname === "/dashboard" && "border-b font-semibold text-primary"}`}
           onClick={() => onClick(false)}
         >
           Wszystkie

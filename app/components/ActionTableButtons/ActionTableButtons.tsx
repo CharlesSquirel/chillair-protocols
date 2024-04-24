@@ -9,7 +9,7 @@ interface ActionButtonProps {
 
 export default function ActionTableButtons({ id }: ActionButtonProps) {
   return (
-    <td className="absolute right-3 top-3 z-10 flex gap-2 bg-white p-0 min-[1390px]:right-8">
+    <td className="z-10 gap-2 bg-white p-0 min-[915px]:absolute min-[915px]:right-3 min-[915px]:top-3  min-[1390px]:right-8 ">
       <Link href={`/dashboard/valves/${id}`}>
         <ArrowRightIcon />
       </Link>

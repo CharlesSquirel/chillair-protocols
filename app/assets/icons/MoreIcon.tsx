@@ -1,4 +1,6 @@
-export default function MoreIcon() {
+import { SvgProps } from "@/utils/types/svgProps";
+
+export default function MoreIcon({ className }: SvgProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6,7 +8,7 @@ export default function MoreIcon() {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="h-9 w-9"
+      className={className}
     >
       <path
         strokeLinecap="round"

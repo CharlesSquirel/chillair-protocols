@@ -16,20 +16,20 @@ export default function TableContainer({
   tableName,
 }: TableContainerProps) {
   return (
-    <main className="relative mt-5 flex flex-col gap-3 overflow-x-auto overflow-y-auto px-8 pb-8 lg:pl-[250px] lg:pr-14">
+    <main className="relative mt-2 flex flex-col gap-3 overflow-x-auto overflow-y-auto px-2 pb-8 md:mt-5 md:px-8 lg:pl-[225px] lg:pr-[25px]">
       <div
-        className={`sticky right-0 top-0 flex items-center gap-3 ${tableName !== "all" ? "justify-between" : "justify-end"}`}
+        className={`sticky right-0 top-0 flex items-start gap-2 md:flex-row md:items-center md:gap-3 ${tableName !== "all" ? "justify-between" : "justify-end"} flex-col`}
       >
         {tableName !== "all" && <AddButton tableName={tableName} />}
         <Searchbar />
       </div>
-      <table className="table relative rounded-md bg-white text-secondary shadow-lg">
-        <thead className='after:content-"" sticky top-0 z-20 bg-white text-lg font-medium after:absolute after:bottom-0 after:left-0 after:block after:h-[1px] after:w-full after:bg-secondary'>
+      <table className="table relative w-full rounded-md bg-white text-secondary shadow-lg">
+        <thead className='after:content-"" sticky top-0 z-20 bg-white text-xl font-medium after:absolute after:bottom-0 after:left-0 after:block after:h-[1px] after:w-full after:bg-secondary'>
           <tr className="h-[65px] bg-white">
             {headers.map((header) => (
               <th key={header}>{header}</th>
             ))}
-            <th className="absolute right-3 top-3 z-10 flex cursor-pointer gap-3 p-0 text-secondary min-[1390px]:right-8">
+            <th className="flex h-[65px] cursor-pointer gap-3 p-0 py-[12px] pr-2 text-secondary md:h-auto md:pr-0 min-[915px]:absolute min-[915px]:right-3 min-[915px]:top-3 min-[915px]:z-10 min-[915px]:py-0 min-[1390px]:right-8">
               {tableName !== "all" && (
                 <Link
                   href={`/dashboard/${tableName}/add`}
@@ -38,7 +38,7 @@ export default function TableContainer({
                   +
                 </Link>
               )}
-              <button className="min-h-[40px] border-none bg-transparent hover:opacity-70">
+              <button className="min-h-[40px] border-none bg-transparent hover:opacity-70 ">
                 <Filter />
               </button>
             </th>
