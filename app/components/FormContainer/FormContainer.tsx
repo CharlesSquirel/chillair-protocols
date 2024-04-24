@@ -56,7 +56,7 @@ export default function FormContainer<T extends FieldValues>({
     <FormProvider {...methods}>
       <form
         onSubmit={methods.handleSubmit(onSubmit)}
-        className="absolute z-10 flex w-full flex-col gap-6 rounded-md bg-white p-6 shadow-md"
+        className="absolute z-10 flex min-h-full w-full flex-col gap-6 rounded-md bg-white p-6 shadow-md"
       >
         <h2 className="relative block text-xl font-bold text-primary after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-[300px] after:bg-primary after:content-[''] sm:text-2xl md:text-3xl">
           {title}

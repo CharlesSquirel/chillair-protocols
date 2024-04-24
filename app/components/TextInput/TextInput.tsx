@@ -36,7 +36,7 @@ export default function TextInput({
       />
       <ErrorMessage
         errors={errors}
-        name={name.includes("infoBlocks") ? `${name}.root` : name}
+        name={name}
         render={({ message }) => (
           <p role="alert" className="text-error">
             {message}

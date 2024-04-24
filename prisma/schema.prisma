@@ -136,8 +136,8 @@ model Firma {
   name         String
   shortName    String
   street       String
-  houseNumber  String
-  localNumber  String?
+  houseNumber  Float
+  localNumber  Float?
   postCode     String
   city         String
   tel          String?
