@@ -11,7 +11,9 @@ export default function ProtocolTitle({ title }: ProtocolTitleProps) {
   const pathname = usePathname();
   const titleFromPath = getProtocolTitleFromPath(pathname);
   return (
-    <div className="flex flex-col gap-1 lg:pl-[210px] print:pl-0">
+    <div
+      className={`flex flex-col gap-1  lg:text-left print:text-left ${!title ? "text-left" : "text-center"}`}
+    >
       <h1 className="text-[36px] font-semibold leading-none tracking-wide text-primary lg:text-[50px] print:text-[40px]">
         {!title ? "Protokoły" : "Protokół"}
       </h1>

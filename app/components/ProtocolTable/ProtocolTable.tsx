@@ -13,7 +13,7 @@ export default function ProtocolTable({
   title,
 }: ProtocolTableProps) {
   return (
-    <div className="flex w-1/2 flex-col gap-3">
+    <div className="flex w-full flex-col gap-3">
       <h3 className="text-[20px] font-semibold">{title}</h3>
       <table className="table rounded-md border border-grayStroke bg-grayTable p-[13px] text-[16px] text-grayPrint">
         <thead className="text-[16px]">
