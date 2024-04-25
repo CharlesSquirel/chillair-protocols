@@ -1,4 +1,4 @@
-import { z } from "Zod";
+import { z } from "zod";
 import { createNumberValidator, createStringValidator } from "./zodHelpers";
 
 const ValvesInfoBlockSchema = z.object({
