@@ -23,12 +23,14 @@ export default function SelectInput({
     formState: { errors },
   } = useFormContext();
   return (
-    <div className="flex flex-col gap-2">
-      <label htmlFor={name}>{label}</label>
+    <div className="flex flex-col gap-1">
+      <label htmlFor={name} className="md:text-1 text-[14px] sm:text-[15px]">
+        {label}
+      </label>
       <select
         defaultValue=""
         {...register(name)}
-        className={`flex h-[50px] flex-col gap-1 rounded-md border border-primary bg-inputBg p-3 text-placeholder placeholder:text-placeholder focus:border-green focus:bg-white focus:outline-none ${className}`}
+        className={`flex h-[45px] w-[180px] flex-col gap-1 rounded-md border border-primary bg-inputBg p-3 text-placeholder placeholder:text-placeholder focus:border-green focus:bg-white focus:outline-none md:h-[50px] ${className}`}
       >
         <option value="" disabled>
           {`${placeholder}`}

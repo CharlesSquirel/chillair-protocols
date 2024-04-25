@@ -60,16 +60,21 @@ model VerificationRequest {
 }
 
 model Valve {
-  id            String            @id @default(cuid()) @map("_id")
-  firma         String
-  type          String
-  serialNumber  String
-  createdAt     DateTime          @default(now())
-  updatedAt     DateTime          @updatedAt
-  userId        String
-  email         String
-  userSignature String
-  infoBlocks    ValvesInfoBlock[]
+  id              String            @id @default(cuid()) @map("_id")
+  firma           String
+  type            String
+  serialNumber    String
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  userId          String
+  email           String
+  userSignature   String
+  firstName       String
+  lastName        String
+  description     String?
+  clientEmailPerm Boolean
+  clientEmail     String?
+  infoBlocks      ValvesInfoBlock[]
 }
 
 model ValvesInfoBlock {
@@ -77,68 +82,66 @@ model ValvesInfoBlock {
   valveLocation     String
   valveType         String
   valveSerialNumber String
-  pressureOpen      String
-  pressureClose     String
-  pressureSetting   String
+  pressureOpen      Float
+  pressureClose     Float
+  pressureSetting   Float
   description       String?
   Valve             Valve?  @relation(fields: [valveId], references: [id])
   valveId           String?
 }
 
 model Humidifier {
-  id String  @id @default(cuid()) @map("_id")
-  createdAt     DateTime          @default(now())
-  updatedAt     DateTime          @updatedAt
-  firma String
-  type String
-  serialNumber String
-  email String
-  userId String
-  userSingature String
-  protectionType String
-  ratedCurrent String
-  description String?
-  nameplateVoltage String
-  nameplatePhase String
+  id                   String               @id @default(cuid()) @map("_id")
+  createdAt            DateTime             @default(now())
+  updatedAt            DateTime             @updatedAt
+  firma                String
+  type                 String
+  serialNumber         String
+  email                String
+  userId               String
+  userSingature        String
+  protectionType       String
+  ratedCurrent         String
+  description          String?
+  nameplateVoltage     String
+  nameplatePhase       String
   nameplateCurrentDraw String
-  cylinders Cylinder[]
-  materials HumidifierMaterial[]
+  cylinders            Cylinder[]
+  materials            HumidifierMaterial[]
 }
 
 model Cylinder {
-  id                String  @id @default(cuid()) @map("_id")
-  humidifier Humidifier @relation(fields: [cylinderId], references: [id])
-  cylinderId String
+  id             String     @id @default(cuid()) @map("_id")
+  humidifier     Humidifier @relation(fields: [cylinderId], references: [id])
+  cylinderId     String
   cylinderNumber String
-  voltage1 String
-  voltage2 String
-  voltage3 String
-  amper1 String
-  amper2 String
-  amper3 String
+  voltage1       String
+  voltage2       String
+  voltage3       String
+  amper1         String
+  amper2         String
+  amper3         String
 }
 
 model HumidifierMaterial {
-  id                String  @id @default(cuid()) @map("_id")
+  id                 String     @id @default(cuid()) @map("_id")
   materialDecription String
-  materialAmount String
-  materialId String
-  humidifier Humidifier @relation(fields: [materialId], references: [id])
+  materialAmount     String
+  materialId         String
+  humidifier         Humidifier @relation(fields: [materialId], references: [id])
 }
 
 model Firma {
-    id                String  @id @default(cuid()) @map("_id")
-      createdAt     DateTime          @default(now())
-  updatedAt     DateTime          @updatedAt
-  name String
-  shortName String
-  street String
-  houseNumber String
-  localNumber String?
-  postCode String
-  city String
-  tel String?
-contactEmail String?
+  id           String   @id @default(cuid()) @map("_id")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  name         String
+  shortName    String
+  street       String
+  houseNumber  Float
+  localNumber  Float?
+  postCode     String
+  city         String
+  tel          String?
+  contactEmail String?
 }
-
-

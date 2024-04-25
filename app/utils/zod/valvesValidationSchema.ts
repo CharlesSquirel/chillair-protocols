@@ -1,4 +1,4 @@
-import { z } from "Zod";
+import { z } from "zod";
 import { createNumberValidator, createStringValidator } from "./zodHelpers";
 
 const ValvesInfoBlockSchema = z.object({
@@ -16,6 +16,9 @@ export const ValvesValidationSchema = z.object({
   type: createStringValidator(),
   serialNumber: createStringValidator(),
   infoBlocks: z.array(ValvesInfoBlockSchema).min(1),
+  description: z.string().optional(),
+  clientEmailPerm: z.boolean().optional(),
+  clientEmail: z.string().optional(),
 });
 
 export type SchemaTypeValves = z.infer<typeof ValvesValidationSchema>;

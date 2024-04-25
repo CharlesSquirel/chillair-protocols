@@ -16,6 +16,8 @@ const config: Config = {
         secondary: "#002d38e6",
         gray: "#ebebeb",
         grayPrint: "#6F6F84",
+        grayTable: "#FAFAFC",
+        grayStroke: "#BCB0C4",
         placeholder: "#8D98AA",
         inputBg: "#EDF2F6",
         green: "#009000",

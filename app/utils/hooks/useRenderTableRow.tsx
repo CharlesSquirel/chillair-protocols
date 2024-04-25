@@ -12,11 +12,13 @@ export const renderValvesRows = (value: ValvesRecords) => {
     <>
       {value.map((data, index) => (
         <tr key={index} className="hover:cursor-pointer hover:text-primary">
-          <td>{data.date}</td>
+          <td>{data.createdAt}</td>
           <td>{data.firma}</td>
-          <td>{data.author}</td>
-          <td>{data.serialNumber}</td>
-          <td>{data.another}</td>
+          <td>
+            {data.firstName} {data.lastName}
+          </td>
+          <td>{data.userSignature}</td>
+          <td>{data.description}</td>
           <ActionTableButtons />
         </tr>
       ))}

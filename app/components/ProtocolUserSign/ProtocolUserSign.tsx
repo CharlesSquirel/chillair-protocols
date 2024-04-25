@@ -4,7 +4,7 @@ interface ProtocolUserSignProp {
 
 export default function ProtocolUserSign({ text }: ProtocolUserSignProp) {
   return (
-    <p className="text-blackPrint relative text-[13px] lowercase after:absolute after:right-0 after:top-0 after:h-[1px] after:w-[117px] after:bg-[#BCB0C4] after:content-[``]">
+    <p className="text-blackPrint mt-[150px] w-[150px] self-end border-t-[1px] border-dotted text-right text-[18px] lowercase">
       {text}
     </p>
   );

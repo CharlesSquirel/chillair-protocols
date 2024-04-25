@@ -1,9 +1,10 @@
 interface ValvesRecord {
-  date: string;
+  createdAt: string;
   firma: string;
-  author: string;
-  serialNumber: string;
-  another: string;
+  firstName: string;
+  lastName: string;
+  userSignature: string;
+  description?: string;
 }
 
 interface ValvesInfoBlock {
@@ -29,8 +30,13 @@ export interface CreateValveCredentials {
   serialNumber: string;
   infoBlocks: ValvesInfoBlock[];
   email: string;
+  firstName: string;
+  lastName: string;
   userSignature: string;
   userId: string;
+  clientEmail?: string;
+  clientEmailPerm: boolean;
+  description?: string;
 }
 
 export type ValvesRecords = ValvesRecord[];
