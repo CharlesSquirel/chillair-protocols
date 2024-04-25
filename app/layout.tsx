@@ -1,14 +1,10 @@
 import type { Metadata } from "next";
-import { Poppins, Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
+import { inter } from "lib/font";
 
 // const inter = Inter({ subsets: ['latin'] });
 const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-export const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
@@ -26,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="pl" data-theme="corporate">
       <body
-        className={`${poppins.className} ${inter.className} flex-colr flex h-screen w-screen items-center justify-center bg-gray`}
+        className={`${poppins.className} ${inter.className} flex h-screen w-screen flex-col items-center justify-center bg-gray`}
       >
         {children}
       </body>

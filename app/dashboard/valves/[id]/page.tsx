@@ -8,10 +8,9 @@ import ProtocolField from "@/components/ProtocolField/ProtocolField";
 import ProtocolHeader from "@/components/ProtocolHeader/ProtocolHeader";
 import ProtocolTable from "@/components/ProtocolTable/ProtocolTable";
 import ProtocolUserSign from "@/components/ProtocolUserSign/ProtocolUserSign";
-import { deleteValve } from "@/utils/actions/deleteValve";
 import getValve from "@/utils/actions/getValve";
 import { formatDateToString } from "@/utils/helpers/formatDateToString";
-import { inter } from "app/layout";
+import { inter } from "lib/font";
 
 interface ValveProtocolProps {
   params: {
