@@ -1,5 +1,5 @@
-import { z } from "Zod";
-import { createNumberValidator, createStringValidator } from "./zodHelpers";
+import { z } from "zod";
+import { createStringValidator } from "./zodHelpers";
 
 export const FirmaValidationSchema = z.object({
   name: createStringValidator(),
