@@ -1,9 +1,11 @@
 interface AllProtocolsRecord {
-  date: string;
+  createdAt: string;
   genre: string;
-  author: string;
-  signature: string;
-  another: string;
+  firstName: string;
+  lastName: string;
+  userSignature: string;
+  firma: string;
+  id: string;
 }
 
 export type AllProtocolsRecords = AllProtocolsRecord[];
