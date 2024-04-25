@@ -2,7 +2,7 @@
 
 import CloseIcon from "@/assets/icons/CloseIcon";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ZodType } from "Zod";
+import { ZodType } from "zod";
 import { SubmitHandlerType } from "@/utils/types/form";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
