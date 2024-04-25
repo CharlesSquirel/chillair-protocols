@@ -1,4 +1,3 @@
-import InputRow from "@/components/InputRow/InputRow";
 import ProtocolBackButton from "@/components/ProtocolBackButton/ProtocolBackButton";
 import ProtocolBasicInfo from "@/components/ProtocolBasicInfo/ProtocolBasicInfo";
 import ProtocolDeleteButton from "@/components/ProtocolDeleteButton/ProtocolDeleteButton";
