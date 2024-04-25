@@ -2,7 +2,8 @@ import ActionTableButtons from "@/components/ActionTableButtons/ActionTableButto
 import { dummyData, dummyValves } from "@/data/dummyDatas";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { AllProtocolsRecords, ValvesRecords } from "../types/payloads";
+import { AllProtocolsRecords } from "../types/payloads";
+import { ValvesRecords } from "../types/valves";
 
 type TableType = "" | "valves" | "/";
 
@@ -10,12 +11,14 @@ export const renderValvesRows = (value: ValvesRecords) => {
   return (
     <>
       {value.map((data, index) => (
-        <tr key={index} className='hover:text-primary hover:cursor-pointer'>
-          <td>{data.date}</td>
+        <tr key={index} className="hover:cursor-pointer hover:text-primary">
+          <td>{data.createdAt}</td>
           <td>{data.firma}</td>
-          <td>{data.author}</td>
-          <td>{data.serialNumber}</td>
-          <td>{data.another}</td>
+          <td>
+            {data.firstName} {data.lastName}
+          </td>
+          <td>{data.userSignature}</td>
+          <td>{data.description}</td>
           <ActionTableButtons />
         </tr>
       ))}
@@ -27,7 +30,7 @@ export const renderAllRows = (values: AllProtocolsRecords) => {
   return (
     <>
       {values.map((data, index) => (
-        <tr key={index} className='hover:text-primary hover:cursor-pointer'>
+        <tr key={index} className="hover:cursor-pointer hover:text-primary">
           <td>{data.date}</td>
           <td>{data.genre}</td>
           <td>{data.author}</td>
