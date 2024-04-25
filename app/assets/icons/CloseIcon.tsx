@@ -8,7 +8,7 @@ export default function CloseIcon({ className }: SvgProps) {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className={`h-10 w-10 ${className}`}
+      className={className}
     >
       <path
         strokeLinecap="round"

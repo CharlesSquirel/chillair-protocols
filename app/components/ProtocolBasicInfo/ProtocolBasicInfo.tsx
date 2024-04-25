@@ -12,7 +12,7 @@ export default function ProtocolBasicInfo({
   createdAt,
 }: ProtocolBasicInfoProp) {
   return (
-    <div className="flex flex-col ">
+    <div className="flex flex-col gap-2 leading-none">
       <p className="text-[23px]">
         {userFirstName} {userLastName}
       </p>

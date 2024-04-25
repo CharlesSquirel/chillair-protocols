@@ -2,8 +2,8 @@ export interface FirmaDTO {
   name: string;
   shortName: string;
   street: string;
-  houseNumber: string;
-  localNumber?: string;
+  houseNumber: number;
+  localNumber?: number;
   postCode: string;
   city: string;
   tel?: string;

@@ -1,4 +1,3 @@
-import InputRow from "@/components/InputRow/InputRow";
 import ProtocolBackButton from "@/components/ProtocolBackButton/ProtocolBackButton";
 import ProtocolBasicInfo from "@/components/ProtocolBasicInfo/ProtocolBasicInfo";
 import ProtocolDeleteButton from "@/components/ProtocolDeleteButton/ProtocolDeleteButton";
@@ -69,23 +68,24 @@ export default async function ValveProtocol({
     <article
       className={`${inter.className} absolute top-0 z-20 flex h-screen w-full flex-col gap-[30px] bg-white px-[27px] py-[25px]`}
     >
-      <div className="absolute right-[27px] top-[25px] flex gap-3 print:hidden">
+      <div className="absolute right-[27px] top-[35px] hidden gap-3 md:flex print:hidden">
         <ProtocolDeleteButton id={id} />
         <ProtocolEditButton id={id} />
         <ProtocolBackButton />
       </div>
-      <ProtocolHeader title="badania zaworów bezpieczeństwa" />
+      <ProtocolHeader title="badania zaworów bezpieczeństwa" id={id} />
       <ProtocolBasicInfo
         userFirstName={valve.firstName}
         userLastName={valve.lastName}
         userSignature={valve.userSignature}
         createdAt={formatDateToString(valve.createdAt)}
       />
-      <InputRow className="w-full justify-between ">
+      <div className="flex w-full flex-col justify-between gap-4 md:flex-row print:flex-row">
         <ProtocolField title="Obiekt" value={valve.firma} />
         <ProtocolField title="Typ urządzenia" value={valve.type} />
         <ProtocolField title="Numer seryjny" value={valve.serialNumber} />
-      </InputRow>
+      </div>
+
       <ProtocolTable
         title="Zawory"
         headers={valveHeaders}

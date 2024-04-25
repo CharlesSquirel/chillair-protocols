@@ -56,14 +56,14 @@ export default function FormContainer<T extends FieldValues>({
     <FormProvider {...methods}>
       <form
         onSubmit={methods.handleSubmit(onSubmit)}
-        className="absolute left-[50%] top-[90px] z-10 flex w-[1844px] translate-x-[-50%] flex-col gap-6 rounded-md bg-white p-6 shadow-md"
+        className="absolute z-10 flex min-h-full w-full flex-col gap-6 rounded-md bg-white p-6 shadow-md"
       >
-        <h2 className="relative block text-3xl font-bold text-primary after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-[40%] after:bg-primary after:content-['']">
+        <h2 className="relative block text-xl font-bold text-primary after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-[300px] after:bg-primary after:content-[''] sm:text-2xl md:text-3xl">
           {title}
         </h2>
         {children}
         <Link href={closeUrl} className="absolute right-6 top-6 z-10">
-          <CloseIcon />
+          <CloseIcon className="h-7 w-7 sm:h-8 sm:w-8 md:h-10 md:w-10" />
         </Link>
       </form>
     </FormProvider>

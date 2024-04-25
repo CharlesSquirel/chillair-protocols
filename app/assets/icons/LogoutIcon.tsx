@@ -1,4 +1,6 @@
-export default function LogoutIcon() {
+import { SvgProps } from "@/utils/types/svgProps";
+
+export default function LogoutIcon({ className }: SvgProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6,7 +8,7 @@ export default function LogoutIcon() {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="#1e73be"
-      className="h-9 w-9 hover:opacity-70"
+      className={`${className} hover:opacity-70 `}
     >
       <path
         strokeLinecap="round"

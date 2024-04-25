@@ -1,6 +1,6 @@
 import { SvgProps } from "@/utils/types/svgProps";
 
-export default function BackIcon({ className }: SvgProps) {
+export default function MoreIcon({ className }: SvgProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13,7 +13,7 @@ export default function BackIcon({ className }: SvgProps) {
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"
+        d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
       />
     </svg>
   );
