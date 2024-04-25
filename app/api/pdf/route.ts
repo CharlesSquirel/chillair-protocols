@@ -8,7 +8,7 @@ export async function POST(request: NextRequest) {
     const page = await browser.newPage();
 
     await page.goto(
-      `chillair-protocols-fk65a0x6m-charlessquirels-projects.vercel.app${pathname}`,
+      `https://chillair-protocols-31r5j58g4-charlessquirels-projects.vercel.app${pathname}`,
       {
         waitUntil: "networkidle0",
       },
