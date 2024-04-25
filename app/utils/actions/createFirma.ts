@@ -18,6 +18,6 @@ export async function createFirma(data: FirmaDTO) {
     console.log("created");
     console.log(firmaData);
   } catch (error) {
-    console.log(error);
+    console.error("Błąd podczas tworzenia danych:", error);
   }
 }
