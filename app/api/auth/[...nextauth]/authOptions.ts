@@ -1,50 +1,40 @@
-import CredentialsProvider from "next-auth/providers/credentials";
+import { NextAuthConfig } from "next-auth";
+import credentials from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 import { prisma } from "lib/db";
-import { NextAuthConfig } from "next-auth";
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
 const authOptions: NextAuthConfig = {
-  adapter: PrismaAdapter(prisma),
-  session: {
-    strategy: "jwt",
-  },
   pages: {
     signIn: "/",
   },
+  session: {
+    strategy: "jwt",
+  },
+  callbacks: {
+    authorized({ auth, request: { nextUrl } }) {
+      const isLoggedIn = !!auth?.user;
+      const isOnDashboard = nextUrl.pathname.startsWith("/dashboard");
+      if (isOnDashboard) {
+        if (isLoggedIn) return true;
+        return false;
+      } else if (isLoggedIn) {
+        return Response.redirect(new URL("/dashboard", nextUrl));
+      }
+      return true;
+    },
+  },
   secret: process.env.AUTH_SECRET,
   providers: [
-    CredentialsProvider({
+    credentials({
       name: "credentials",
       credentials: {
-        email: {
-          placeholder: "Email",
-          label: "Wpisz swój email",
-          type: "text",
-        },
-        firstName: {
-          placeholder: "Imię",
-          label: "Wpisz swoje imię",
-          type: "text",
-        },
-        lastName: {
-          placeholder: "Nazwisko",
-          label: "Wpisz swoje nazwisko",
-          type: "text",
-        },
-        userSignature: {
-          placeholder: "Nr uprawnień",
-          label: "Wpisz swój numer uprawnień",
-          type: "text",
-        },
-        password: {
-          placeholder: "Hasło",
-          label: "Wpisz hasło",
-          type: "password",
-        },
+        email: { placeholder: "Email", type: "text" },
+        password: { placeholder: "Hasło", type: "password" },
       },
       async authorize(credentials, req) {
+        console.log("zacyznam");
         if (!credentials.email || !credentials.password) {
+          console.log("error1");
           throw new Error("Proszę wpisać poprawny email i hasło");
         }
         const user = await prisma.user.findFirst({
@@ -54,10 +44,12 @@ const authOptions: NextAuthConfig = {
         });
 
         if (!user) {
+          console.log("error2");
           throw new Error("Nie znaleziono użytkownika");
         }
 
         if (!user.password) {
+          console.log("error3");
           throw new Error("Hasło użytkownika jest puste");
         }
 
@@ -65,6 +57,7 @@ const authOptions: NextAuthConfig = {
           typeof credentials.password !== "string" ||
           typeof user.password !== "string"
         ) {
+          console.log("error4");
           throw new Error("Hasło użytkownika nie jest poprawnym typem");
         }
 
@@ -74,6 +67,7 @@ const authOptions: NextAuthConfig = {
         );
 
         if (!passwordMatch) {
+          console.log("error5");
           throw new Error("Nieprawidłowe hasło");
         }
 
