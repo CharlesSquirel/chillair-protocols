@@ -1,5 +1,3 @@
-"use server";
-
 import { UserDTO } from "../types/user";
 
 export async function createUser(data: UserDTO) {
@@ -16,7 +14,7 @@ export async function createUser(data: UserDTO) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ userData }),
+      body: JSON.stringify(userData),
     });
     const userInfo = await response.json();
     console.log(userInfo);

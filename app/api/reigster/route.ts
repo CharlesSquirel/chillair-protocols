@@ -21,25 +21,18 @@ export async function POST(request: NextRequest) {
     }
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await prisma.user.create({
-      data: {},
+      data: {
+        firstName,
+        lastName,
+        userSignature,
+        email,
+        password: hashedPassword,
+      },
     });
-    // if (!request.body) {
-    //   return new Response("Request body is empty", { status: 400 });
-    // }
-    // // Odczytaj dane przesłane w ciele żądania
-    // const data = await request.json();
-
-    // // Wyświetl otrzymane dane w konsoli
-    // console.log("Received data:", data);
-
-    // // Przekonwertuj dane na ciąg znaków
-    // const responseData = JSON.stringify(data);
-
-    // Zwróć odpowiedź do klienta
-    return new NextResponse(body);
+    return NextResponse.json(user);
   } catch (error) {
     // Obsłuż błąd i zwróć odpowiednią odpowiedź
     console.error("Error:", error);
-    return new Response("Internal Server Error", { status: 500 });
+    return new NextResponse("Internal Server Error", { status: 500 });
   }
 }

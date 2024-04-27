@@ -11,7 +11,7 @@ const Login = () => {
   return (
     <form
       className="mx-5 flex w-[600px] flex-col items-center gap-5 rounded-lg border border-secondary bg-secondary p-5 shadow-lg"
-      onSubmit={() => handleSignIn()}
+      onSubmit={handleSignIn}
     >
       <Image src={logo} alt="Chillair logo" />
       <LoginTextInput placeholder="Email" name="email">
