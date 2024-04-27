@@ -24,6 +24,7 @@ const authOptions: NextAuthConfig = {
     },
   },
   secret: process.env.AUTH_SECRET,
+  debug: process.env.NODE_ENV === "development",
   providers: [
     credentials({
       name: "credentials",

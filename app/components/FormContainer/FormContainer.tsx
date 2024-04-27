@@ -49,7 +49,6 @@ export default function FormContainer<T extends FieldValues>({
       onSubmitForm(data, undefined as any);
     }
     handleCloseForm();
-    console.log(methods.formState.errors);
   };
 
   return (

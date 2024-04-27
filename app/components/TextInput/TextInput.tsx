@@ -6,6 +6,7 @@ interface TextInputProps {
   placeholder: string;
   label?: string;
   name: string;
+  type?: string;
   disabled?: boolean;
 }
 
@@ -14,6 +15,7 @@ export default function TextInput({
   name,
   label,
   disabled,
+  type = "text",
 }: TextInputProps) {
   const {
     register,
@@ -27,7 +29,7 @@ export default function TextInput({
         </label>
       )}
       <input
-        type="text"
+        type={type}
         placeholder={placeholder}
         id={name}
         className="h-[45px] w-full rounded-md border border-primary bg-inputBg p-3 placeholder:text-placeholder focus:border-green focus:bg-white focus:outline-none disabled:opacity-50 md:h-[50px] md:w-[520px]"
