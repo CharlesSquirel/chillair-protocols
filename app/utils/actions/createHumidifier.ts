@@ -23,6 +23,6 @@ export async function createHumidifier(data: HumidifierDTO) {
     console.log("created");
     console.log(humidifiersdata);
   } catch (error) {
-    console.log(error);
+    console.error("Błąd podczas tworzenia danych:", error);
   }
 }

@@ -5,7 +5,6 @@ import { CreateValveCredentials } from "../types/valves";
 import { revalidatePath } from "next/cache";
 
 export async function editValve(data: CreateValveCredentials, id: string) {
-  console.log("in edit Valve", data);
   const valvesData: CreateValveCredentials = {
     userSignature: "asdasd",
     email: "jan@kowalski.pl",
@@ -102,15 +101,6 @@ export async function editValve(data: CreateValveCredentials, id: string) {
         }
       }),
     );
-
-    // await Promise.all(
-    //   infoBlocks.map(async (block) => {
-    //     await prisma.valvesInfoBlock.updateMany({
-    //       where: { valveId: id },
-    //       data: block,
-    //     });
-    //   }),
-    // );
     revalidatePath("/dashboard/valves");
     console.log("edited");
     console.log(valvesData);

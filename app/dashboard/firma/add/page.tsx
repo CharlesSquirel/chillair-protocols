@@ -83,7 +83,7 @@ export default function FirmaAdd() {
           </InputRow>
         </InputGroup>
       </FormFieldset>
-      <SubmitFormButton label="Utwórz" />
+      <SubmitFormButton />
     </FormContainer>
   );
 }

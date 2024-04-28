@@ -5,6 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import MobileNavbar from "../MobileNavbar/MobileNavbar";
+import { generateLinkClasses } from "@/utils/switch/generateNavLinkClasses";
+import { navLinks } from "../../data/navLinks";
 
 export default function NavBar() {
   const [isMobileActive, setIsMobileActive] = useState(false);
@@ -12,54 +14,15 @@ export default function NavBar() {
   return (
     <nav className="relative px-2 md:px-8 lg:pl-[225px]">
       <ul className="flex items-center justify-start gap-7 text-[22px] text-secondary md:justify-between lg:px-0 lg:text-2xl">
-        <Link
-          href="/dashboard"
-          className={`hover:text-primary ${pathname === "/dashboard" && "border-b font-semibold text-primary"}`}
-        >
-          Wszystkie
-        </Link>
-        <Link
-          href="/dashboard/valves"
-          className={`hover:text-primary ${pathname === "/dashboard/valves" && "border-b font-semibold text-primary"} hidden md:list-item`}
-        >
-          Zawory bezpieczeństwa
-        </Link>
-        <li
-          className={`hover:text-primary ${pathname === "" && "border-b font-semibold text-primary"} hidden md:list-item`}
-        >
-          Awaria urządzenia
-        </li>
-        <li
-          className={`hover:text-primary ${pathname === "" && "border-b font-semibold text-primary"} hidden md:list-item lg:hidden  min-[1170px]:list-item`}
-        >
-          Agregaty
-        </li>
-        <li
-          className={`hover:text-primary ${pathname === "" && "border-b font-semibold text-primary"} hidden min-[1450px]:list-item`}
-        >
-          Centrale wentylacyjne
-        </li>
-        <li
-          className={`hover:text-primary ${pathname === "" && "border-b font-semibold text-primary"} hidden min-[1640px]:list-item`}
-        >
-          Klimatyzatory
-        </li>
-        <Link
-          href="/dashboard/humidifiers"
-          className={`hover:text-primary ${pathname === "/dashboard/humidifiers" && "border-b font-semibold text-primary"} hidden min-[1790px]:list-item`}
-        >
-          Nawilżacze
-        </Link>
-        <li
-          className={`hover:text-primary ${pathname === "" && "border-b font-semibold text-primary"} hidden min-[1880px]:list-item`}
-        >
-          Szafy
-        </li>
-        <li
-          className={`hover:text-primary ${pathname === "" && "border-b font-semibold text-primary"} hidden min-[1980px]:list-item`}
-        >
-          Szczelność
-        </li>
+        {navLinks.map((link, index) => (
+          <Link
+            href={link.href}
+            key={index}
+            className={`${pathname === link.href && "border-b font-semibold text-primary"} ${generateLinkClasses(index)}`}
+          >
+            {link.text}
+          </Link>
+        ))}
         <li
           className="min-[1980px]:hidden"
           onClick={() => setIsMobileActive(true)}

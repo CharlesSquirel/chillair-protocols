@@ -16,7 +16,6 @@ import { ValvesInfoBlock } from "@prisma/client";
 import InputRow from "../InputRow/InputRow";
 
 interface ValveFormProps<T extends FieldValues> {
-  //   onSubmitForm: SubmitFunction<T>;
   defaultValues?: DefaultValues<T>;
   formType: FormType;
   id?: string;
@@ -24,7 +23,6 @@ interface ValveFormProps<T extends FieldValues> {
 }
 
 export default function ValveForm<T extends FieldValues>({
-  //   onSubmitForm,
   defaultValues,
   formType,
   id,
@@ -40,7 +38,6 @@ export default function ValveForm<T extends FieldValues>({
       closeUrl="/dashboard/valves"
       defaultValues={defaultValues as CreateValveCredentials}
       id={id}
-      //   formType={formType}
     >
       <FormFieldset title="Informacje podstawowe">
         <InputGroup>
@@ -82,7 +79,7 @@ export default function ValveForm<T extends FieldValues>({
           <SendClientEmail />
         </InputGroup>
       </FormFieldset>
-      <SubmitFormButton label="Utwórz i pobierz" />
+      <SubmitFormButton formType={formType} />
     </FormContainer>
   );
 }

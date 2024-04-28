@@ -163,7 +163,7 @@ export default function HumidifiersAdd() {
         </InputGroup>
       </FormFieldset>
       <ExtraMaterialsInfo />
-      <SubmitFormButton label="Utwórz i pobierz" />
+      <SubmitFormButton />
     </FormContainer>
   );
 }

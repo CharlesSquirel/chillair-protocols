@@ -19,6 +19,6 @@ export async function deleteValve(id: string) {
     revalidatePath("/dashboard/valves");
     console.log(`deleted id: ${id}`);
   } catch (error) {
-    console.log(error);
+    console.error("Błąd podczas usuwania danych:", error);
   }
 }

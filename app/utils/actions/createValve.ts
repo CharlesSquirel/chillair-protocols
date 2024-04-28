@@ -59,6 +59,6 @@ export async function createValve(data: CreateValveCredentials) {
     console.log("created");
     console.log(valvesData);
   } catch (error) {
-    console.log(error);
+    console.error("Błąd podczas tworzenia danych:", error);
   }
 }

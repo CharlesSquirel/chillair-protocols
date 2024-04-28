@@ -3,7 +3,6 @@
 import ValveForm from "@/components/ValveForm/ValveForm";
 import { useGetValve } from "@/utils/hooks/useGetValve";
 import { FormType } from "@/utils/types/form";
-
 import { useEffect, useState } from "react";
 
 interface ValveEditProps {
@@ -47,7 +46,6 @@ const ValveEdit: React.FC<ValveEditProps> = ({ params: { id } }) => {
       formType={FormType.VALVE_EDIT}
       id={id}
       extraValvesDataEdit={valveBlocks}
-      //   onSubmitForm={createValve}
     />
   );
 };
