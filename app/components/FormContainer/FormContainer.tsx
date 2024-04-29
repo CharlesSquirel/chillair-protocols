@@ -13,6 +13,7 @@ import {
   SubmitHandler,
   useForm,
 } from "react-hook-form";
+import toast from "react-hot-toast";
 
 interface FormContainerProps<T extends FieldValues> {
   title: string;
@@ -43,13 +44,18 @@ export default function FormContainer<T extends FieldValues>({
     methods.reset();
   };
   const onSubmit: SubmitHandler<T> = async (data) => {
-    if (id) {
-      onSubmitForm(data, id);
-    } else {
-      onSubmitForm(data, undefined as any);
+    try {
+      if (id) {
+        onSubmitForm(data, id);
+        toast.success("Zmieniono protokół");
+      } else {
+        onSubmitForm(data, undefined as any);
+        toast.success("Dodano protokól");
+      }
+      handleCloseForm();
+    } catch (error) {
+      toast.error("Wystąpił problem z formularzem");
     }
-    handleCloseForm();
-    console.log(methods.formState.errors);
   };
 
   return (
