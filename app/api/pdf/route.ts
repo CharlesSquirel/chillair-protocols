@@ -7,12 +7,9 @@ export async function POST(request: NextRequest) {
     const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
 
-    await page.goto(
-      `https://chillair-protocols-31r5j58g4-charlessquirels-projects.vercel.app${pathname}`,
-      {
-        waitUntil: "networkidle0",
-      },
-    );
+    await page.goto(`http://localhost:3000${pathname}`, {
+      waitUntil: "networkidle0",
+    });
     await page.emulateMediaType("print");
 
     const pdfBuffer = await page.pdf({ format: "A4" });

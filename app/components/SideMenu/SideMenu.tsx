@@ -16,7 +16,7 @@ export default function SideMenu() {
           <HomeIcon className="h-6 w-6" /> Home
         </li>
         <Link
-          href="/dashboard/firma/add"
+          href="/dashboard/firma"
           className="flex cursor-pointer gap-3 text-lg text-secondary hover:font-medium hover:text-primary"
         >
           <LocalIcon className="h-6 w-6" /> Obiekty

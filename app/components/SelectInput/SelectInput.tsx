@@ -22,6 +22,7 @@ export default function SelectInput({
     register,
     formState: { errors },
   } = useFormContext();
+
   return (
     <div className="flex flex-col gap-1">
       <label htmlFor={name} className="md:text-1 text-[14px] sm:text-[15px]">

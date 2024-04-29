@@ -3,7 +3,7 @@
 import CloseIcon from "@/assets/icons/CloseIcon";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ZodType } from "zod";
-import { SubmitHandlerType } from "@/utils/types/form";
+import { FormType, SubmitHandlerType } from "@/utils/types/form";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
@@ -13,7 +13,8 @@ import {
   SubmitHandler,
   useForm,
 } from "react-hook-form";
-import toast from "react-hot-toast";
+import { sendToast } from "@/utils/helpers/sendToast";
+import { findToastFormType } from "@/utils/switch/findToastFormType";
 
 interface FormContainerProps<T extends FieldValues> {
   title: string;
@@ -23,6 +24,7 @@ interface FormContainerProps<T extends FieldValues> {
   closeUrl: string;
   defaultValues?: DefaultValues<T>;
   id?: string;
+  formType: FormType;
 }
 
 export default function FormContainer<T extends FieldValues>({
@@ -33,6 +35,7 @@ export default function FormContainer<T extends FieldValues>({
   closeUrl,
   defaultValues,
   id,
+  formType,
 }: FormContainerProps<T>) {
   const router = useRouter();
   const methods = useForm<T>({
@@ -45,16 +48,18 @@ export default function FormContainer<T extends FieldValues>({
   };
   const onSubmit: SubmitHandler<T> = async (data) => {
     try {
+      const toastFormType = await findToastFormType(formType);
       if (id) {
         onSubmitForm(data, id);
-        toast.success("Zmieniono protokół");
+        sendToast("success", toastFormType, "edit");
       } else {
         onSubmitForm(data, undefined as any);
-        toast.success("Dodano protokól");
+        sendToast("success", toastFormType, "add");
       }
       handleCloseForm();
     } catch (error) {
-      toast.error("Wystąpił problem z formularzem");
+      console.log(error);
+      sendToast("error");
     }
   };
 

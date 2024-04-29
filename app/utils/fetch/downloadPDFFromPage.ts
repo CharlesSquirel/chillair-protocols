@@ -1,5 +1,4 @@
 export async function downloadPDFFromPage(currentUrl: string) {
-  console.log(currentUrl);
   try {
     const response = await fetch("/api/pdf", {
       method: "POST",

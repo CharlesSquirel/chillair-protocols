@@ -1,5 +1,6 @@
 "use server";
 
+import { prisma } from "lib/db";
 import { FirmaDTO } from "../types/firma";
 
 export async function createFirma(data: FirmaDTO) {
@@ -15,8 +16,12 @@ export async function createFirma(data: FirmaDTO) {
     contactEmail: data.contactEmail,
   };
   try {
+    const firma = await prisma.firma.create({
+      data: firmaData,
+    });
     console.log("created");
     console.log(firmaData);
+    return firma;
   } catch (error) {
     console.error("Błąd podczas tworzenia danych:", error);
   }

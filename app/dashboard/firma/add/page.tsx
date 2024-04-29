@@ -8,6 +8,7 @@ import NumberInput from "@/components/NumberInput/NumberInput";
 import SubmitFormButton from "@/components/SubmitFormButton/SubmitFormButton";
 import TextInput from "@/components/TextInput/TextInput";
 import { createFirma } from "@/utils/actions/createFirma";
+import { FormType } from "@/utils/types/form";
 import { FirmaValidationSchema } from "@/utils/zod/firmaValidationSchema";
 
 export default function FirmaAdd() {
@@ -16,7 +17,8 @@ export default function FirmaAdd() {
       title="Stwórz nową siedzibę"
       validationSchema={FirmaValidationSchema}
       onSubmitForm={createFirma}
-      closeUrl="/dashboard"
+      closeUrl="/dashboard/firma"
+      formType={FormType.FIRMA_ADD}
     >
       <FormFieldset title="Dane podstawowe">
         <InputGroup>
