@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { inter } from "lib/font";
+import { Toaster } from "react-hot-toast";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -23,6 +24,12 @@ export default function RootLayout({
       <body
         className={`${poppins.className} ${inter.className} flex h-screen w-screen flex-col items-center justify-center bg-gray`}
       >
+        <Toaster
+          position="top-center"
+          toastOptions={{
+            duration: 3000,
+          }}
+        />
         {children}
       </body>
     </html>
