@@ -1,3 +1,5 @@
+import { useFormContext } from "react-hook-form";
+
 interface LoginTextInputProps {
   children: React.ReactNode;
   type?: "text" | "password";
@@ -11,6 +13,7 @@ const LoginTextInput = ({
   placeholder,
   name,
 }: LoginTextInputProps) => {
+  const { register } = useFormContext();
   return (
     <label className="input input-bordered flex w-full items-center gap-2 border-2 focus-within:border-primary focus-within:outline-none focus:outline-none">
       {children}
@@ -18,7 +21,7 @@ const LoginTextInput = ({
         type={type}
         className="grow"
         placeholder={placeholder}
-        name={name}
+        {...register(name)}
       />
     </label>
   );

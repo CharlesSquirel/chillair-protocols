@@ -1,32 +1,26 @@
 import { NextAuthConfig } from "next-auth";
-import credentials from "next-auth/providers/credentials";
+import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 import { prisma } from "lib/db";
 
 const authOptions: NextAuthConfig = {
-  pages: {
-    signIn: "/",
-  },
   session: {
     strategy: "jwt",
   },
   callbacks: {
-    authorized({ auth, request: { nextUrl } }) {
-      const isLoggedIn = !!auth?.user;
-      const isOnDashboard = nextUrl.pathname.startsWith("/dashboard");
-      if (isOnDashboard) {
-        if (isLoggedIn) return true;
-        return false;
-      } else if (isLoggedIn) {
-        return Response.redirect(new URL("/dashboard", nextUrl));
+    jwt: async ({ token, user }) => {
+      if (user) {
+        token.id = user.id;
+        token.email = user.email;
       }
-      return true;
+
+      return token;
     },
   },
   secret: process.env.AUTH_SECRET,
   debug: process.env.NODE_ENV === "development",
   providers: [
-    credentials({
+    CredentialsProvider({
       name: "credentials",
       credentials: {
         email: { placeholder: "Email", type: "text" },
