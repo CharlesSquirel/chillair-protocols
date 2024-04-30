@@ -12,7 +12,7 @@ export default function InputRow({
   return (
     <>
       {title ? (
-        <div className="flex w-full flex-col gap-1">
+        <div className="relative flex w-full flex-col gap-1">
           <p>{title}</p>
           <div className="flex flex-col gap-4 min-[1680px]:flex-row">
             {children}

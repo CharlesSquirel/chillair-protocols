@@ -12,7 +12,7 @@ type TermalInsulation =
   | "Dobry"
   | "Bardzo dobry";
 
-type IsValid = "Poprawny" | "Niepoprawny";
+type IsValid = "Prawidłowy" | "Nieprawidłowy";
 
 type FreonTypes =
   | "R134A"

@@ -169,6 +169,7 @@ model PowerConsumption {
   amperage_2         Float
   amperage_3         Float
   interphase         String
+  interphaseOk       Boolean
   powerConsumptionId String
   Chiller            Chiller @relation(fields: [powerConsumptionId], references: [id])
 }
@@ -177,7 +178,7 @@ model Chiller {
   id                       String             @id @default(cuid()) @map("_id")
   createdAt                DateTime           @default(now())
   updatedAt                DateTime           @updatedAt
-  userSingature            String
+  userSignature            String
   firstName                String
   lastName                 String
   firma                    String
