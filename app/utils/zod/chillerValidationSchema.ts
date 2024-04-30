@@ -17,8 +17,6 @@ const TermalInsulation = z.union([
   z.literal("Bardzo dobry"),
 ]);
 
-const FieldWithPercentage = z.union([z.literal("OK"), z.number()]);
-
 const IsValid = z.union([z.literal("Poprawny"), z.literal("Niepoprawny")]);
 
 const FreonTypes = z.union([
@@ -78,7 +76,7 @@ const PowerConsumptionSchema = z.object({
   amperage_1: createNumberValidator(),
   amperage_2: createNumberValidator(),
   amperage_3: createNumberValidator(),
-  interphase: FieldWithPercentage,
+  interphase: createStringValidator(),
 });
 
 export const ChillerValidationSchema = z.object({
@@ -96,7 +94,7 @@ export const ChillerValidationSchema = z.object({
   measuredVoltage_1: createNumberValidator(),
   measuredVoltage_2: createNumberValidator(),
   measuredVoltage_3: createNumberValidator(),
-  interPhase: FieldWithPercentage,
+  interPhase: createStringValidator(),
   freonType: FreonTypes,
   freonAmount: createNumberValidator(),
   refrigerationCircuits: z
@@ -129,3 +127,5 @@ export const ChillerValidationSchema = z.object({
     .array(PowerConsumptionSchema)
     .min(1, { message: "Musi być minimum 1" }),
 });
+
+export type SchemaTypeChiller = z.infer<typeof ChillerValidationSchema>;

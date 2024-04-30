@@ -143,3 +143,76 @@ model Firma {
   tel          String?
   contactEmail String?
 }
+
+model Circuit {
+  id                      String  @id @default(cuid()) @map("_id")
+  number                  String
+  dischargePressure       Float
+  condensationTemperature Float
+  subcooling              Float
+  airTemperature          Float
+  suctionPressure         Float
+  suctionTemperature      Float
+  overHeat                Float
+  inTemperature           Float
+  outTemperature          Float
+  inWaterPressure         Float
+  outWaterPressure        Float
+  circuitId               String
+  Chiller                 Chiller @relation(fields: [circuitId], references: [id])
+}
+
+model PowerConsumption {
+  id                 String  @id @default(cuid()) @map("_id")
+  deviceType         String
+  amperage_1         Float
+  amperage_2         Float
+  amperage_3         Float
+  interphase         String
+  powerConsumptionId String
+  Chiller            Chiller @relation(fields: [powerConsumptionId], references: [id])
+}
+
+model Chiller {
+  id                       String             @id @default(cuid()) @map("_id")
+  createdAt                DateTime           @default(now())
+  updatedAt                DateTime           @updatedAt
+  userSingature            String
+  firstName                String
+  lastName                 String
+  firma                    String
+  description              String?
+  type                     String
+  serialNumber             String
+  pollution                String
+  termalInsulation         String
+  termalAndPressureControl String
+  supplyVoltage            Float
+  supplyPhase              Float
+  measuredVoltage_1        Float
+  measuredVoltage_2        Float
+  measuredVoltage_3        Float
+  interPhase               String
+  freonType                String
+  freonAmount              Float
+  refrigerationCircuits    Float[]
+  driverType               String
+  refrigerant              String
+  airTemperature           Float
+  oilLevel                 String
+  indicatorColor           String
+  tightSystem              String
+  currentConsumption       String
+  fansConsumption          String
+  highPressure             String
+  lowPressure              String
+  antiFrezzeTermostat      String
+  settingsTemperature      Float[]
+  controlledParameter      String
+  controlMethod            String
+  leakGasTest              String
+  gasAdded                 Float
+  gasRegain                Float
+  circuits                 Circuit[]
+  powerConsumptions        PowerConsumption[]
+}

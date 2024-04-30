@@ -14,8 +14,6 @@ type TermalInsulation =
 
 type IsValid = "Poprawny" | "Niepoprawny";
 
-type FieldWithPercentage = "OK" | number;
-
 type FreonTypes =
   | "R134A"
   | "R410A"
@@ -47,7 +45,7 @@ interface PowerConsumption {
   amperage_1: number;
   amperage_2: number;
   amperage_3: number;
-  interphase: FieldWithPercentage;
+  interphase: string;
 }
 
 interface Circuit {
@@ -80,7 +78,7 @@ export interface ChillerDTO {
   measuredVoltage_1: number;
   measuredVoltage_2: number;
   measuredVoltage_3: number;
-  interPhase: FieldWithPercentage;
+  interPhase: string;
   freonType: FreonTypes;
   freonAmount: number;
   refrigerationCircuits: number[];
