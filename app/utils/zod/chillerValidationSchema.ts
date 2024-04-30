@@ -17,7 +17,7 @@ const TermalInsulation = z.union([
   z.literal("Bardzo dobry"),
 ]);
 
-const IsValid = z.union([z.literal("Prawidłowy"), z.literal("Nieprawidłowy")]);
+const IsValid = z.union([z.literal("Poprawny"), z.literal("Niepoprawny")]);
 
 const FreonTypes = z.union([
   z.literal("R134A"),
@@ -76,8 +76,8 @@ const PowerConsumptionSchema = z.object({
   amperage_1: createNumberValidator(),
   amperage_2: createNumberValidator(),
   amperage_3: createNumberValidator(),
-  interphase: createStringValidator(),
-  interphaseOk: z.boolean(),
+  interphase: createNumberValidator(),
+  interphaseOk: createStringValidator(),
 });
 
 export const ChillerValidationSchema = z.object({

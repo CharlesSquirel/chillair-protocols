@@ -45,7 +45,8 @@ interface PowerConsumption {
   amperage_1: number;
   amperage_2: number;
   amperage_3: number;
-  interphase: string;
+  interphaseOk: string;
+  interphase: number;
 }
 
 interface Circuit {

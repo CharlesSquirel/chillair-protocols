@@ -168,8 +168,8 @@ model PowerConsumption {
   amperage_1         Float
   amperage_2         Float
   amperage_3         Float
-  interphase         String
-  interphaseOk       Boolean
+  interphase         Float
+  interphaseOk       String
   powerConsumptionId String
   Chiller            Chiller @relation(fields: [powerConsumptionId], references: [id])
 }

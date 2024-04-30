@@ -1,7 +1,6 @@
 import { FormType } from "@/utils/types/form";
 import FormContainer from "../FormContainer/FormContainer";
 import { ChillerValidationSchema } from "@/utils/zod/chillerValidationSchema";
-import { createChiller } from "@/utils/actions/createChiller";
 import FormFieldset from "../FormFieldset/FormFieldset";
 import InputGroup from "../InputGroup/InputGroup";
 import SelectInput from "../SelectInput/SelectInput";
@@ -21,19 +20,22 @@ import ExtraChillerSettingTemp from "../ExtraChillerSettingTemp/ExtraChillerSett
 import NumberInput from "../NumberInput/NumberInput";
 import TextareaInput from "../TextareaInput/TextareaInput";
 import ExtraChillerCurrentInfo from "../ExtraChillerCurrentInfo/ExtraChillerCurrentInfo";
+import ExtraChillerCircuits from "../ExtraChillerCircuits/ExtraChillerCircuits";
+import { getSubmitHandler } from "@/utils/switch/getSubmitHandler";
 
 interface ChillerFormProps {
   formType: FormType;
 }
 
 export default function ChillerForm({ formType }: ChillerFormProps) {
+  const onSubmitForm = getSubmitHandler(formType);
   return (
     <FormContainer
       formType={formType}
       title="Protokół przegląd agregatu chłodniczego z kontrolą szczelności"
       closeUrl="/dashboard/chillers"
       validationSchema={ChillerValidationSchema}
-      onSubmitForm={createChiller}
+      onSubmitForm={onSubmitForm}
     >
       <FormFieldset title="Informacje podstawowe">
         <InputGroup>
@@ -106,7 +108,6 @@ export default function ChillerForm({ formType }: ChillerFormProps) {
             placeholder="Wybierz opcję"
           />
         </InputGroup>
-
         <InputGroup title="Wartości nastaw elementów zabezpieczających">
           <InputRow>
             <SelectInput
@@ -169,18 +170,20 @@ export default function ChillerForm({ formType }: ChillerFormProps) {
             />
           </InputRow>
         </InputGroup>
-
-        <InputGroup title="Uwagi (opcjonalnie)">
-          <TextareaInput
-            name="description"
-            label=""
-            placeholder="Wpisz swoje uwagi"
-          />
-        </InputGroup>
       </FormFieldset>
       <FormFieldset title="Dane poboru prądu">
         <ExtraChillerCurrentInfo />
       </FormFieldset>
+      <FormFieldset title="Parametry obiegów">
+        <ExtraChillerCircuits />
+      </FormFieldset>
+      <InputGroup title="Uwagi (opcjonalnie)">
+        <TextareaInput
+          name="description"
+          label=""
+          placeholder="Wpisz swoje uwagi"
+        />
+      </InputGroup>
       <SubmitFormButton formType={formType} />
     </FormContainer>
   );
