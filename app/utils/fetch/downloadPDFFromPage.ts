@@ -1,11 +1,15 @@
-export async function downloadPDFFromPage(currentUrl: string) {
+export async function downloadPDFFromPage(
+  currentUrl: string,
+  sendMail?: "sendMail",
+) {
   try {
+    const isSendingMail = sendMail === "sendMail";
     const response = await fetch("/api/pdf", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(currentUrl),
+      body: JSON.stringify({ currentUrl, isSendingMail }),
     });
 
     if (!response.ok) {
