@@ -31,3 +31,15 @@ export const chillerDeviceOptions = [
   "Silnik",
   "Falownik",
 ];
+
+export const chillerFreonOptions = [
+  "R134A",
+  "R410A",
+  "R407C",
+  "R32",
+  "R404A",
+  "R22",
+  "R290",
+];
+
+export const chillerRefrigerationOptions = ["Woda", "Roztwór glikolu"];

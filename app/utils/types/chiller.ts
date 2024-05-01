@@ -46,7 +46,7 @@ interface PowerConsumption {
   amperage_2: number;
   amperage_3: number;
   interphaseOk: string;
-  interphase: number;
+  interphase?: number;
 }
 
 interface Circuit {
@@ -65,9 +65,6 @@ interface Circuit {
 }
 
 export interface ChillerDTO {
-  firstName: string;
-  lastName: string;
-  userSignature: string;
   firma: string;
   type: string;
   serialNumber: string;
@@ -79,7 +76,8 @@ export interface ChillerDTO {
   measuredVoltage_1: number;
   measuredVoltage_2: number;
   measuredVoltage_3: number;
-  interPhase: string;
+  interphaseOK: string;
+  interphase?: number;
   freonType: FreonTypes;
   freonAmount: number;
   refrigerationCircuits: number[];

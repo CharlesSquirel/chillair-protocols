@@ -53,7 +53,10 @@ export default function ExtraChillerCurrentInfo() {
                 label="L3 (A)"
               />
             </InputRow>
-            <SelectWithNumberInput index={index} />
+            <SelectWithNumberInput
+              numberName={`powerConsumptions.${index}.interphase`}
+              selectName={`powerConsumptions.${index}.interphaseOk`}
+            />
             {index !== 0 && (
               <button
                 className="absolute right-4 top-4 h-6 w-6 md:h-7 md:w-7"

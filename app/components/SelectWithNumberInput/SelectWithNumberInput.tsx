@@ -7,26 +7,28 @@ import { chillerValidOptions } from "@/data/selectOptions";
 import { useFormContext } from "react-hook-form";
 
 interface SelectWithNumberInputProps {
-  index: number;
+  selectName: string;
+  numberName: string;
 }
 
 export default function SelectWithNumberInput({
-  index,
+  selectName,
+  numberName,
 }: SelectWithNumberInputProps) {
   const { watch } = useFormContext();
-  const selectValue = watch(`powerConsumptions.${index}.interphaseOk`);
+  const selectValue = watch(selectName);
 
   return (
     <InputRow>
       <SelectInput
-        name={`powerConsumptions.${index}.interphaseOk`}
+        name={selectName}
         label="Różnica międzyfazowa"
         placeholder="Wybierz opcję"
         data={chillerValidOptions}
       />
       {selectValue === "Niepoprawny" && (
         <NumberInput
-          name={`powerConsumptions.${index}.interphase`}
+          name={numberName}
           placeholder="Wpisz odchylenie"
           label="Odchylenie (%)"
         />

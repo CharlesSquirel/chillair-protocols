@@ -8,6 +8,7 @@ import TextInput from "../TextInput/TextInput";
 import SubmitFormButton from "../SubmitFormButton/SubmitFormButton";
 import InputRow from "../InputRow/InputRow";
 import {
+  chillerFreonOptions,
   chillerGasMethods,
   chillerMethodOptions,
   chillerPollutionOptions,
@@ -22,12 +23,22 @@ import TextareaInput from "../TextareaInput/TextareaInput";
 import ExtraChillerCurrentInfo from "../ExtraChillerCurrentInfo/ExtraChillerCurrentInfo";
 import ExtraChillerCircuits from "../ExtraChillerCircuits/ExtraChillerCircuits";
 import { getSubmitHandler } from "@/utils/switch/getSubmitHandler";
+import { DefaultValues, FieldValues } from "react-hook-form";
+import { ValvesInfoBlock } from "@prisma/client";
+import SelectWithNumberInput from "../SelectWithNumberInput/SelectWithNumberInput";
+import ExtraChillerCollingCircuits from "../ExtraChillerCollingCircuits/ExtraChillerCollingCircuits";
 
-interface ChillerFormProps {
+interface ChillerFormProps<T extends FieldValues> {
+  defaultValues?: DefaultValues<T>;
   formType: FormType;
+  id?: string;
+  extraValvesDataEdit?: ValvesInfoBlock[];
 }
 
-export default function ChillerForm({ formType }: ChillerFormProps) {
+export default function ChillerForm<T extends FieldValues>({
+  formType,
+  defaultValues,
+}: ChillerFormProps<T>) {
   const onSubmitForm = getSubmitHandler(formType);
   return (
     <FormContainer
@@ -36,6 +47,7 @@ export default function ChillerForm({ formType }: ChillerFormProps) {
       closeUrl="/dashboard/chillers"
       validationSchema={ChillerValidationSchema}
       onSubmitForm={onSubmitForm}
+      defaultValues={defaultValues}
     >
       <FormFieldset title="Informacje podstawowe">
         <InputGroup>
@@ -55,8 +67,14 @@ export default function ChillerForm({ formType }: ChillerFormProps) {
             placeholder="Wpisz nr seryjny urządzenia"
             label="Nr seryjny"
           />
+          <TextInput
+            name="driverType"
+            placeholder="Wpisz typ sterownika"
+            label="Typ sterownika"
+          />
         </InputGroup>
       </FormFieldset>
+
       <FormFieldset title="Informacje szczegółowe">
         <InputGroup title="Ocena jakości">
           <SelectInput
@@ -108,6 +126,67 @@ export default function ChillerForm({ formType }: ChillerFormProps) {
             placeholder="Wybierz opcję"
           />
         </InputGroup>
+
+        <InputGroup title="Freon">
+          <InputRow>
+            <SelectInput
+              name="freonType"
+              data={chillerFreonOptions}
+              label="Rodzaj freonu"
+              placeholder="Wybierz opcję"
+            />
+            <NumberInput
+              name="freonAmount"
+              label="Ilość czynnika"
+              placeholder="Wpisz wartość"
+            />
+          </InputRow>
+        </InputGroup>
+
+        <InputGroup>
+          <NumberInput
+            name="airTemperature"
+            label="Temperatura powietrza zewnętrznego (°C)"
+            placeholder="Wpisz wartość"
+          />
+        </InputGroup>
+
+        <InputGroup title="Zmierzone napięcie">
+          <InputRow>
+            <NumberInput
+              name="supplyVoltage"
+              label="Napięcie zasilające (V)"
+              placeholder="Wpisz wartość"
+            />
+            <NumberInput
+              name="supplyPhase"
+              label="Faz"
+              placeholder="Wpisz wartość"
+            />
+          </InputRow>
+          <InputRow>
+            <NumberInput
+              name="measuredVoltage_1"
+              label="Napięcie L1-L2 (V)"
+              placeholder="Wpisz wartość"
+            />
+            <NumberInput
+              name="measuredVoltage_2"
+              label="Napięcie L1-L (V)"
+              placeholder="Wpisz wartość"
+            />
+            <NumberInput
+              name="measuredVoltage_3"
+              label="Napięcie L2-L3 (V)"
+              placeholder="Wpisz wartość"
+            />
+          </InputRow>
+          <SelectWithNumberInput
+            selectName="interphaseOK"
+            numberName="interphase"
+          />
+        </InputGroup>
+
         <InputGroup title="Wartości nastaw elementów zabezpieczających">
           <InputRow>
             <SelectInput
@@ -130,6 +209,9 @@ export default function ChillerForm({ formType }: ChillerFormProps) {
             />
           </InputRow>
         </InputGroup>
+
+        <ExtraChillerCollingCircuits />
+
         <InputGroup title="System sterowania">
           <ExtraChillerSettingTemp />
           <SelectInput
@@ -139,6 +221,7 @@ export default function ChillerForm({ formType }: ChillerFormProps) {
             placeholder="Wybierz opcję"
           />
         </InputGroup>
+
         <InputGroup title="Zastosowana metoda">
           <InputRow>
             <SelectInput
@@ -171,12 +254,15 @@ export default function ChillerForm({ formType }: ChillerFormProps) {
           </InputRow>
         </InputGroup>
       </FormFieldset>
+
       <FormFieldset title="Dane poboru prądu">
         <ExtraChillerCurrentInfo />
       </FormFieldset>
+
       <FormFieldset title="Parametry obiegów">
         <ExtraChillerCircuits />
       </FormFieldset>
+
       <InputGroup title="Uwagi (opcjonalnie)">
         <TextareaInput
           name="description"
@@ -184,6 +270,7 @@ export default function ChillerForm({ formType }: ChillerFormProps) {
           placeholder="Wpisz swoje uwagi"
         />
       </InputGroup>
+
       <SubmitFormButton formType={formType} />
     </FormContainer>
   );

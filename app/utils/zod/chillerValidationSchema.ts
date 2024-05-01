@@ -77,13 +77,10 @@ const PowerConsumptionSchema = z.object({
   amperage_2: createNumberValidator(),
   amperage_3: createNumberValidator(),
   interphase: createNumberValidator(),
-  interphaseOk: createStringValidator(),
+  interphaseOk: IsValid,
 });
 
 export const ChillerValidationSchema = z.object({
-  firstName: createStringValidator(),
-  lastName: createStringValidator(),
-  userSignature: createStringValidator(),
   firma: createStringValidator(),
   type: createStringValidator(),
   serialNumber: createStringValidator(),
@@ -95,7 +92,8 @@ export const ChillerValidationSchema = z.object({
   measuredVoltage_1: createNumberValidator(),
   measuredVoltage_2: createNumberValidator(),
   measuredVoltage_3: createNumberValidator(),
-  interPhase: createStringValidator(),
+  interphase: createNumberValidator().optional(),
+  interphaseOK: IsValid,
   freonType: FreonTypes,
   freonAmount: createNumberValidator(),
   refrigerationCircuits: z

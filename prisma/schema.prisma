@@ -168,7 +168,7 @@ model PowerConsumption {
   amperage_1         Float
   amperage_2         Float
   amperage_3         Float
-  interphase         Float
+  interphase         Float?
   interphaseOk       String
   powerConsumptionId String
   Chiller            Chiller @relation(fields: [powerConsumptionId], references: [id])
@@ -193,7 +193,8 @@ model Chiller {
   measuredVoltage_1        Float
   measuredVoltage_2        Float
   measuredVoltage_3        Float
-  interPhase               String
+  interphase               Float?
+  interphaseOK             String
   freonType                String
   freonAmount              Float
   refrigerationCircuits    Float[]
