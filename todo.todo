@@ -13,3 +13,4 @@
 ☐ number walidacja do dwóch miejsc nie przepuszcza
 ☐ jeśli prisma chiller create rzuci błędem to toast success
 ☐ nie rewaliduje chillers po utworzeniu formularza
+☐ nie daje defaultValues w edicie chillers

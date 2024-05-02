@@ -22,7 +22,7 @@ interface ValveFormProps<T extends FieldValues> {
   extraValvesDataEdit?: ValvesInfoBlock[];
 }
 
-export default async function ValveForm<T extends FieldValues>({
+export default function ValveForm<T extends FieldValues>({
   defaultValues,
   formType,
   id,
