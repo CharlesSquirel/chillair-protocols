@@ -6,7 +6,6 @@ import { transporterOptions } from "lib/mail.config";
 export async function POST(request: NextRequest) {
   try {
     const { currentUrl, isSendingMail } = await request.json();
-    console.log(currentUrl);
     const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
 
