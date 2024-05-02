@@ -11,6 +11,7 @@ import ProtocolUserSign from "@/components/ProtocolUserSign/ProtocolUserSign";
 import getValve from "@/utils/actions/getValve";
 import { formatDateToString } from "@/utils/helpers/formatDateToString";
 import { inter } from "lib/font";
+import React from "react";
 
 interface ValveProtocolProps {
   params: {
@@ -93,7 +94,30 @@ export default async function ValveProtocol({
       <ProtocolTable
         title="Zawory"
         headers={valveHeaders}
-        infoBlock={valveBlocks}
+        renderRows={() =>
+          valveBlocks.map((block, index) => (
+            <React.Fragment key={index}>
+              <tr>
+                <td className="font-medium">{index + 1 + "."}</td>
+                <td>{block.valveLocation}</td>
+                <td>{block.valveType}</td>
+                <td>{block.valveSerialNumber}</td>
+                <td>{block.pressureSetting}</td>
+                <td>{block.pressureOpen}</td>
+                <td>{block.pressureClose}</td>
+              </tr>
+              <tr
+                className={
+                  index < valveBlocks.length - 1
+                    ? `border-b-[1px] border-b-black`
+                    : ""
+                }
+              >
+                <td>{`Uwagi: ${block.description} `}</td>
+              </tr>
+            </React.Fragment>
+          ))
+        }
       />
       <ProtocolUserSign text="podpis technika" />
       <ProtocolDownloadButton />

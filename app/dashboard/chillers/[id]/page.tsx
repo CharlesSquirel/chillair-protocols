@@ -6,10 +6,16 @@ import ProtocolEditButton from "@/components/ProtocolEditButton/ProtocolEditButt
 import ProtocolField from "@/components/ProtocolField/ProtocolField";
 import ProtocolFieldContainer from "@/components/ProtocolFieldContainer/ProtocolFieldContainer";
 import ProtocolHeader from "@/components/ProtocolHeader/ProtocolHeader";
+import ProtocolTable from "@/components/ProtocolTable/ProtocolTable";
 import ProtocolUserSign from "@/components/ProtocolUserSign/ProtocolUserSign";
+import {
+  chillerCircuitHeaders,
+  chillerPowerHeaders,
+} from "@/data/tableHeaders";
 import getChiller from "@/utils/actions/getChiller";
 import { formatDateToString } from "@/utils/helpers/formatDateToString";
 import { inter } from "lib/font";
+import React from "react";
 
 interface ChillerProtocolProps {
   params: {
@@ -199,6 +205,70 @@ export default async function ChillerProtocol({
           unit="kg"
         />
       </ProtocolFieldContainer>
+
+      <ProtocolTable
+        small
+        headers={chillerCircuitHeaders}
+        title="Parametry obiegów"
+        renderRows={() => (
+          <>
+            {chillerCircuits.map((circuit, index) => (
+              <React.Fragment key={index}>
+                <tr
+                  className={
+                    index < chillerCircuits.length - 1
+                      ? `border-b-[1px] border-b-black`
+                      : ""
+                  }
+                >
+                  <td>{index + 1}</td>
+                  <td>{circuit.dischargePressure} bar</td>
+                  <td>{circuit.condensationTemperature} °C</td>
+                  <td>{circuit.subcooling} °C</td>
+                  <td>{circuit.airTemperature} °C</td>
+                  <td>{circuit.suctionPressure} bar</td>
+                  <td>{circuit.suctionTemperature} °C</td>
+                  <td>{circuit.overHeat} °C</td>
+                  <td>{circuit.inTemperature} °C</td>
+                  <td>{circuit.outTemperature} °C</td>
+                  <td>{circuit.inWaterPressure} bar</td>
+                  <td>{circuit.outWaterPressure} bar</td>
+                </tr>
+              </React.Fragment>
+            ))}
+          </>
+        )}
+      />
+
+      <ProtocolTable
+        headers={chillerPowerHeaders}
+        title="Parametry poboru prądu"
+        renderRows={() => (
+          <>
+            {chillerPowerConsumption.map((power, index) => (
+              <React.Fragment key={index}>
+                <tr
+                  className={
+                    index < chillerCircuits.length - 1
+                      ? `border-b-[1px] border-b-black`
+                      : ""
+                  }
+                >
+                  <td>{power.deviceType}</td>
+                  <td>{power.amperage_1} V</td>
+                  <td>{power.amperage_2} V</td>
+                  <td>{power.amperage_3} V</td>
+                  <td>
+                    {power.interphaseOk === "Poprawny"
+                      ? "OK"
+                      : power.interphase + " %"}
+                  </td>
+                </tr>
+              </React.Fragment>
+            ))}
+          </>
+        )}
+      />
 
       <ProtocolUserSign text="podpis technika" />
 
