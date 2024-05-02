@@ -1,16 +1,16 @@
+"use server";
+
 import { prisma } from "lib/db";
 import { ChillerDTO } from "../types/chiller";
 
 export async function createChiller(data: ChillerDTO) {
   try {
     const {
-      firstName,
-      lastName,
-      userSignature,
       firma,
       type,
       serialNumber,
       pollution,
+      interphaseOK,
       termalInsulation,
       termalAndPressureControl,
       supplyVoltage,
@@ -18,7 +18,7 @@ export async function createChiller(data: ChillerDTO) {
       measuredVoltage_1,
       measuredVoltage_2,
       measuredVoltage_3,
-      interPhase,
+      interphase,
       freonType,
       freonAmount,
       refrigerationCircuits,
@@ -46,9 +46,9 @@ export async function createChiller(data: ChillerDTO) {
 
     const chiller = await prisma.chiller.create({
       data: {
-        firstName,
-        lastName,
-        userSignature,
+        firstName: "Jan",
+        lastName: "Kowalski",
+        userSignature: "FGAZ/1/pe456",
         firma,
         type,
         serialNumber,
@@ -60,7 +60,8 @@ export async function createChiller(data: ChillerDTO) {
         measuredVoltage_1,
         measuredVoltage_2,
         measuredVoltage_3,
-        interPhase,
+        interphase,
+        interphaseOK,
         freonType,
         freonAmount,
         refrigerationCircuits,

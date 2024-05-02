@@ -57,7 +57,6 @@ const DeviceType = z.union([
 ]);
 
 const CircuitValidationSchema = z.object({
-  number: createStringValidator(),
   dischargePressure: createNumberValidator(),
   condensationTemperature: createNumberValidator(),
   subcooling: createNumberValidator(),
@@ -76,7 +75,7 @@ const PowerConsumptionSchema = z.object({
   amperage_1: createNumberValidator(),
   amperage_2: createNumberValidator(),
   amperage_3: createNumberValidator(),
-  interphase: createNumberValidator(),
+  interphase: createNumberValidator().optional(),
   interphaseOk: IsValid,
 });
 

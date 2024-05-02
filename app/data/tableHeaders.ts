@@ -6,7 +6,16 @@ export const firmaHeaders: string[] = [
   "Email",
 ];
 
+//jeżeli będą się powtarzać, to do ujednolicenia
 export const valvesHeaders: string[] = [
+  "Data",
+  "Obiekt",
+  "Autor",
+  "Sygnatura",
+  "Uwagi",
+];
+
+export const chillerHeaders: string[] = [
   "Data",
   "Obiekt",
   "Autor",

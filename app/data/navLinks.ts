@@ -17,7 +17,7 @@ export const navLinks: NavLinks[] = [
     text: "Awaria urządzenia",
   },
   {
-    href: "/dashboard/agregaty",
+    href: "/dashboard/chillers",
     text: "Agregaty",
   },
   {

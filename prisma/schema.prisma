@@ -146,7 +146,6 @@ model Firma {
 
 model Circuit {
   id                      String  @id @default(cuid()) @map("_id")
-  number                  String
   dischargePressure       Float
   condensationTemperature Float
   subcooling              Float

@@ -48,7 +48,7 @@ export default function ExtraChillerCurrentInfo() {
                 label="L2 (A)"
               />
               <NumberInput
-                name={`powerConsumptions.${index}.amperage_2`}
+                name={`powerConsumptions.${index}.amperage_3`}
                 placeholder="Wpisz wartość"
                 label="L3 (A)"
               />

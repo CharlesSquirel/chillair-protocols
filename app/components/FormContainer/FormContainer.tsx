@@ -48,8 +48,6 @@ export default function FormContainer<T extends FieldValues>({
     methods.reset();
   };
   const onSubmit: SubmitHandler<T> = async (data) => {
-    console.log(data);
-    return;
     try {
       const toastFormType = await findToastFormType(formType);
       if (id) {

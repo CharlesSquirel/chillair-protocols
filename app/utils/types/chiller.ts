@@ -50,7 +50,6 @@ interface PowerConsumption {
 }
 
 interface Circuit {
-  number: string;
   dischargePressure: number;
   condensationTemperature: number;
   subcooling: number;
