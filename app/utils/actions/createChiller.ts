@@ -2,6 +2,7 @@
 
 import { prisma } from "lib/db";
 import { ChillerDTO } from "../types/chiller";
+import { generateRandomString } from "../helpers/generateRandomString";
 
 export async function createChiller(data: ChillerDTO) {
   try {
@@ -85,12 +86,18 @@ export async function createChiller(data: ChillerDTO) {
         description,
         circuits: {
           createMany: {
-            data: circuits,
+            data: circuits.map((circuits) => ({
+              ...circuits,
+              editKey: generateRandomString(),
+            })),
           },
         },
         powerConsumptions: {
           createMany: {
-            data: powerConsumptions,
+            data: powerConsumptions.map((powerConsumption) => ({
+              ...powerConsumption,
+              editKey: generateRandomString(),
+            })),
           },
         },
       },

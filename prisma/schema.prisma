@@ -158,6 +158,7 @@ model Circuit {
   inWaterPressure         Float
   outWaterPressure        Float
   circuitId               String
+  editKey                 String
   Chiller                 Chiller @relation(fields: [circuitId], references: [id])
 }
 
@@ -170,6 +171,7 @@ model PowerConsumption {
   interphase         Float?
   interphaseOk       String
   powerConsumptionId String
+  editKey            String
   Chiller            Chiller @relation(fields: [powerConsumptionId], references: [id])
 }
 

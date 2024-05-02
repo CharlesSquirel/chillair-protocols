@@ -37,7 +37,7 @@ export default async function ChillerProtocol({
     >
       <div className="absolute right-[27px] top-[35px] hidden gap-3 md:flex print:hidden">
         <ProtocolDeleteButton id={id} />
-        {/* <ProtocolEditButton id={id} /> */}
+        <ProtocolEditButton id={id} />
         <ProtocolBackButton />
       </div>
 

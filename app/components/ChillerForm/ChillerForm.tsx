@@ -24,15 +24,17 @@ import ExtraChillerCurrentInfo from "../ExtraChillerCurrentInfo/ExtraChillerCurr
 import ExtraChillerCircuits from "../ExtraChillerCircuits/ExtraChillerCircuits";
 import { getSubmitHandler } from "@/utils/switch/getSubmitHandler";
 import { DefaultValues, FieldValues } from "react-hook-form";
-import { ValvesInfoBlock } from "@prisma/client";
+import { Circuit, PowerConsumption, ValvesInfoBlock } from "@prisma/client";
 import SelectWithNumberInput from "../SelectWithNumberInput/SelectWithNumberInput";
 import ExtraChillerCollingCircuits from "../ExtraChillerCollingCircuits/ExtraChillerCollingCircuits";
+import { ChillerDTO } from "@/utils/types/chiller";
 
 interface ChillerFormProps<T extends FieldValues> {
   defaultValues?: DefaultValues<T>;
   formType: FormType;
   id?: string;
-  extraValvesDataEdit?: ValvesInfoBlock[];
+  extraChillerPowerDataEdit?: PowerConsumption[];
+  extraChillerCircuitsDataEdit?: Circuit[];
 }
 
 export default function ChillerForm<T extends FieldValues>({
@@ -47,7 +49,7 @@ export default function ChillerForm<T extends FieldValues>({
       closeUrl="/dashboard/chillers"
       validationSchema={ChillerValidationSchema}
       onSubmitForm={onSubmitForm}
-      defaultValues={defaultValues}
+      defaultValues={defaultValues as ChillerDTO}
     >
       <FormFieldset title="Informacje podstawowe">
         <InputGroup>

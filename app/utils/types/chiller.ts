@@ -47,6 +47,7 @@ interface PowerConsumption {
   amperage_3: number;
   interphaseOk: string;
   interphase?: number;
+  editKey: string;
 }
 
 interface Circuit {
@@ -61,6 +62,7 @@ interface Circuit {
   outTemperature: number;
   inWaterPressure: number;
   outWaterPressure: number;
+  editKey: string;
 }
 
 export interface ChillerDTO {

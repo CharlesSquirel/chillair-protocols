@@ -16,7 +16,6 @@ export default function NumberInput({
     register,
     formState: { errors },
   } = useFormContext();
-  console.log(errors);
   return (
     <div className="h-min-[106px] flex flex-col gap-1">
       {label && (
