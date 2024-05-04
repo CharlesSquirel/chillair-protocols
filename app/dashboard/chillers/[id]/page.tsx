@@ -1,5 +1,6 @@
 import ProtocolBackButton from "@/components/ProtocolBackButton/ProtocolBackButton";
 import ProtocolBasicInfo from "@/components/ProtocolBasicInfo/ProtocolBasicInfo";
+import ProtocolChillerCircuitBoard from "@/components/ProtocolChillerCircuitBoard/ProtocolChillerCircuitBoard";
 import ProtocolDeleteButton from "@/components/ProtocolDeleteButton/ProtocolDeleteButton";
 import ProtocolDownloadButton from "@/components/ProtocolDownloadButton/ProtocolDownloadButton";
 import ProtocolEditButton from "@/components/ProtocolEditButton/ProtocolEditButton";
@@ -206,39 +207,7 @@ export default async function ChillerProtocol({
         />
       </ProtocolFieldContainer>
 
-      <ProtocolTable
-        small
-        headers={chillerCircuitHeaders}
-        title="Parametry obiegów"
-        renderRows={() => (
-          <>
-            {chillerCircuits.map((circuit, index) => (
-              <React.Fragment key={index}>
-                <tr
-                  className={
-                    index < chillerCircuits.length - 1
-                      ? `border-b-[1px] border-b-black`
-                      : ""
-                  }
-                >
-                  <td>{index + 1}</td>
-                  <td>{circuit.dischargePressure} bar</td>
-                  <td>{circuit.condensationTemperature} °C</td>
-                  <td>{circuit.subcooling} °C</td>
-                  <td>{circuit.airTemperature} °C</td>
-                  <td>{circuit.suctionPressure} bar</td>
-                  <td>{circuit.suctionTemperature} °C</td>
-                  <td>{circuit.overHeat} °C</td>
-                  <td>{circuit.inTemperature} °C</td>
-                  <td>{circuit.outTemperature} °C</td>
-                  <td>{circuit.inWaterPressure} bar</td>
-                  <td>{circuit.outWaterPressure} bar</td>
-                </tr>
-              </React.Fragment>
-            ))}
-          </>
-        )}
-      />
+      <ProtocolChillerCircuitBoard data={chillerCircuits} />
 
       <ProtocolTable
         headers={chillerPowerHeaders}
