@@ -9,13 +9,11 @@ import InputGroup from "../InputGroup/InputGroup";
 import SelectInput from "../SelectInput/SelectInput";
 import { chillerRefrigerationOptions } from "@/data/selectOptions";
 
-export default function ExtraChillerCollingCircuits() {
+export default function ExtraChillerCollingCircuits({}) {
   const [count, setCount] = useState(1);
 
   const handleOnMinus = () => {
-    if (count > 1) {
-      setCount(count - 1);
-    }
+    setCount(count - 1);
   };
 
   const handleOnPlus = () => {

@@ -1,15 +1,36 @@
-import React, { useState } from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import InputGroup from "../InputGroup/InputGroup";
 import InputRow from "../InputRow/InputRow";
 import NumberInput from "../NumberInput/NumberInput";
 import MinusIcon from "@/assets/icons/MinusIcon";
 import PlusIcon from "@/assets/icons/PlusIcon";
+import { Circuit } from "@prisma/client";
+import { useFormContext } from "react-hook-form";
 
-export default function ExtraChillerCircuits() {
+interface ExtraChillerCircuitsProps {
+  extraChillerCircuitsDataEdit?: Circuit[];
+}
+
+export default function ExtraChillerCircuits({
+  extraChillerCircuitsDataEdit,
+}: ExtraChillerCircuitsProps) {
+  const { getValues, setValue } = useFormContext();
   const [count, setCount] = useState(1);
+
+  useEffect(() => {
+    if (extraChillerCircuitsDataEdit) {
+      setCount(extraChillerCircuitsDataEdit.length);
+    }
+  }, [extraChillerCircuitsDataEdit]);
 
   const handleOnMinus = () => {
     setCount(count - 1);
+    if (extraChillerCircuitsDataEdit) {
+      const circuitsBlocks = getValues("circuits").slice(0, count - 1);
+      setValue("circuits", circuitsBlocks);
+    }
   };
 
   const handleOnPlus = () => {

@@ -42,6 +42,7 @@ export default function FormContainer<T extends FieldValues>({
     resolver: zodResolver(validationSchema),
     defaultValues: defaultValues,
   });
+
   const handleCloseForm = (): void => {
     router.back();
     methods.reset();

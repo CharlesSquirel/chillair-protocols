@@ -24,7 +24,7 @@ import ExtraChillerCurrentInfo from "../ExtraChillerCurrentInfo/ExtraChillerCurr
 import ExtraChillerCircuits from "../ExtraChillerCircuits/ExtraChillerCircuits";
 import { getSubmitHandler } from "@/utils/switch/getSubmitHandler";
 import { DefaultValues, FieldValues } from "react-hook-form";
-import { Circuit, PowerConsumption, ValvesInfoBlock } from "@prisma/client";
+import { Circuit, PowerConsumption } from "@prisma/client";
 import SelectWithNumberInput from "../SelectWithNumberInput/SelectWithNumberInput";
 import ExtraChillerCollingCircuits from "../ExtraChillerCollingCircuits/ExtraChillerCollingCircuits";
 import { ChillerDTO } from "@/utils/types/chiller";
@@ -40,6 +40,8 @@ interface ChillerFormProps<T extends FieldValues> {
 export default function ChillerForm<T extends FieldValues>({
   formType,
   defaultValues,
+  extraChillerCircuitsDataEdit,
+  extraChillerPowerDataEdit,
 }: ChillerFormProps<T>) {
   const onSubmitForm = getSubmitHandler(formType);
   return (
@@ -258,11 +260,15 @@ export default function ChillerForm<T extends FieldValues>({
       </FormFieldset>
 
       <FormFieldset title="Dane poboru prądu">
-        <ExtraChillerCurrentInfo />
+        <ExtraChillerCurrentInfo
+          extraChillerPowerDataEdit={extraChillerPowerDataEdit}
+        />
       </FormFieldset>
 
       <FormFieldset title="Parametry obiegów">
-        <ExtraChillerCircuits />
+        <ExtraChillerCircuits
+          extraChillerCircuitsDataEdit={extraChillerCircuitsDataEdit}
+        />
       </FormFieldset>
 
       <InputGroup title="Uwagi (opcjonalnie)">

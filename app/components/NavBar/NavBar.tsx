@@ -23,10 +23,7 @@ export default function NavBar() {
             {link.text}
           </Link>
         ))}
-        <li
-          className="min-[1980px]:hidden"
-          onClick={() => setIsMobileActive(true)}
-        >
+        <li className="md:hidden" onClick={() => setIsMobileActive(true)}>
           <MoreIcon className="h-11 w-11" />
         </li>
       </ul>

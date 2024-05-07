@@ -1,25 +1,35 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InputGroup from "../InputGroup/InputGroup";
 import SelectInput from "../SelectInput/SelectInput";
-import {
-  chillerDeviceOptions,
-  chillerValidOptions,
-} from "@/data/selectOptions";
+import { chillerDeviceOptions } from "@/data/selectOptions";
 import PlusIcon from "@/assets/icons/PlusIcon";
 import MinusIcon from "@/assets/icons/MinusIcon";
 import InputRow from "../InputRow/InputRow";
 import NumberInput from "../NumberInput/NumberInput";
 import SelectWithNumberInput from "../SelectWithNumberInput/SelectWithNumberInput";
+import { PowerConsumption } from "@prisma/client";
 
-export default function ExtraChillerCurrentInfo() {
-  const [count, setCount] = useState(1);
+interface ExtraChillerCurrentInfoProps {
+  extraChillerPowerDataEdit?: PowerConsumption[];
+}
+
+export default function ExtraChillerCurrentInfo({
+  extraChillerPowerDataEdit,
+}: ExtraChillerCurrentInfoProps) {
+  const [count, setCount] = useState(
+    extraChillerPowerDataEdit ? extraChillerPowerDataEdit.length : 1,
+  );
+
+  // useEffect(() => {
+  //   if (extraChillerPowerDataEdit) {
+  //     setCount(extraChillerPowerDataEdit.length);
+  //   }
+  // }, [extraChillerPowerDataEdit]);
 
   const handleOnMinus = () => {
-    if (count > 1) {
-      setCount(count - 1);
-    }
+    setCount(count - 1);
   };
 
   const handleOnPlus = () => {

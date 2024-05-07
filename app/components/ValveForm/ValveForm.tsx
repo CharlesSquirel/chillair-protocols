@@ -29,7 +29,6 @@ export default function ValveForm<T extends FieldValues>({
   extraValvesDataEdit,
 }: ValveFormProps<T>) {
   const onSubmitForm = getSubmitHandler(formType);
-
   return (
     <FormContainer
       title="Protokół badania zaworów bezpieczeństwa"
