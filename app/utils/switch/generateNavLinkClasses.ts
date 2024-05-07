@@ -1,8 +1,8 @@
 export const generateLinkClasses = (index: number): string => {
-  const afterClasses =
-    index !== 8
-      ? "after:absolute after:right-[-20px] after:top-[50%] after:h-[33px] after:w-[1px] after:translate-y-[-50%] after:bg-grayPrint after:content-['']"
-      : "";
+  // const afterClasses =
+  //   index !== 8
+  //     ? "after:absolute after:right-[-20px] after:top-[50%] after:h-[33px] after:w-[1px] after:translate-y-[-50%] after:bg-grayPrint after:content-['']"
+  //     : "";
   const basicClasses = "relative hover:text-primary";
   let responsiveClasses = "";
   switch (index) {
@@ -38,5 +38,5 @@ export const generateLinkClasses = (index: number): string => {
     default:
       return "";
   }
-  return `${basicClasses} ${afterClasses} ${responsiveClasses}`;
+  return `${basicClasses} ${responsiveClasses}`;
 };

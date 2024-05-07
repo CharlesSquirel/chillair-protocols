@@ -6,8 +6,8 @@ import ProtocolEditButton from "@/components/ProtocolEditButton/ProtocolEditButt
 import ProtocolField from "@/components/ProtocolField/ProtocolField";
 import ProtocolFieldContainer from "@/components/ProtocolFieldContainer/ProtocolFieldContainer";
 import ProtocolHeader from "@/components/ProtocolHeader/ProtocolHeader";
-import ProtocolTable from "@/components/ProtocolTable/ProtocolTable";
 import ProtocolUserSign from "@/components/ProtocolUserSign/ProtocolUserSign";
+import ProtocolValveBoard from "@/components/ProtocolValveBoard/ProtocolValveBoard";
 import getValve from "@/utils/actions/getValve";
 import { formatDateToString } from "@/utils/helpers/formatDateToString";
 import { inter } from "lib/font";
@@ -91,35 +91,10 @@ export default async function ValveProtocol({
         <ProtocolField title="Numer seryjny" value={valve.serialNumber} />
       </ProtocolFieldContainer>
 
-      <ProtocolTable
-        title="Zawory"
-        headers={valveHeaders}
-        renderRows={() =>
-          valveBlocks.map((block, index) => (
-            <React.Fragment key={index}>
-              <tr>
-                <td className="font-medium">{index + 1 + "."}</td>
-                <td>{block.valveLocation}</td>
-                <td>{block.valveType}</td>
-                <td>{block.valveSerialNumber}</td>
-                <td>{block.pressureSetting}</td>
-                <td>{block.pressureOpen}</td>
-                <td>{block.pressureClose}</td>
-              </tr>
-              <tr
-                className={
-                  index < valveBlocks.length - 1
-                    ? `border-b-[1px] border-b-black`
-                    : ""
-                }
-              >
-                <td>{`Uwagi: ${block.description} `}</td>
-              </tr>
-            </React.Fragment>
-          ))
-        }
-      />
+      <ProtocolValveBoard data={valveBlocks} />
+
       <ProtocolUserSign text="podpis technika" />
+
       <ProtocolDownloadButton />
     </article>
   );

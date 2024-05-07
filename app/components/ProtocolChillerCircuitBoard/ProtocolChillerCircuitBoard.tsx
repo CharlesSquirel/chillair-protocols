@@ -1,4 +1,6 @@
 import { Circuit } from "@prisma/client";
+import ProtocolBoardContainer from "../ProtocolBoardContainer/ProtocolBoardContainer";
+import ProtocolBoardInfoContainer from "../ProtocolBoardInfoContainer/ProtocolBoardInfoContainer";
 
 interface CircuitBoardProps {
   data: Circuit[];
@@ -8,15 +10,14 @@ export default function ProtocolChillerCircuitBoard({
   data,
 }: CircuitBoardProps) {
   return (
-    <section className="flex w-full flex-col gap-4 rounded-md border bg-grayTable px-6 py-4">
-      <h3 className="text-[20px] font-semibold">Parametry obiegów</h3>
+    <ProtocolBoardContainer title="Parametry obiegów">
       {data.map((circuit, index) => (
         <div
           className={`flex w-full flex-col gap-3 border-grayPrint ${index < data.length - 1 && "border-b pb-4"}  ${index === 0 && "border-t-2 pt-4"}`}
           key={index}
         >
           <p className="text-[18px] font-semibold">{`Obieg ${index + 1}`}</p>
-          <div className="flex w-full flex-col justify-between gap-2 md:flex-row md:gap-0 print:flex-row print:gap-0">
+          <ProtocolBoardInfoContainer>
             <ul>
               <span className="font-semibold">Parametry tłoczenia</span>
               <li>
@@ -70,9 +71,9 @@ export default function ProtocolChillerCircuitBoard({
                 <span className="font-semibold">{` ${circuit.outTemperature} °C`}</span>
               </li>
             </ul>
-          </div>
+          </ProtocolBoardInfoContainer>
         </div>
       ))}
-    </section>
+    </ProtocolBoardContainer>
   );
 }

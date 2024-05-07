@@ -13,7 +13,7 @@ export default function NavBar() {
   const pathname = usePathname();
   return (
     <nav className="relative px-2 md:px-8 lg:pl-[225px]">
-      <ul className="flex items-center justify-start gap-7 text-[22px] text-secondary md:justify-between lg:px-0 lg:text-2xl">
+      <ul className="flex items-center justify-start gap-7 text-[22px] text-secondary lg:px-0 lg:text-2xl">
         {navLinks.map((link, index) => (
           <Link
             href={link.href}
