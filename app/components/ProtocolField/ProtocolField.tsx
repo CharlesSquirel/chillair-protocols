@@ -15,8 +15,8 @@ export default function ProtocolField({
 }: ProtocolFieldProp) {
   return (
     <div className="flex flex-col ">
-      <p className="text-[18px] text-grayPrint print:text-[17px]">{title}</p>
-      <p className="text-[22px] font-semibold print:text-[21px]">
+      <p className="text-[18px] text-grayPrint print:text-[14px]">{title}</p>
+      <p className="text-[22px] font-semibold print:text-[17px]">
         {`${value} ${unit ? unit : ""}${secondaryValue ? ", " + secondaryValue : ""} ${secondaryTitle ? secondaryTitle : ""}`}
       </p>
     </div>

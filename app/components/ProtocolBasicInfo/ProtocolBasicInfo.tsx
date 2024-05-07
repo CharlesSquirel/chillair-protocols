@@ -13,11 +13,11 @@ export default function ProtocolBasicInfo({
 }: ProtocolBasicInfoProp) {
   return (
     <div className="flex flex-col gap-2 leading-none">
-      <p className="text-[23px]">
+      <p className="text-[17px]">
         {userFirstName} {userLastName}
       </p>
-      <p className="text-[23px]">{userSignature}</p>
-      <p className="text-[23px] font-semibold">{createdAt}</p>
+      <p className="text-[17px]">{userSignature}</p>
+      <p className="text-[17px] font-semibold">{createdAt}</p>
     </div>
   );
 }

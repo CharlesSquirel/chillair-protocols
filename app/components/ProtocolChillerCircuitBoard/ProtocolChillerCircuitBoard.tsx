@@ -2,6 +2,8 @@ import { Circuit } from "@prisma/client";
 import ProtocolBoardContainer from "../ProtocolBoardContainer/ProtocolBoardContainer";
 import ProtocolBoardInfoContainer from "../ProtocolBoardInfoContainer/ProtocolBoardInfoContainer";
 
+import ProtocolBoardField from "../ProtocolBoardField/ProtocolBoardField";
+
 interface CircuitBoardProps {
   data: Circuit[];
 }
@@ -13,63 +15,74 @@ export default function ProtocolChillerCircuitBoard({
     <ProtocolBoardContainer title="Parametry obiegów">
       {data.map((circuit, index) => (
         <div
-          className={`flex w-full flex-col gap-3 border-grayPrint ${index < data.length - 1 && "border-b pb-4"}  ${index === 0 && "border-t-2 pt-4"}`}
+          className={`flex w-full flex-col gap-3 border-grayPrint print:text-[13px] ${index < data.length - 1 && "border-b pb-4"}  ${index === 0 && "border-t-2 pt-4"}`}
           key={index}
         >
-          <p className="text-[18px] font-semibold">{`Obieg ${index + 1}`}</p>
+          <p className="text-[18px] font-semibold print:text-[15px]">{`Obieg ${index + 1}`}</p>
           <ProtocolBoardInfoContainer>
-            <ul>
+            <ul className="print:text-[13px]">
               <span className="font-semibold">Parametry tłoczenia</span>
-              <li>
-                Ciśnienie tłoczenia –
-                <span className="font-semibold">{` ${circuit.dischargePressure} bar`}</span>
-              </li>
-              <li>
-                Temperatura skraplania –
-                <span className="font-semibold">{` ${circuit.condensationTemperature} °C`}</span>
-              </li>
-              <li>
-                Dochłodzenie –
-                <span className="font-semibold">{` ${circuit.subcooling} °C`}</span>
-              </li>
-              <li>
-                Temperatura wylotowa powietrza –
-                <span className="font-semibold">{` ${circuit.airTemperature} °C`}</span>
-              </li>
+              <ProtocolBoardField
+                label="Ciśnienie tłoczenia"
+                value={circuit.dischargePressure}
+                unit="bar"
+              />
+              <ProtocolBoardField
+                label="Temperatura skraplania"
+                value={circuit.condensationTemperature}
+                unit="°C"
+              />
+              <ProtocolBoardField
+                label="Dochłodzenie"
+                value={circuit.subcooling}
+                unit="°C"
+              />
+              <ProtocolBoardField
+                label="Temperatura wylotowa powietrza"
+                value={circuit.airTemperature}
+                unit="°C"
+              />
             </ul>
             <ul>
               <span className="font-semibold">Parametry ssania</span>
-              <li>
-                Ciśnienie ssania –
-                <span className="font-semibold">{` ${circuit.suctionPressure} bar`}</span>
-              </li>
-              <li>
-                Temperatura ssania –
-                <span className="font-semibold">{` ${circuit.suctionTemperature} °C`}</span>
-              </li>
-              <li>
-                Przegrzanie –
-                <span className="font-semibold">{` ${circuit.overHeat} °C`}</span>
-              </li>
+              <ProtocolBoardField
+                label="Ciśnienie ssania"
+                value={circuit.suctionPressure}
+                unit="bar"
+              />
+              <ProtocolBoardField
+                label="Temperatura ssania"
+                value={circuit.suctionTemperature}
+                unit="°C"
+              />
+              <ProtocolBoardField
+                label="Przegrzanie"
+                value={circuit.overHeat}
+                unit="°C"
+              />
             </ul>
             <ul>
               <span className="font-semibold">Parametry parownika</span>
-              <li>
-                Ciśnienie wody wejścia –
-                <span className="font-semibold">{` ${circuit.inWaterPressure} bar`}</span>
-              </li>
-              <li>
-                Ciśnienie wody wyjścia –
-                <span className="font-semibold">{` ${circuit.outWaterPressure} bar`}</span>
-              </li>
-              <li>
-                Temperatura wejściowa –
-                <span className="font-semibold">{` ${circuit.inTemperature} °C`}</span>
-              </li>
-              <li>
-                Temperatura wyjściowa –
-                <span className="font-semibold">{` ${circuit.outTemperature} °C`}</span>
-              </li>
+              <ProtocolBoardField
+                label="Ciśnienie wody wejścia"
+                value={circuit.inWaterPressure}
+                unit="bar"
+              />
+              <ProtocolBoardField
+                label="Ciśnienie wody wyjścia"
+                value={circuit.outWaterPressure}
+                unit="bar"
+              />
+              <ProtocolBoardField
+                label="Temperatura wejściowa"
+                value={circuit.inTemperature}
+                unit="°C"
+              />
+              <ProtocolBoardField
+                label="Temperatura wyjściowa"
+                value={circuit.outTemperature}
+                unit="°C"
+              />
             </ul>
           </ProtocolBoardInfoContainer>
         </div>

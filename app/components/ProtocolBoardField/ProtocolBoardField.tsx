@@ -14,7 +14,7 @@ export default function ProtocolBoardField({
   secondaryValue,
 }: ProtocolBoardFieldProps) {
   return (
-    <li>
+    <li className="print:text-[13px]">
       {`${label} – `}{" "}
       <span className="font-semibold">{`${value} ${unit ? unit : ""}`}</span>
       <span className="font-semibold">

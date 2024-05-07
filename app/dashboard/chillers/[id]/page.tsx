@@ -11,6 +11,7 @@ import ProtocolField from "@/components/ProtocolField/ProtocolField";
 import ProtocolFieldContainer from "@/components/ProtocolFieldContainer/ProtocolFieldContainer";
 import ProtocolHeader from "@/components/ProtocolHeader/ProtocolHeader";
 import ProtocolUserSign from "@/components/ProtocolUserSign/ProtocolUserSign";
+import { PROTOCOL_INFO } from "@/data/chillairInfo";
 import getChiller from "@/utils/actions/getChiller";
 import { formatDateToString } from "@/utils/helpers/formatDateToString";
 import { inter } from "lib/font";
@@ -32,7 +33,7 @@ export default async function ChillerProtocol({
   }
   return (
     <article
-      className={`${inter.className} absolute top-0 z-20 flex h-screen w-full flex-col gap-[30px] bg-white px-[27px] py-[25px]`}
+      className={`${inter.className} absolute top-0 z-20 flex h-screen w-full flex-col gap-[25px] bg-white px-[27px] py-[25px] print:gap-[15px] print:py-[10px]`}
     >
       <div className="absolute right-[27px] top-[35px] hidden gap-3 md:flex print:hidden">
         <ProtocolDeleteButton id={id} />
@@ -45,20 +46,26 @@ export default async function ChillerProtocol({
         id={id}
       />
 
-      <ProtocolBasicInfo
-        userFirstName={chiller.firstName}
-        userLastName={chiller.lastName}
-        userSignature={chiller.userSignature}
-        createdAt={formatDateToString(chiller.createdAt)}
-      />
+      <p className="hidden text-center text-[8px] print:block ">
+        {PROTOCOL_INFO}
+      </p>
 
-      <ProtocolFieldContainer>
+      <div className="flex justify-between ">
+        <ProtocolBasicInfo
+          userFirstName={chiller.firstName}
+          userLastName={chiller.lastName}
+          userSignature={chiller.userSignature}
+          createdAt={formatDateToString(chiller.createdAt)}
+        />
         <ProtocolField title="Obiekt" value={chiller.firma} />
+      </div>
+
+      <div className="flex gap-6 lg:justify-between print:justify-between">
         <ProtocolField title="Typ urządzenia" value={chiller.type} />
         <ProtocolField title="Numer seryjny" value={chiller.serialNumber} />
-      </ProtocolFieldContainer>
+      </div>
 
-      <ProtocolBoardStaticContainer title="Inne">
+      <ProtocolBoardStaticContainer title="Dane podstawowe">
         <ul className="flex w-full flex-col gap-2">
           <ProtocolBoardField
             label="Typ sterownika"
@@ -102,11 +109,11 @@ export default async function ChillerProtocol({
             secondaryLabel="faz"
             unit="V"
           />
-        </ul>
-      </ProtocolBoardStaticContainer>
-
-      <ProtocolBoardStaticContainer title="Wyłączniki ciśnień">
-        <ul className="flex w-full flex-col lg:flex-row lg:gap-5 print:flex-col">
+          <ProtocolBoardField label="Freon" value={chiller.freonType} />
+          <ProtocolBoardField
+            label="Ilość czynnika"
+            value={chiller.freonAmount}
+          />
           <ProtocolBoardField
             label="Wyłącznik wysokiego ciśnienia"
             value={chiller.highPressure}
@@ -119,15 +126,20 @@ export default async function ChillerProtocol({
             label="Termostat przeciwzamrożeniowy"
             value={chiller.antiFrezzeTermostat}
           />
-        </ul>
-      </ProtocolBoardStaticContainer>
-
-      <ProtocolBoardStaticContainer title="Rodzaj freonu">
-        <ul className="flex w-full flex-col lg:flex-row lg:gap-5 print:flex-col">
-          <ProtocolBoardField label="Freon" value={chiller.freonType} />
           <ProtocolBoardField
-            label="Ilość czynnika"
-            value={chiller.freonAmount}
+            label="Zmieżone napięcie L1-L2"
+            value={chiller.measuredVoltage_1}
+            unit="A"
+          />
+          <ProtocolBoardField
+            label="Zmieżone napięcie L1-L3"
+            value={chiller.measuredVoltage_2}
+            unit="A"
+          />
+          <ProtocolBoardField
+            label="Zmieżone napięcie L2-L3"
+            value={chiller.measuredVoltage_3}
+            unit="A"
           />
         </ul>
       </ProtocolBoardStaticContainer>
@@ -169,28 +181,8 @@ export default async function ChillerProtocol({
         </ul>
       </ProtocolBoardStaticContainer>
 
-      <ProtocolBoardStaticContainer title="Zmieżone napięcie">
-        <ul className="flex w-full flex-col lg:flex-row lg:gap-5 print:flex-col">
-          <ProtocolBoardField
-            label="L1-L2"
-            value={chiller.measuredVoltage_1}
-            unit="V"
-          />
-          <ProtocolBoardField
-            label="L1-L3"
-            value={chiller.measuredVoltage_2}
-            unit="V"
-          />
-          <ProtocolBoardField
-            label="L2-L3"
-            value={chiller.measuredVoltage_3}
-            unit="V"
-          />
-        </ul>
-      </ProtocolBoardStaticContainer>
-
       <ProtocolBoardStaticContainer title="Kontrola szczelności">
-        <ul className="flex w-full flex-col lg:flex-row lg:gap-5 print:flex-col">
+        <ul className="flex w-full flex-col 2xl:flex-row 2xl:gap-5 print:flex-col">
           <ProtocolBoardField
             label="Metoda kontroli szczelności"
             value={
@@ -204,11 +196,6 @@ export default async function ChillerProtocol({
             label="Próba szczelności za pomocą gazu obojętnego"
             value={chiller.leakGasTest}
           />
-        </ul>
-      </ProtocolBoardStaticContainer>
-
-      <ProtocolBoardStaticContainer title="Dane gazu">
-        <ul className="flex w-full flex-col md:flex-row md:gap-5">
           <ProtocolBoardField
             label="Dodano gazu"
             value={chiller.gasAdded}
