@@ -8,10 +8,19 @@ import logo from "@/assets/images/chillair_logo.png";
 import { logIn } from "@/utils/actions/logIn";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { UserLoginDTO } from "@/utils/types/user";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
+  const router = useRouter();
   const methods = useForm<UserLoginDTO>();
-  const onSubmit: SubmitHandler<UserLoginDTO> = (data) => logIn(data);
+  const onSubmit: SubmitHandler<UserLoginDTO> = async (data) => {
+    try {
+      await logIn(data);
+      router.push("/dashboard");
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <FormProvider {...methods}>

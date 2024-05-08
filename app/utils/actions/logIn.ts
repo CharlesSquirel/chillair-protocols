@@ -1,4 +1,4 @@
-import { signIn } from "next-auth/react";
+import { signIn } from "auth";
 import { UserLoginDTO } from "../types/user";
 
 export const logIn = async (data: UserLoginDTO) => {

@@ -1,6 +1,13 @@
 import LogoutButton from "./LogoutButton/LogoutButton";
+import { auth } from "auth";
 
-export default function UserInfo() {
+export default async function UserInfo() {
+  const session = await auth();
+  if (!session?.user) {
+    console.log("nie ma usera");
+  } else {
+    console.log(session.user);
+  }
   return (
     <div className="flex gap-6">
       <div className="flex flex-col text-secondary">
