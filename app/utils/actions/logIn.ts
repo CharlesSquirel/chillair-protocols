@@ -13,7 +13,6 @@ export const logIn = async (data: UserLoginDTO) => {
       password,
       redirect: false,
     });
-    console.log(response?.error);
 
     if (!response?.ok) {
       throw new Error("Logowanie nie powiodło się");

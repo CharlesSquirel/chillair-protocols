@@ -1,10 +1,10 @@
-import { NextAuthConfig } from "next-auth";
+import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 import { prisma } from "lib/db";
 import NextAuth from "next-auth";
 
-const authOptions: NextAuthConfig = {
+const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
   },
