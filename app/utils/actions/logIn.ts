@@ -3,8 +3,6 @@ import { UserLoginDTO } from "../types/user";
 
 export const logIn = async (data: UserLoginDTO) => {
   try {
-    signIn();
-    return;
     const userData = {
       email: data.email,
       password: data.password,

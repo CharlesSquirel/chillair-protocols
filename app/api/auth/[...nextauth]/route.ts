@@ -2,6 +2,7 @@ import { NextAuthConfig } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 import { prisma } from "lib/db";
+import NextAuth from "next-auth";
 
 const authOptions: NextAuthConfig = {
   session: {
@@ -72,4 +73,5 @@ const authOptions: NextAuthConfig = {
   ],
 };
 
-export default authOptions;
+const handler = NextAuth(authOptions);
+export { handler as GET, handler as POST };
