@@ -11,6 +11,7 @@ import SubmitFormButton from "@/components/SubmitFormButton/SubmitFormButton";
 import TextInput from "@/components/TextInput/TextInput";
 import TextareaInput from "@/components/TextareaInput/TextareaInput";
 import { createHumidifier } from "@/utils/actions/createHumidifier";
+import { FormType } from "@/utils/types/form";
 import { HumidifierValidationSchema } from "@/utils/zod/humidifierValidation";
 
 export default function HumidifiersAdd() {
@@ -20,6 +21,7 @@ export default function HumidifiersAdd() {
       onSubmitForm={createHumidifier}
       validationSchema={HumidifierValidationSchema}
       closeUrl="/dashboard/humidifiers"
+      formType={FormType.HUMIDIFIERS_ADD}
     >
       <FormFieldset title="Informacje podstawowe">
         <InputGroup>

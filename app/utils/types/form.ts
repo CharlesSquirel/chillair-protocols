@@ -7,6 +7,8 @@ export enum FormType {
   USER_EDIT = "userEdit",
   CHILLER_ADD = "chillerAdd",
   CHILLER_EDIT = "chillerEdit",
+  HUMIDIFIERS_ADD = "humidifierAdd",
+  HUMIDIFIER_EDIT = "humidifierEdit",
 }
 
 export type SubmitEditFunction<T> = (data: T, id?: string) => void;
