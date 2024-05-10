@@ -3,4 +3,5 @@ export enum TableNames {
   VALVES = "valves",
   FIRMA = "firma",
   USERS = "users",
+  CHILLERS = "chillers",
 }

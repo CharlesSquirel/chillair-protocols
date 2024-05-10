@@ -7,5 +7,10 @@
 ☐ podstawowe metadane
 ☐ walidacja valveSerialNumber unikalnych
 ☐ RWD pod mobilke z mniejszym width
-☐ All protokoły wyświetlanie
-☐ tosty
+✔ All protokoły wyświetlanie @done (2.05.2024, 11:12:22)
+✔ tosty @done (2.05.2024, 11:12:20)
+☐ cachować
+☐ number walidacja do dwóch miejsc nie przepuszcza
+☐ jeśli prisma chiller create rzuci błędem to toast success
+☐ nie rewaliduje chillers po utworzeniu formularza
+☐ nie daje defaultValues w edicie chillers

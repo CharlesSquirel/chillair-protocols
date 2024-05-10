@@ -42,18 +42,19 @@ export default function FormContainer<T extends FieldValues>({
     resolver: zodResolver(validationSchema),
     defaultValues: defaultValues,
   });
+
   const handleCloseForm = (): void => {
-    router.push(`/dashboard/valves`);
+    router.back();
     methods.reset();
   };
   const onSubmit: SubmitHandler<T> = async (data) => {
     try {
       const toastFormType = await findToastFormType(formType);
       if (id) {
-        onSubmitForm(data, id);
+        await onSubmitForm(data, id);
         sendToast("success", toastFormType, "edit");
       } else {
-        onSubmitForm(data, undefined as any);
+        await onSubmitForm(data, undefined as any);
         sendToast("success", toastFormType, "add");
       }
       handleCloseForm();

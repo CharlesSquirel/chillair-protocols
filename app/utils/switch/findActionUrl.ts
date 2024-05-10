@@ -15,6 +15,9 @@ export const findActionUrl = (tableName: TableNames, id: string): string => {
     case TableNames.USERS:
       url += `/users/edit`;
       break;
+    case TableNames.CHILLERS:
+      url += `/chillers`;
+      break;
     default:
       break;
   }

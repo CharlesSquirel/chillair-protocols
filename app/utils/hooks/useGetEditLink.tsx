@@ -5,6 +5,8 @@ export const useGetEditLink = (): string => {
   switch (true) {
     case pathname.includes("valves"):
       return `/dashboard/valves/edit/`;
+    case pathname.includes("chillers"):
+      return `/dashboard/chillers/edit/`;
     default:
       throw new Error("Nie można odnaleźć ścieżki");
   }

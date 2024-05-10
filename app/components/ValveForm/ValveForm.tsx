@@ -22,14 +22,13 @@ interface ValveFormProps<T extends FieldValues> {
   extraValvesDataEdit?: ValvesInfoBlock[];
 }
 
-export default async function ValveForm<T extends FieldValues>({
+export default function ValveForm<T extends FieldValues>({
   defaultValues,
   formType,
   id,
   extraValvesDataEdit,
 }: ValveFormProps<T>) {
   const onSubmitForm = getSubmitHandler(formType);
-
   return (
     <FormContainer
       title="Protokół badania zaworów bezpieczeństwa"

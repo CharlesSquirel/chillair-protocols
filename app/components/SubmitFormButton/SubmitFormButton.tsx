@@ -1,14 +1,12 @@
 "use client";
 
 import { FormType } from "@/utils/types/form";
-import { useFormStatus } from "react-dom";
 
 interface SubmitButtonProps {
   formType?: FormType;
 }
 
 export default function SubmitFormButton({ formType }: SubmitButtonProps) {
-  const { pending } = useFormStatus();
   return (
     <button
       type="submit"
@@ -19,7 +17,6 @@ export default function SubmitFormButton({ formType }: SubmitButtonProps) {
         : formType?.toLowerCase().includes("add")
           ? "Utwórz i pobierz"
           : "Utwórz"}
-      {pending && <p>...</p>}
     </button>
   );
 }

@@ -4,12 +4,14 @@ import ProtocolDeleteButton from "@/components/ProtocolDeleteButton/ProtocolDele
 import ProtocolDownloadButton from "@/components/ProtocolDownloadButton/ProtocolDownloadButton";
 import ProtocolEditButton from "@/components/ProtocolEditButton/ProtocolEditButton";
 import ProtocolField from "@/components/ProtocolField/ProtocolField";
+import ProtocolFieldContainer from "@/components/ProtocolFieldContainer/ProtocolFieldContainer";
 import ProtocolHeader from "@/components/ProtocolHeader/ProtocolHeader";
-import ProtocolTable from "@/components/ProtocolTable/ProtocolTable";
 import ProtocolUserSign from "@/components/ProtocolUserSign/ProtocolUserSign";
+import ProtocolValveBoard from "@/components/ProtocolValveBoard/ProtocolValveBoard";
 import getValve from "@/utils/actions/getValve";
 import { formatDateToString } from "@/utils/helpers/formatDateToString";
 import { inter } from "lib/font";
+import React from "react";
 
 interface ValveProtocolProps {
   params: {
@@ -73,25 +75,26 @@ export default async function ValveProtocol({
         <ProtocolEditButton id={id} />
         <ProtocolBackButton />
       </div>
+
       <ProtocolHeader title="badania zaworów bezpieczeństwa" id={id} />
+
       <ProtocolBasicInfo
         userFirstName={valve.firstName}
         userLastName={valve.lastName}
         userSignature={valve.userSignature}
         createdAt={formatDateToString(valve.createdAt)}
       />
-      <div className="flex w-full flex-col justify-between gap-4 md:flex-row print:flex-row">
+
+      <ProtocolFieldContainer>
         <ProtocolField title="Obiekt" value={valve.firma} />
         <ProtocolField title="Typ urządzenia" value={valve.type} />
         <ProtocolField title="Numer seryjny" value={valve.serialNumber} />
-      </div>
+      </ProtocolFieldContainer>
 
-      <ProtocolTable
-        title="Zawory"
-        headers={valveHeaders}
-        infoBlock={valveBlocks}
-      />
+      <ProtocolValveBoard data={valveBlocks} />
+
       <ProtocolUserSign text="podpis technika" />
+
       <ProtocolDownloadButton />
     </article>
   );

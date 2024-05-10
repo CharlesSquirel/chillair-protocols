@@ -17,7 +17,7 @@ export default function MobileNavbar({ onClick }: MobileNavbarProps) {
   return (
     <div
       ref={containerRef}
-      className="absolute right-[55px] top-0 z-30 flex min-w-[330px] flex-col gap-6 rounded-md bg-white p-7 shadow-lg lg:right-[76px]"
+      className="absolute top-0 z-30 flex min-w-[330px] flex-col gap-6 rounded-md bg-white p-7 shadow-lg lg:right-[76px]"
     >
       <ul className="flex flex-col gap-[15px] text-[22px]">
         {navLinks.map((link, index) => (

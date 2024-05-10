@@ -9,35 +9,35 @@ export const navLinks: NavLinks[] = [
     text: "Wszystkie",
   },
   {
-    href: "/dashboard/valves",
-    text: "Zawory bezpieczeństwa",
-  },
-  {
-    href: "/dashboard/awaria",
-    text: "Awaria urządzenia",
-  },
-  {
-    href: "/dashboard/agregaty",
+    href: "/dashboard/chillers",
     text: "Agregaty",
   },
   {
-    href: "/dashboard/centrale",
-    text: "Centrale wentylacyjne",
+    href: "/dashboard/valves",
+    text: "Zawory bezpieczeństwa",
   },
-  {
-    href: "/dashboard/klima",
-    text: "Klimatyzatory",
-  },
-  {
-    href: "/dashboard/humidifiers",
-    text: "Nawilżacze",
-  },
-  {
-    href: "/dashboard/szafy",
-    text: "Szafy",
-  },
-  {
-    href: "/dashboard/szcz",
-    text: "Szczelność",
-  },
+  // {
+  //   href: "/dashboard/awaria",
+  //   text: "Awaria urządzenia",
+  // },
+  // {
+  //   href: "/dashboard/centrale",
+  //   text: "Centrale wentylacyjne",
+  // },
+  // {
+  //   href: "/dashboard/klima",
+  //   text: "Klimatyzatory",
+  // },
+  // {
+  //   href: "/dashboard/humidifiers",
+  //   text: "Nawilżacze",
+  // },
+  // {
+  //   href: "/dashboard/szafy",
+  //   text: "Szafy",
+  // },
+  // {
+  //   href: "/dashboard/szcz",
+  //   text: "Szczelność",
+  // },
 ];
