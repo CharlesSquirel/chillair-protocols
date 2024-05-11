@@ -1,7 +1,6 @@
 ✔ RWD dashboard, protocol @done (24.04.2024, 15:37:03)
 ☐ gdzie można to usunąć use client
-☐ opcja z wieloma stronami pdfa
-☐ next-auth
+✔ opcja z wieloma stronami pdfa @done (11.05.2024, 23:49:10)
 ☐ nodemailer
 ☐ lepsze loga svg
 ☐ podstawowe metadane
@@ -14,3 +13,5 @@
 ☐ jeśli prisma chiller create rzuci błędem to toast success
 ☐ nie rewaliduje chillers po utworzeniu formularza
 ☐ nie daje defaultValues w edicie chillers
+☐ w jednym miejscu messages do toastów
+☐ porządek w components

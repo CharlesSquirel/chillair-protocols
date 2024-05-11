@@ -1,11 +1,9 @@
-"use client";
-import { useUser } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server";
 import LogoutButton from "./LogoutButton/LogoutButton";
-import { SignOutButton } from "@clerk/nextjs";
 
-export default function UserInfo() {
-  const { user } = useUser();
-  console.log(user);
+export default async function UserInfo() {
+  const user = await currentUser();
+
   return (
     <div className="flex gap-6">
       <div className="flex flex-col text-secondary">
@@ -14,7 +12,6 @@ export default function UserInfo() {
           {user?.firstName} {user?.lastName}
         </p>
       </div>
-
       <LogoutButton />
     </div>
   );

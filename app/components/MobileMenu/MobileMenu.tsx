@@ -1,22 +1,24 @@
-import CloseIcon from "@/assets/icons/CloseIcon";
+"use client";
+
 import HomeIcon from "@/assets/icons/HomeIcon";
 import LocalIcon from "@/assets/icons/LocalIcon";
-import LogoutIcon from "@/assets/icons/LogoutIcon";
 import UserIcon from "@/assets/icons/UserIcon";
 import Link from "next/link";
-import { SetStateAction } from "react";
 import MobileMenuContainer from "../MobileMenuContainer/MobileMenuContainer";
+import { useMobileContext } from "../MobileMenuContext/MobileMenuContext";
+import LogoutMobileButton from "../LogoutMobileButton/LogoutMobileButton";
 
-interface MobileMenuProps {
-  onClick: React.Dispatch<SetStateAction<boolean>>;
-}
+export default function MobileMenu() {
+  const { isMobileActive, handleMobileClose } = useMobileContext();
 
-export default function MobileMenu({ onClick }: MobileMenuProps) {
+  if (!isMobileActive) {
+    return null;
+  }
   return (
-    <MobileMenuContainer onClick={() => onClick(false)}>
+    <MobileMenuContainer onClick={handleMobileClose}>
       <li
         className="flex cursor-pointer items-center gap-3 pt-[1px] text-2xl text-secondary hover:text-primary"
-        onClick={() => onClick(false)}
+        onClick={() => handleMobileClose}
       >
         <HomeIcon className="h-8 w-8" />
         <p className="pt-[2px]">Home</p>
@@ -24,21 +26,19 @@ export default function MobileMenu({ onClick }: MobileMenuProps) {
       <Link
         href="/dashboard/firma/add"
         className="flex cursor-pointer items-center gap-3 text-2xl text-secondary hover:text-primary"
-        onClick={() => onClick(false)}
+        onClick={() => handleMobileClose}
       >
         <LocalIcon className="h-8 w-8" />
         <p className="pt-[2px]">Obiekty</p>
       </Link>
       <li
         className="flex cursor-pointer items-center gap-3 border-b pb-3 text-2xl text-secondary hover:text-primary"
-        onClick={() => onClick(false)}
+        onClick={() => handleMobileClose}
       >
         <UserIcon className="h-8 w-8" />
         <p className="pt-[2px]">Użytkownicy</p>
       </li>
-      <button className="flex cursor-pointer items-center gap-3 text-2xl text-secondary  hover:text-primary">
-        <LogoutIcon className="h-9 w-9" /> Wyloguj
-      </button>
+      <LogoutMobileButton />
     </MobileMenuContainer>
   );
 }
