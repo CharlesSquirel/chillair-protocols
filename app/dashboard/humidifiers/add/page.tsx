@@ -21,7 +21,7 @@ export default function HumidifiersAdd() {
       onSubmitForm={createHumidifier}
       validationSchema={HumidifierValidationSchema}
       closeUrl="/dashboard/humidifiers"
-      formType={FormType.HUMIDIFIERS_ADD}
+      formType={FormType.HUMIDIFIER_ADD}
     >
       <FormFieldset title="Informacje podstawowe">
         <InputGroup>

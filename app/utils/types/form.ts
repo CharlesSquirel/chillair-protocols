@@ -7,7 +7,7 @@ export enum FormType {
   USER_EDIT = "userEdit",
   CHILLER_ADD = "chillerAdd",
   CHILLER_EDIT = "chillerEdit",
-  HUMIDIFIERS_ADD = "humidifierAdd",
+  HUMIDIFIER_ADD = "humidifierAdd",
   HUMIDIFIER_EDIT = "humidifierEdit",
 }
 
