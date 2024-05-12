@@ -14,5 +14,6 @@
 ☐ nie rewaliduje chillers po utworzeniu formularza
 ☐ nie daje defaultValues w edicie chillers
 ☐ w jednym miejscu messages do toastów
-☐ porządek w components
+☐ porządek w components: Forms
 ☐ tost w logout w hamburgerze
+☐ podmienić interfejsy FormProps

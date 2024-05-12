@@ -1,16 +1,19 @@
 "use server";
 
 import { prisma } from "lib/db";
-import { CreateValveCredentials } from "../types/valves";
 import { revalidatePath } from "next/cache";
+import { CreateValveCredentials } from "../types/valves";
+import { getUserInfo } from "./getUserInfo";
 
 export async function createValve(data: CreateValveCredentials) {
+  const { userFirstName, userLastName, userInfoSignature, userMongoId } =
+    await getUserInfo();
+
   const valvesData: CreateValveCredentials = {
-    userSignature: "asdasd",
-    email: "jan@kowalski.pl",
-    userId: "234234",
-    firstName: "Jan",
-    lastName: "Kowalski",
+    userSignature: userInfoSignature,
+    userId: userMongoId,
+    firstName: userFirstName,
+    lastName: userLastName,
     firma: data.firma,
     type: data.type,
     serialNumber: data.serialNumber,
@@ -22,7 +25,6 @@ export async function createValve(data: CreateValveCredentials) {
 
   const {
     userSignature,
-    email,
     userId,
     firma,
     type,
@@ -43,7 +45,6 @@ export async function createValve(data: CreateValveCredentials) {
         firstName,
         lastName,
         userSignature,
-        email,
         userId,
         firma,
         type,

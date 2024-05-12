@@ -3,7 +3,7 @@ import NavBar from "@/components/NavBar/NavBar";
 import SideMenu from "@/components/SideMenu/SideMenu";
 import { auth } from "@clerk/nextjs/server";
 
-export default function Layout({
+export default async function Layout({
   children,
 }: Readonly<{
   children: React.ReactNode;
