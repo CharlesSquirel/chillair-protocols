@@ -1,5 +1,6 @@
 "use server";
 import { prisma } from "lib/db";
+import { revalidatePath } from "next/cache";
 import { UserDTO } from "../types/user";
 
 export async function createUser(data: UserDTO) {
@@ -28,6 +29,7 @@ export async function createUser(data: UserDTO) {
       },
     });
     console.log(`User created: ${user}`);
+    revalidatePath("/dashboard/users");
     return user;
   } catch (error) {
     console.error(`Error in createUser, ${error}`);

@@ -8,16 +8,28 @@ import SubmitFormButton from "@/components/SubmitFormButton/SubmitFormButton";
 import TextInput from "@/components/TextInput/TextInput";
 import { createUser } from "@/utils/actions/createUser";
 import { FormProps } from "@/utils/types/form";
+import { UserDTO } from "@/utils/types/user";
 import { UserValidationSchema } from "@/utils/zod/userValidationSchema";
 
-export default function UserForm({ formType }: FormProps) {
+interface UserFormProps extends FormProps {
+  defaultValues?: UserDTO;
+  id?: string;
+}
+
+export default function UserForm({
+  formType,
+  defaultValues,
+  id,
+}: UserFormProps) {
   return (
     <FormContainer
       title="Dodaj nowego użytkownika"
-      closeUrl="/dashboard"
+      closeUrl="/dashboard/users"
       onSubmitForm={createUser}
       validationSchema={UserValidationSchema}
       formType={formType}
+      defaultValues={defaultValues}
+      id={id}
     >
       <FormFieldset>
         <InputGroup>

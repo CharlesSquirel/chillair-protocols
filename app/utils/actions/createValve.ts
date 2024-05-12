@@ -10,10 +10,6 @@ export async function createValve(data: CreateValveCredentials) {
     await getUserInfo();
 
   const valvesData: CreateValveCredentials = {
-    userSignature: userInfoSignature,
-    userId: userMongoId,
-    firstName: userFirstName,
-    lastName: userLastName,
     firma: data.firma,
     type: data.type,
     serialNumber: data.serialNumber,
@@ -24,14 +20,10 @@ export async function createValve(data: CreateValveCredentials) {
   };
 
   const {
-    userSignature,
-    userId,
     firma,
     type,
     serialNumber,
     infoBlocks,
-    firstName,
-    lastName,
     clientEmail,
     clientEmailPerm,
     description,
@@ -39,13 +31,13 @@ export async function createValve(data: CreateValveCredentials) {
   try {
     await prisma.valve.create({
       data: {
+        userSignature: userInfoSignature,
+        userId: userMongoId,
+        firstName: userFirstName,
+        lastName: userLastName,
         description,
         clientEmail,
         clientEmailPerm,
-        firstName,
-        lastName,
-        userSignature,
-        userId,
         firma,
         type,
         serialNumber,

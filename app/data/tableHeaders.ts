@@ -22,3 +22,10 @@ export const chillerHeaders: string[] = [
   "Sygnatura",
   "Uwagi",
 ];
+
+export const userHeaders: string[] = [
+  "Imię",
+  "Nazwisko",
+  "Email",
+  "Nr uprawnień",
+];

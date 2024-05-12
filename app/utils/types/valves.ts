@@ -29,10 +29,6 @@ export interface CreateValveCredentials {
   type: string;
   serialNumber: string;
   infoBlocks: ValvesInfoBlock[];
-  firstName: string;
-  lastName: string;
-  userSignature: string;
-  userId: string;
   clientEmail?: string;
   clientEmailPerm: boolean;
   description?: string;

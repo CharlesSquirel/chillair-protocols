@@ -21,9 +21,12 @@ export default function SideMenu() {
         >
           <LocalIcon className="h-6 w-6" /> Obiekty
         </Link>
-        <li className="flex cursor-pointer gap-3 text-lg text-secondary hover:font-medium hover:text-primary">
+        <Link
+          href="/dashboard/users"
+          className="flex cursor-pointer gap-3 text-lg text-secondary hover:font-medium hover:text-primary"
+        >
           <UserIcon className="h-6 w-6" /> Użytkownicy
-        </li>
+        </Link>
       </ul>
     </aside>
   );

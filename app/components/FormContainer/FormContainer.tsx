@@ -1,9 +1,10 @@
 "use client";
 
 import CloseIcon from "@/assets/icons/CloseIcon";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { ZodType } from "zod";
+import { sendToast } from "@/utils/helpers/sendToast";
+import { findToastFormType } from "@/utils/switch/findToastFormType";
 import { FormType, SubmitHandlerType } from "@/utils/types/form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
@@ -13,8 +14,7 @@ import {
   SubmitHandler,
   useForm,
 } from "react-hook-form";
-import { sendToast } from "@/utils/helpers/sendToast";
-import { findToastFormType } from "@/utils/switch/findToastFormType";
+import { ZodType } from "zod";
 
 interface FormContainerProps<T extends FieldValues> {
   title: string;
@@ -49,6 +49,7 @@ export default function FormContainer<T extends FieldValues>({
   };
   const onSubmit: SubmitHandler<T> = async (data) => {
     try {
+      console.log(data);
       const toastFormType = await findToastFormType(formType);
       if (id) {
         await onSubmitForm(data, id);
@@ -60,6 +61,7 @@ export default function FormContainer<T extends FieldValues>({
       handleCloseForm();
     } catch (error) {
       console.log(error);
+      console.error(error);
       sendToast("error");
     }
   };

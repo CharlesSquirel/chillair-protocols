@@ -1,6 +1,6 @@
 import Filter from "@/assets/icons/FilterIcon";
-import Searchbar from "@/components/Searchbar/Searchbar";
 import AddButton from "@/components/AddButton/AddButton";
+import Searchbar from "@/components/Searchbar/Searchbar";
 import { TableNames } from "@/utils/types/tableNames";
 import Link from "next/link";
 
@@ -18,9 +18,11 @@ export default function TableContainer({
   return (
     <main className="relative mt-2 flex flex-col gap-3 overflow-x-auto overflow-y-auto px-2 pb-8 md:mt-5 md:px-8 lg:pl-[225px] lg:pr-[25px]">
       <div
-        className={`sticky right-0 top-0 flex items-start gap-2 md:flex-row md:items-center md:gap-3 ${tableName !== "all" ? "justify-between" : "justify-end"} flex-col`}
+        className={`sticky right-0 top-0 flex items-start gap-2 md:flex-row md:items-center md:gap-3 ${tableName !== TableNames.ALL && tableName !== TableNames.USERS ? "justify-between" : "justify-end"} flex-col`}
       >
-        {tableName !== "all" && <AddButton tableName={tableName} />}
+        {tableName !== TableNames.ALL && tableName !== TableNames.USERS && (
+          <AddButton tableName={tableName} />
+        )}
         <Searchbar />
       </div>
       <table className="table relative w-full rounded-md bg-white text-secondary shadow-lg">
