@@ -1,3 +1,5 @@
+"use client";
+
 import SubmitFormButton from "@/components/Buttons/SubmitFormButton/SubmitFormButton";
 import FormContainer from "@/components/Containers/FormContainer/FormContainer";
 import FormFieldset from "@/components/Containers/FormFieldset/FormFieldset";
