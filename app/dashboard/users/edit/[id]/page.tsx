@@ -25,7 +25,7 @@ const UserEdit: React.FC<UserEditProps> = ({ params: { id } }) => {
   return (
     <UserForm
       defaultValues={editValues}
-      formType={FormType.VALVE_EDIT}
+      formType={FormType.USER_EDIT}
       id={id}
     />
   );

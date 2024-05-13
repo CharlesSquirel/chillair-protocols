@@ -1,6 +1,6 @@
 "use client";
 
-import ValveForm from "@/components/ValveForm/ValveForm";
+import ValveForm from "@/components/Forms/ValveForm/ValveForm";
 import { FormType } from "@/utils/types/form";
 
 export default function ValvesAdd() {

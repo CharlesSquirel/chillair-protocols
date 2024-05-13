@@ -1,5 +1,5 @@
-import ActionTableButtons from "@/components/ActionTableButtons/ActionTableButtons";
-import TableContainer from "@/components/TableContainer/TableContainer";
+import ActionTableButtons from "@/components/Buttons/ActionTableButtons/ActionTableButtons";
+import TableContainer from "@/components/Containers/TableContainer/TableContainer";
 import { valvesHeaders } from "@/data/tableHeaders";
 import { formatDateToString } from "@/utils/helpers/formatDateToString";
 import { getAllValves } from "@/utils/services/valve.services";

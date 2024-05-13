@@ -1,12 +1,12 @@
 "use client";
 
-import FormContainer from "@/components/FormContainer/FormContainer";
-import FormFieldset from "@/components/FormFieldset/FormFieldset";
-import InputGroup from "@/components/InputGroup/InputGroup";
-import InputRow from "@/components/InputRow/InputRow";
-import NumberInput from "@/components/NumberInput/NumberInput";
-import SubmitFormButton from "@/components/SubmitFormButton/SubmitFormButton";
-import TextInput from "@/components/TextInput/TextInput";
+import SubmitFormButton from "@/components/Buttons/SubmitFormButton/SubmitFormButton";
+import FormContainer from "@/components/Containers/FormContainer/FormContainer";
+import FormFieldset from "@/components/Containers/FormFieldset/FormFieldset";
+import InputGroup from "@/components/Containers/InputGroup/InputGroup";
+import InputRow from "@/components/Containers/InputRow/InputRow";
+import NumberInput from "@/components/Inputs/NumberInput/NumberInput";
+import TextInput from "@/components/Inputs/TextInput/TextInput";
 import { createFirma } from "@/utils/actions/createFirma";
 import { FormType } from "@/utils/types/form";
 import { FirmaValidationSchema } from "@/utils/zod/firmaValidationSchema";

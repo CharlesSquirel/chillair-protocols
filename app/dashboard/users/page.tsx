@@ -1,5 +1,5 @@
-import ActionTableButtons from "@/components/ActionTableButtons/ActionTableButtons";
-import TableContainer from "@/components/TableContainer/TableContainer";
+import ActionTableButtons from "@/components/Buttons/ActionTableButtons/ActionTableButtons";
+import TableContainer from "@/components/Containers/TableContainer/TableContainer";
 import { userHeaders } from "@/data/tableHeaders";
 import getAllUsers from "@/utils/actions/getAllUsers";
 import { TableNames } from "@/utils/types/tableNames";

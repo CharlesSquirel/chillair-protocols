@@ -1,6 +1,6 @@
 "use client";
 
-import ChillerForm from "@/components/ChillerForm/ChillerForm";
+import ChillerForm from "@/components/Forms/ChillerForm/ChillerForm";
 import { useGetChillers } from "@/utils/hooks/useGetChillers";
 import { FormType } from "@/utils/types/form";
 import { useEffect, useState } from "react";

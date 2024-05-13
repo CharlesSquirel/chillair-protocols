@@ -1,12 +1,10 @@
-"use client";
-
-import FormContainer from "@/components/FormContainer/FormContainer";
-import FormFieldset from "@/components/FormFieldset/FormFieldset";
-import InputGroup from "@/components/InputGroup/InputGroup";
-import InputRow from "@/components/InputRow/InputRow";
-import SubmitFormButton from "@/components/SubmitFormButton/SubmitFormButton";
-import TextInput from "@/components/TextInput/TextInput";
-import { createUser } from "@/utils/actions/createUser";
+import SubmitFormButton from "@/components/Buttons/SubmitFormButton/SubmitFormButton";
+import FormContainer from "@/components/Containers/FormContainer/FormContainer";
+import FormFieldset from "@/components/Containers/FormFieldset/FormFieldset";
+import InputGroup from "@/components/Containers/InputGroup/InputGroup";
+import InputRow from "@/components/Containers/InputRow/InputRow";
+import TextInput from "@/components/Inputs/TextInput/TextInput";
+import { getSubmitHandler } from "@/utils/switch/getSubmitHandler";
 import { FormProps } from "@/utils/types/form";
 import { UserDTO } from "@/utils/types/user";
 import { UserValidationSchema } from "@/utils/zod/userValidationSchema";
@@ -14,39 +12,53 @@ import { UserValidationSchema } from "@/utils/zod/userValidationSchema";
 interface UserFormProps extends FormProps {
   defaultValues?: UserDTO;
   id?: string;
+  isEditing?: boolean;
 }
 
 export default function UserForm({
   formType,
-  defaultValues,
   id,
+  defaultValues,
 }: UserFormProps) {
+  const onSubmitForm = getSubmitHandler(formType);
   return (
     <FormContainer
       title="Dodaj nowego użytkownika"
       closeUrl="/dashboard/users"
-      onSubmitForm={createUser}
+      onSubmitForm={onSubmitForm}
+      defaultValues={defaultValues}
       validationSchema={UserValidationSchema}
       formType={formType}
-      defaultValues={defaultValues}
       id={id}
     >
       <FormFieldset>
         <InputGroup>
           <InputRow>
-            <TextInput placeholder="Wpisz imię" name="firstName" label="Imię" />
+            <TextInput
+              placeholder="Wpisz imię"
+              name="firstName"
+              label="Imię"
+              defaultValues={defaultValues}
+            />
             <TextInput
               placeholder="Wpisz nazwisko"
               name="lastName"
               label="Nazwisko"
+              defaultValues={defaultValues}
             />
           </InputRow>
           <InputRow>
-            <TextInput placeholder="Wpisz email" name="email" label="Email" />
+            <TextInput
+              placeholder="Wpisz email"
+              name="email"
+              label="Email"
+              defaultValues={defaultValues}
+            />
             <TextInput
               placeholder="Wpisz uprawnienie"
               name="userSignature"
               label="Nr uprawnienia"
+              defaultValues={defaultValues}
             />
           </InputRow>
         </InputGroup>

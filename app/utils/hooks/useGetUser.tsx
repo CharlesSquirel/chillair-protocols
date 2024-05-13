@@ -16,6 +16,7 @@ export const useGetUser = (id: string) => {
         if (!userData) {
           throw Error("Nie znaleziono użytkownika o podanym id");
         }
+
         setUserData({
           firstName: userData.firstName,
           lastName: userData.lastName,

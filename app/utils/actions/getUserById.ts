@@ -1,4 +1,5 @@
 "use server";
+
 import { prisma } from "lib/db";
 
 export default async function getUserById(id: string) {
@@ -11,6 +12,7 @@ export default async function getUserById(id: string) {
     if (!user) {
       throw Error("Nie znaleziono użytkownia o podanym id!");
     }
+
     return user;
   } catch (error) {
     console.error(error);
