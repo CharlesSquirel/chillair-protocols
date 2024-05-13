@@ -1,6 +1,6 @@
 "use client";
 
-import ChillerForm from "@/components/ChillerForm/ChillerForm";
+import ChillerForm from "@/components/Forms/ChillerForm/ChillerForm";
 import { FormType } from "@/utils/types/form";
 
 export default function ChillerAdd() {

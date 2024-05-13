@@ -3,8 +3,8 @@
 import EnvelopeIcon from "@/assets/icons/EnvelopeIcon";
 import KeyIcon from "@/assets/icons/KeyIcon";
 import logo from "@/assets/images/chillair_logo.png";
-import LoginSubmitButton from "@/components/Login/LoginSubmitButton/LoginSubmitButton";
-import LoginTextInput from "@/components/Login/LoginTextInput/LoginTextInput";
+import LoginSubmitButton from "@/components/Buttons/LoginSubmitButton/LoginSubmitButton";
+import LoginTextInput from "@/components/Inputs/LoginTextInput/LoginTextInput";
 import { useSignIn } from "@clerk/nextjs";
 import { isClerkAPIResponseError } from "@clerk/nextjs/errors";
 import Image from "next/image";

@@ -1,17 +1,16 @@
-import ProtocolBackButton from "@/components/ProtocolBackButton/ProtocolBackButton";
-import ProtocolBasicInfo from "@/components/ProtocolBasicInfo/ProtocolBasicInfo";
-import ProtocolDeleteButton from "@/components/ProtocolDeleteButton/ProtocolDeleteButton";
-import ProtocolDownloadButton from "@/components/ProtocolDownloadButton/ProtocolDownloadButton";
-import ProtocolEditButton from "@/components/ProtocolEditButton/ProtocolEditButton";
-import ProtocolField from "@/components/ProtocolField/ProtocolField";
-import ProtocolFieldContainer from "@/components/ProtocolFieldContainer/ProtocolFieldContainer";
-import ProtocolHeader from "@/components/ProtocolHeader/ProtocolHeader";
-import ProtocolUserSign from "@/components/ProtocolUserSign/ProtocolUserSign";
-import ProtocolValveBoard from "@/components/ProtocolValveBoard/ProtocolValveBoard";
+import ProtocolBackButton from "@/components/Protocols/ProtocolBackButton/ProtocolBackButton";
+import ProtocolBasicInfo from "@/components/Protocols/ProtocolBasicInfo/ProtocolBasicInfo";
+import ProtocolDeleteButton from "@/components/Protocols/ProtocolDeleteButton/ProtocolDeleteButton";
+import ProtocolDownloadButton from "@/components/Protocols/ProtocolDownloadButton/ProtocolDownloadButton";
+import ProtocolEditButton from "@/components/Protocols/ProtocolEditButton/ProtocolEditButton";
+import ProtocolField from "@/components/Protocols/ProtocolField/ProtocolField";
+import ProtocolFieldContainer from "@/components/Protocols/ProtocolFieldContainer/ProtocolFieldContainer";
+import ProtocolHeader from "@/components/Protocols/ProtocolHeader/ProtocolHeader";
+import ProtocolUserSign from "@/components/Protocols/ProtocolUserSign/ProtocolUserSign";
+import ProtocolValveBoard from "@/components/Protocols/ProtocolValveBoard/ProtocolValveBoard";
 import getValve from "@/utils/actions/getValve";
 import { formatDateToString } from "@/utils/helpers/formatDateToString";
 import { inter } from "lib/font";
-import React from "react";
 
 interface ValveProtocolProps {
   params: {

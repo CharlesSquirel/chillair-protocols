@@ -4,9 +4,9 @@ import HomeIcon from "@/assets/icons/HomeIcon";
 import LocalIcon from "@/assets/icons/LocalIcon";
 import UserIcon from "@/assets/icons/UserIcon";
 import Link from "next/link";
-import MobileMenuContainer from "../MobileMenuContainer/MobileMenuContainer";
-import { useMobileContext } from "../MobileMenuContext/MobileMenuContext";
-import LogoutMobileButton from "../LogoutMobileButton/LogoutMobileButton";
+import LogoutMobileButton from "../Buttons/LogoutMobileButton/LogoutMobileButton";
+import MobileMenuContainer from "../Containers/MobileMenuContainer/MobileMenuContainer";
+import { useMobileContext } from "../Providers/MobileMenuContext/MobileMenuContext";
 
 export default function MobileMenu() {
   const { isMobileActive, handleMobileClose } = useMobileContext();

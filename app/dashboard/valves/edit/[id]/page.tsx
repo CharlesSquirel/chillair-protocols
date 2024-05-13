@@ -1,6 +1,6 @@
 "use client";
 
-import ValveForm from "@/components/ValveForm/ValveForm";
+import ValveForm from "@/components/Forms/ValveForm/ValveForm";
 import { useGetValve } from "@/utils/hooks/useGetValve";
 import { FormType } from "@/utils/types/form";
 import { useEffect, useState } from "react";

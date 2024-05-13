@@ -1,16 +1,11 @@
 "use server";
 
 import { prisma } from "lib/db";
-import { CreateValveCredentials } from "../types/valves";
 import { revalidatePath } from "next/cache";
+import { CreateValveCredentials } from "../types/valves";
 
 export async function editValve(data: CreateValveCredentials, id: string) {
   const valvesData: CreateValveCredentials = {
-    userSignature: "asdasd",
-    email: "jan@kowalski.pl",
-    userId: "234234",
-    firstName: "Jan",
-    lastName: "Kowalski",
     firma: data.firma,
     type: data.type,
     serialNumber: data.serialNumber,
@@ -21,15 +16,10 @@ export async function editValve(data: CreateValveCredentials, id: string) {
   };
 
   const {
-    userSignature,
-    email,
-    userId,
     firma,
     type,
     serialNumber,
     infoBlocks,
-    firstName,
-    lastName,
     clientEmail,
     clientEmailPerm,
     description,
@@ -49,11 +39,6 @@ export async function editValve(data: CreateValveCredentials, id: string) {
         description,
         clientEmail,
         clientEmailPerm,
-        firstName,
-        lastName,
-        userSignature,
-        email,
-        userId,
         firma,
         type,
         serialNumber,
@@ -102,7 +87,7 @@ export async function editValve(data: CreateValveCredentials, id: string) {
       }),
     );
     revalidatePath("/dashboard/valves");
-    console.log("edited");
+    console.log("Valve edited");
     console.log(valvesData);
   } catch (error) {
     console.log(error);

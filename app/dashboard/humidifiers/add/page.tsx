@@ -1,15 +1,15 @@
 "use client";
 
-import ExtraMaterialsInfo from "@/components/ExtraMaterialsInfo/ExtraMaterialsInfo";
-import FormContainer from "@/components/FormContainer/FormContainer";
-import FormFieldset from "@/components/FormFieldset/FormFieldset";
-import InputGroup from "@/components/InputGroup/InputGroup";
-import InputRow from "@/components/InputRow/InputRow";
-import NumberInput from "@/components/NumberInput/NumberInput";
-import SelectInput from "@/components/SelectInput/SelectInput";
-import SubmitFormButton from "@/components/SubmitFormButton/SubmitFormButton";
-import TextInput from "@/components/TextInput/TextInput";
-import TextareaInput from "@/components/TextareaInput/TextareaInput";
+import SubmitFormButton from "@/components/Buttons/SubmitFormButton/SubmitFormButton";
+import FormContainer from "@/components/Containers/FormContainer/FormContainer";
+import FormFieldset from "@/components/Containers/FormFieldset/FormFieldset";
+import InputGroup from "@/components/Containers/InputGroup/InputGroup";
+import InputRow from "@/components/Containers/InputRow/InputRow";
+import ExtraMaterialsInfo from "@/components/ExtraInfos/ExtraMaterialsInfo/ExtraMaterialsInfo";
+import NumberInput from "@/components/Inputs/NumberInput/NumberInput";
+import SelectInput from "@/components/Inputs/SelectInput/SelectInput";
+import TextInput from "@/components/Inputs/TextInput/TextInput";
+import TextareaInput from "@/components/Inputs/TextareaInput/TextareaInput";
 import { createHumidifier } from "@/utils/actions/createHumidifier";
 import { FormType } from "@/utils/types/form";
 import { HumidifierValidationSchema } from "@/utils/zod/humidifierValidation";

@@ -1,5 +1,5 @@
 import { currentUser } from "@clerk/nextjs/server";
-import LogoutButton from "./LogoutButton/LogoutButton";
+import LogoutButton from "../../Buttons/LogoutButton/LogoutButton";
 
 export default async function UserInfo() {
   const user = await currentUser();

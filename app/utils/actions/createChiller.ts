@@ -1,10 +1,13 @@
 "use server";
 
 import { prisma } from "lib/db";
-import { ChillerDTO } from "../types/chiller";
 import { generateRandomString } from "../helpers/generateRandomString";
+import { ChillerDTO } from "../types/chiller";
+import { getUserInfo } from "./getUserInfo";
 
 export async function createChiller(data: ChillerDTO) {
+  const { userFirstName, userLastName, userInfoSignature, userMongoId } =
+    await getUserInfo();
   try {
     const {
       firma,
@@ -47,9 +50,10 @@ export async function createChiller(data: ChillerDTO) {
 
     const chiller = await prisma.chiller.create({
       data: {
-        firstName: "Jan",
-        lastName: "Kowalski",
-        userSignature: "FGAZ/1/pe456",
+        userId: userMongoId,
+        firstName: userFirstName,
+        lastName: userLastName,
+        userSignature: userInfoSignature,
         firma,
         type,
         serialNumber,

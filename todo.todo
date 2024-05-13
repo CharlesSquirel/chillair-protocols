@@ -16,3 +16,6 @@
 ☐ w jednym miejscu messages do toastów
 ☐ porządek w components
 ☐ tost w logout w hamburgerze
+☐ podmienić interfejsy FormProps
+☐ analogicnzie zrobić links do sideMenu
+☐ refactor inline handlers

@@ -1,5 +1,6 @@
-import { SignUp } from "@clerk/nextjs";
+import UserForm from "@/components/Forms/UserForm/UserForm";
+import { FormType } from "@/utils/types/form";
 
 export default function Page() {
-  return <SignUp path="/sign-up" />;
+  return <UserForm formType={FormType.USER_ADD} />;
 }

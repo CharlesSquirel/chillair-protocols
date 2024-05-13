@@ -1,8 +1,8 @@
-import UserInfo from "./UserInfo/UserInfo";
-import ProtocolTitle from "../ProtocolTitle/ProtocolTitle";
+import HamburgerButton from "../Buttons/HamburgerButton/HamburgerButton";
 import MobileMenu from "../MobileMenu/MobileMenu";
-import MobileMenuContext from "../MobileMenuContext/MobileMenuContext";
-import HamburgerButton from "../HamburgerButton/HamburgerButton";
+import ProtocolTitle from "../Protocols/ProtocolTitle/ProtocolTitle";
+import MobileMenuContext from "../Providers/MobileMenuContext/MobileMenuContext";
+import UserInfo from "./UserInfo/UserInfo";
 
 export default function Header() {
   return (
