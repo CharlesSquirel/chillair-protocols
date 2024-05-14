@@ -13,6 +13,8 @@ export async function POST(request: NextRequest) {
     const baseUrl = resolve(request.headers.get("referer")!, "/");
     const fullUrl = resolve(baseUrl, currentUrl);
 
+    console.log(fullUrl);
+
     await page.goto(fullUrl, {
       waitUntil: "networkidle0",
     });
