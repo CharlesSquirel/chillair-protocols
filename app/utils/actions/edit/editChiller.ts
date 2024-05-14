@@ -1,8 +1,8 @@
 "use server";
 
+import { ChillerDTO } from "@/utils/types/chiller";
 import { prisma } from "lib/db";
 import { revalidatePath } from "next/cache";
-import { ChillerDTO } from "../types/chiller";
 
 export async function editChiller(data: ChillerDTO, id: string) {
   const {

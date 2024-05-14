@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
 interface CheckboxProps {
@@ -10,11 +9,7 @@ interface CheckboxProps {
 }
 
 export default function CheckboxInput({ label, name, onCheck }: CheckboxProps) {
-  const { register, setValue } = useFormContext();
-
-  // useEffect(() => {
-  //   setValue(name, false);
-  // }, []);
+  const { register } = useFormContext();
 
   return (
     <div className="flex items-center gap-2">

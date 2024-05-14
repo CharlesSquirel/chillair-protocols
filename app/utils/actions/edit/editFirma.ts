@@ -4,7 +4,6 @@ import { revalidatePath } from "next/cache";
 import { FirmaDTO } from "../../types/firma";
 
 export async function editFirma(data: FirmaDTO, id: string) {
-  console.log(data);
   const {
     fullName,
     street,

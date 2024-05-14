@@ -1,7 +1,7 @@
 "use server";
+import { UserDTO } from "@/utils/types/user";
 import { prisma } from "lib/db";
 import { revalidatePath } from "next/cache";
-import { UserDTO } from "../types/user";
 
 export async function createUser(data: UserDTO) {
   const userData = {
