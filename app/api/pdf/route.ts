@@ -1,7 +1,8 @@
-import { NextRequest } from "next/server";
-import puppeteer from "puppeteer";
-import nodemailer from "nodemailer";
 import { transporterOptions } from "lib/mail.config";
+import { NextRequest } from "next/server";
+import nodemailer from "nodemailer";
+import puppeteer from "puppeteer";
+import { resolve } from "url";
 
 export async function POST(request: NextRequest) {
   try {
@@ -9,7 +10,10 @@ export async function POST(request: NextRequest) {
     const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
 
-    await page.goto(`http://localhost:3000${currentUrl}`, {
+    const baseUrl = resolve(request.headers.get("referer")!, "/");
+    const fullUrl = resolve(baseUrl, currentUrl);
+
+    await page.goto(fullUrl, {
       waitUntil: "networkidle0",
     });
     await page.emulateMediaType("print");
