@@ -1,9 +1,9 @@
 "use server";
 
+import { CreateValveCredentials } from "@/utils/types/valves";
 import { prisma } from "lib/db";
 import { revalidatePath } from "next/cache";
-import { CreateValveCredentials } from "../types/valves";
-import { getUserInfo } from "./getUserInfo";
+import { getUserInfo } from "../getUserInfo";
 
 export async function createValve(data: CreateValveCredentials) {
   const { userFirstName, userLastName, userInfoSignature, userMongoId } =

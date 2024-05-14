@@ -1,5 +1,5 @@
 export interface FirmaDTO {
-  name: string;
+  fullName: string;
   shortName: string;
   street: string;
   houseNumber: number;
