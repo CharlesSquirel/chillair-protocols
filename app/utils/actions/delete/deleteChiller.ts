@@ -22,7 +22,7 @@ export async function deleteChiller(id: string) {
     });
 
     revalidatePath("/dashboard/chillers");
-    console.log(`deleted id: ${id}`);
+    console.log(`Chiller deleted id: ${id}`);
   } catch (error) {
     console.error("Błąd podczas usuwania danych:", error);
   }

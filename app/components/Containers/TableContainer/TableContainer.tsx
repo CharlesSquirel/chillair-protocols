@@ -32,14 +32,15 @@ export default function TableContainer({
               <th key={header}>{header}</th>
             ))}
             <th className="flex h-[65px] cursor-pointer gap-3 p-0 py-[12px] pr-2 text-secondary md:h-auto md:pr-0 min-[915px]:absolute min-[915px]:right-3 min-[915px]:top-3 min-[915px]:z-10 min-[915px]:py-0 min-[1390px]:right-8">
-              {tableName !== "all" && (
-                <Link
-                  href={`/dashboard/${tableName}/add`}
-                  className="btn hidden h-[40px] min-h-0 w-[40px] rounded-md bg-primary text-2xl text-white hover:border hover:border-primary hover:bg-white hover:text-primary min-[2000px]:inline-flex"
-                >
-                  +
-                </Link>
-              )}
+              {tableName !== TableNames.ALL &&
+                tableName !== TableNames.USERS && (
+                  <Link
+                    href={`/dashboard/${tableName}/add`}
+                    className="btn hidden h-[40px] min-h-0 w-[40px] rounded-md bg-primary text-2xl text-white hover:border hover:border-primary hover:bg-white hover:text-primary min-[2000px]:inline-flex"
+                  >
+                    +
+                  </Link>
+                )}
               <button className="min-h-[40px] border-none bg-transparent hover:opacity-70 ">
                 <Filter />
               </button>

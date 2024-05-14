@@ -20,7 +20,7 @@ export default async function Firmas() {
               key={index}
               className="relative hover:cursor-pointer hover:text-primary"
             >
-              <td>{firma.name}</td>
+              <td>{firma.fullName}</td>
               <td>
                 {firma.street}, {firma.houseNumber}
                 {firma.localNumber ? `/${firma.localNumber}` : null}

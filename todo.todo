@@ -19,3 +19,8 @@
 ☐ podmienić interfejsy FormProps
 ☐ analogicnzie zrobić links do sideMenu
 ☐ refactor inline handlers
+☐ initial state object for useGet hook in edit
+☐ wszystkie buttony do komponentów osobno
+☐ sizes wszędzie do loga
+☐ hovery w tabelach
+☐ Promise.all w deletach i innych

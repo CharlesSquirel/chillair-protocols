@@ -1,21 +1,32 @@
 import { ErrorMessage } from "@hookform/error-message";
+import { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
 interface NumberInputProps {
   label: string;
   placeholder: string;
   name: string;
+  defaultValues?: any;
 }
 
 export default function NumberInput({
   label,
   placeholder,
   name,
+  defaultValues,
 }: NumberInputProps) {
   const {
     register,
+    setValue,
     formState: { errors },
   } = useFormContext();
+
+  useEffect(() => {
+    if (defaultValues) {
+      setValue(name, defaultValues[name]);
+    }
+  }, [setValue, name, defaultValues]);
+
   return (
     <div className="h-min-[106px] flex flex-col gap-1">
       {label && (

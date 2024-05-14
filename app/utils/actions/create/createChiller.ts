@@ -1,9 +1,9 @@
 "use server";
 
+import { generateRandomString } from "@/utils/helpers/generateRandomString";
+import { ChillerDTO } from "@/utils/types/chiller";
 import { prisma } from "lib/db";
-import { generateRandomString } from "../helpers/generateRandomString";
-import { ChillerDTO } from "../types/chiller";
-import { getUserInfo } from "./getUserInfo";
+import { getUserInfo } from "../getUserInfo";
 
 export async function createChiller(data: ChillerDTO) {
   const { userFirstName, userLastName, userInfoSignature, userMongoId } =

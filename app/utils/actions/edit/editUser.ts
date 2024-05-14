@@ -1,7 +1,7 @@
 "use server";
 import { prisma } from "lib/db";
 import { revalidatePath } from "next/cache";
-import { UserDTO } from "../types/user";
+import { UserDTO } from "../../types/user";
 
 export async function editUser(data: UserDTO, id: string) {
   try {

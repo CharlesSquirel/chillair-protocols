@@ -1,6 +1,7 @@
 import { usePathname } from "next/navigation";
-import { deleteValve } from "../actions/deleteValve";
-import { deleteChiller } from "../actions/deleteChiller";
+import { deleteChiller } from "../actions/delete/deleteChiller";
+import { deleteFirma } from "../actions/delete/deleteFirma";
+import { deleteValve } from "../actions/delete/deleteValve";
 
 export const useGetDeleteHandler = () => {
   const pathname = usePathname();
@@ -10,6 +11,8 @@ export const useGetDeleteHandler = () => {
       return deleteValve;
     case pathname.includes("chiller"):
       return deleteChiller;
+    case pathname.includes("firma"):
+      return deleteFirma;
 
     default:
       throw new Error("Nie znaleziono rekordu");
