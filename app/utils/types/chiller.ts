@@ -40,7 +40,7 @@ type DeviceType =
   | "Silnik"
   | "Falownik";
 
-interface PowerConsumption {
+export interface PowerConsumption {
   deviceType: DeviceType;
   amperage_1: number;
   amperage_2: number;
@@ -50,7 +50,7 @@ interface PowerConsumption {
   editKey: string;
 }
 
-interface Circuit {
+export interface Circuit {
   dischargePressure: number;
   condensationTemperature: number;
   subcooling: number;

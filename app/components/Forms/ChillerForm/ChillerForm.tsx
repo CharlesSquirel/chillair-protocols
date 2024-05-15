@@ -11,8 +11,6 @@ import {
 import { getSubmitHandler } from "@/utils/switch/getSubmitHandler";
 import { FormType } from "@/utils/types/form";
 import { ChillerValidationSchema } from "@/utils/zod/chillerValidationSchema";
-import { Circuit, PowerConsumption } from "@prisma/client";
-import { DefaultValues, FieldValues } from "react-hook-form";
 import SubmitFormButton from "../../Buttons/SubmitFormButton/SubmitFormButton";
 import FormContainer from "../../Containers/FormContainer/FormContainer";
 import FormFieldset from "../../Containers/FormFieldset/FormFieldset";
@@ -28,20 +26,16 @@ import SelectWithNumberInput from "../../Inputs/SelectWithNumberInput/SelectWith
 import TextInput from "../../Inputs/TextInput/TextInput";
 import TextareaInput from "../../Inputs/TextareaInput/TextareaInput";
 
-interface ChillerFormProps<T extends FieldValues> {
-  defaultValues?: DefaultValues<T>;
+interface ChillerFormProps {
+  defaultValues?: any;
   formType: FormType;
   id?: string;
-  extraChillerPowerDataEdit?: PowerConsumption[];
-  extraChillerCircuitsDataEdit?: Circuit[];
 }
 
-export default function ChillerForm<T extends FieldValues>({
+export default function ChillerForm({
   formType,
   defaultValues,
-  extraChillerCircuitsDataEdit,
-  extraChillerPowerDataEdit,
-}: ChillerFormProps<T>) {
+}: ChillerFormProps) {
   const onSubmitForm = getSubmitHandler(formType);
   return (
     <FormContainer
@@ -289,15 +283,12 @@ export default function ChillerForm<T extends FieldValues>({
 
       <FormFieldset title="Dane poboru prądu">
         <ExtraChillerCurrentInfo
-          defaultValues={defaultValues}
-          extraChillerPowerDataEdit={extraChillerPowerDataEdit}
+          defaultValues={defaultValues.powerConsumptions}
         />
       </FormFieldset>
 
       <FormFieldset title="Parametry obiegów">
-        <ExtraChillerCircuits
-          extraChillerCircuitsDataEdit={extraChillerCircuitsDataEdit}
-        />
+        <ExtraChillerCircuits defaultValues={defaultValues.circuits} />
       </FormFieldset>
 
       <InputGroup title="Uwagi (opcjonalnie)">

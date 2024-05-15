@@ -9,6 +9,7 @@ interface TextInputProps {
   name: string;
   disabled?: boolean;
   defaultValues?: any;
+  arrayName?: string;
 }
 
 export default function TextInput({
@@ -17,6 +18,7 @@ export default function TextInput({
   label,
   disabled,
   defaultValues,
+  arrayName,
 }: TextInputProps) {
   const {
     register,
@@ -25,10 +27,14 @@ export default function TextInput({
   } = useFormContext();
 
   useEffect(() => {
-    if (defaultValues) {
+    if (defaultValues && arrayName) {
+      const index = name.charAt(arrayName.length + 1);
+      const restOfName = name.slice(name.indexOf(index) + 2);
+      // setValue(name, defaultValues[arrayName][index][restOfName]);
+    } else if (defaultValues) {
       setValue(name, defaultValues[name]);
     }
-  }, [setValue, name, defaultValues]);
+  }, [setValue, name, defaultValues, arrayName]);
 
   return (
     <div className="h-min-[106px] flex flex-col gap-1">

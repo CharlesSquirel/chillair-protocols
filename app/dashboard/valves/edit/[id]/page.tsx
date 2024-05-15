@@ -3,7 +3,7 @@
 import ValveForm from "@/components/Forms/ValveForm/ValveForm";
 import { useGetValve } from "@/utils/hooks/useGetValve";
 import { FormType } from "@/utils/types/form";
-import { useEffect, useState } from "react";
+import { ValveDTO } from "@/utils/types/valves";
 
 interface ValveEditProps {
   params: {
@@ -13,39 +13,29 @@ interface ValveEditProps {
 
 const ValveEdit: React.FC<ValveEditProps> = ({ params: { id } }) => {
   const { valve, valveBlocks } = useGetValve(id);
-  const [editValues, setEditValues] = useState<any>(null);
 
-  useEffect(() => {
-    if (valve && valveBlocks) {
-      const initialValues = {
-        firma: valve.firma ?? undefined,
-        type: valve.type ?? undefined,
-        serialNumber: valve.serialNumber ?? undefined,
-        description: valve.description ?? undefined,
-        infoBlocks: valveBlocks.map((block) => ({
-          valveLocation: block.valveLocation ?? undefined,
-          valveType: block.valveType ?? undefined,
-          valveSerialNumber: block.valveSerialNumber ?? undefined,
-          pressureOpen: block.pressureOpen ?? undefined,
-          pressureClose: block.pressureClose ?? undefined,
-          pressureSetting: block.pressureSetting ?? undefined,
-          description: block.description ?? undefined,
-        })),
-      };
-      setEditValues(initialValues);
-    }
-  }, [valve, valveBlocks]);
-
-  if (!editValues) {
-    return <p>Loading...</p>;
-  }
+  const editValues: ValveDTO = {
+    firma: valve.firma,
+    type: valve.type,
+    serialNumber: valve.serialNumber,
+    description: valve.description,
+    clientEmailPerm: valve.clientEmailPerm,
+    infoBlocks: valveBlocks.map((block: any) => ({
+      valveLocation: block.valveLocation,
+      valveType: block.valveType,
+      valveSerialNumber: block.valveSerialNumber,
+      pressureOpen: block.pressureOpen,
+      pressureClose: block.pressureClose,
+      pressureSetting: block.pressureSetting,
+      description: block.description,
+    })),
+  };
 
   return (
     <ValveForm
       defaultValues={editValues}
       formType={FormType.VALVE_EDIT}
       id={id}
-      extraValvesDataEdit={valveBlocks}
     />
   );
 };

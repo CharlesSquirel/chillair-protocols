@@ -76,8 +76,6 @@ const ChillerEdit: React.FC<ValveEditProps> = ({ params: { id } }) => {
       defaultValues={editValues}
       formType={FormType.CHILLER_EDIT}
       id={id}
-      extraChillerCircuitsDataEdit={chillerCircuits}
-      extraChillerPowerDataEdit={chillerPowerConsumption}
     />
   );
 };

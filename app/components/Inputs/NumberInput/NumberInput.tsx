@@ -8,6 +8,7 @@ interface NumberInputProps {
   name: string;
   defaultValues?: any;
   arrayName?: string;
+  isInArray?: boolean;
 }
 
 export default function NumberInput({
@@ -16,6 +17,7 @@ export default function NumberInput({
   name,
   defaultValues,
   arrayName,
+  isInArray,
 }: NumberInputProps) {
   const {
     register,

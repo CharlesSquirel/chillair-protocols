@@ -2,8 +2,7 @@
 
 import MinusIcon from "@/assets/icons/MinusIcon";
 import PlusIcon from "@/assets/icons/PlusIcon";
-import { ValvesInfoBlock } from "@prisma/client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import InputGroup from "../../Containers/InputGroup/InputGroup";
 import InputRow from "../../Containers/InputRow/InputRow";
@@ -13,23 +12,31 @@ import TextInput from "../../Inputs/TextInput/TextInput";
 import TextareaInput from "../../Inputs/TextareaInput/TextareaInput";
 
 interface ExtraValvesInfoProps {
-  extraValvesDataEdit?: ValvesInfoBlock[];
+  defaultValues?: any;
 }
 
 export default function ExtraValvesInfo({
-  extraValvesDataEdit,
+  defaultValues,
 }: ExtraValvesInfoProps) {
   const { getValues, setValue } = useFormContext();
   const [infoCount, setInfoCount] = useState(
-    extraValvesDataEdit ? extraValvesDataEdit.length : 1,
+    defaultValues ? defaultValues.length : 1,
   );
+
+  useEffect(() => {
+    if (defaultValues) {
+      setInfoCount(defaultValues.length);
+    }
+  }, [defaultValues]);
+
   const handleOnMinus = () => {
     setInfoCount(infoCount - 1);
-    if (extraValvesDataEdit) {
+    if (defaultValues) {
       const infoBlocks = getValues("infoBlocks").slice(0, infoCount - 1);
       setValue("infoBlocks", infoBlocks);
     }
   };
+
   return (
     <>
       {Array.from({ length: infoCount }, (_, index) => (
@@ -48,17 +55,21 @@ export default function ExtraValvesInfo({
               label="Miejsce instalowania zaworu"
               name={`infoBlocks.${index}.valveLocation`}
               placeholder="Wpisz nazwę"
+              defaultValues={defaultValues}
+              arrayName="infoBlocks"
             />
             <SelectInput
               data={["Typ A", "Typ B"]}
               label="Typ"
               name={`infoBlocks.${index}.valveType`}
               placeholder="Wybierz typ"
+              defaultValues={defaultValues}
             />
             <TextInput
               label="Nr fabryczny"
               name={`infoBlocks.${index}.valveSerialNumber`}
               placeholder="Wpisz nr"
+              defaultValues={defaultValues}
             />
           </InputRow>
           <InputRow title="Ciśnienia (Bar)">
@@ -66,22 +77,26 @@ export default function ExtraValvesInfo({
               label="Nastawa"
               name={`infoBlocks.${index}.pressureSetting`}
               placeholder="Bar"
+              defaultValues={defaultValues}
             />
             <NumberInput
               label="Otwarcie"
               name={`infoBlocks.${index}.pressureOpen`}
               placeholder="Bar"
+              defaultValues={defaultValues}
             />
             <NumberInput
               label="Zamknięcie"
               name={`infoBlocks.${index}.pressureClose`}
               placeholder="Bar"
+              defaultValues={defaultValues}
             />
           </InputRow>
           <TextareaInput
             label="Uwagi"
             name={`infoBlocks.${index}.description`}
             placeholder="Wpisz swoje uwagi"
+            defaultValues={defaultValues}
           />
         </InputGroup>
       ))}
