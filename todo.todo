@@ -19,3 +19,10 @@
 ☐ podmienić interfejsy FormProps
 ☐ analogicnzie zrobić links do sideMenu
 ☐ refactor inline handlers
+☐ initial state object for useGet hook in edit
+☐ wszystkie buttony do komponentów osobno
+☐ sizes wszędzie do loga
+☐ hovery w tabelach
+☐ Promise.all w deletach i innych
+✔ w edycji usera button submit z tekstem Zapisz a jest utwórz @done (15.05.2024, 11:00:03)
+☐ Ujednolicić w jednym języku error messages

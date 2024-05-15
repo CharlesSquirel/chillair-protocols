@@ -14,7 +14,6 @@ import { UserValidationSchema } from "@/utils/zod/userValidationSchema";
 interface UserFormProps extends FormProps {
   defaultValues?: UserDTO;
   id?: string;
-  isEditing?: boolean;
 }
 
 export default function UserForm({
@@ -64,7 +63,7 @@ export default function UserForm({
             />
           </InputRow>
         </InputGroup>
-        <SubmitFormButton />
+        <SubmitFormButton formType={formType} />
       </FormFieldset>
     </FormContainer>
   );

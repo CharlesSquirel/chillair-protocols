@@ -2,7 +2,7 @@ import { z } from "zod";
 import { createNumberValidator, createStringValidator } from "./zodHelpers";
 
 export const FirmaValidationSchema = z.object({
-  name: createStringValidator(),
+  fullName: createStringValidator(),
   shortName: createStringValidator().max(10, {
     message: "To pole nie może mieć więcej niż 10 znaków!",
   }),

@@ -10,6 +10,8 @@ export const useGetDeleteHandler = () => {
       return deleteValve;
     case pathname.includes("chiller"):
       return deleteChiller;
+    case pathname.includes("firma"):
+      return deleteFirma;
 
     default:
       throw new Error("Nie znaleziono rekordu");
