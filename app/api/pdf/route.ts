@@ -1,24 +1,22 @@
 import { transporterOptions } from "lib/mail.config";
 import { NextRequest } from "next/server";
 import nodemailer from "nodemailer";
-import puppeteer from "puppeteer";
-import { resolve } from "url";
+import { chromium } from "playwright";
 
 export async function POST(request: NextRequest) {
   try {
     const { currentUrl, isSendingMail } = await request.json();
-    const browser = await puppeteer.launch({ headless: true });
+
+    // Pobierz bazowy adres URL z obiektu żądania
+    const baseUrl = new URL(request.headers.get("referer")!);
+    // Utwórz pełny adres URL używając bieżącego adresu i ścieżki
+    const fullUrl = `${baseUrl.protocol}//${baseUrl.host}${currentUrl}`;
+
+    const browser = await chromium.launch();
     const page = await browser.newPage();
 
-    const baseUrl = resolve(request.headers.get("referer")!, "/");
-    const fullUrl = resolve(baseUrl, currentUrl);
-
-    console.log(fullUrl);
-
-    await page.goto(fullUrl, {
-      waitUntil: "networkidle0",
-    });
-    await page.emulateMediaType("print");
+    await page.goto(fullUrl);
+    await page.emulateMedia({ media: "print" });
 
     const pdfBuffer = await page.pdf({ format: "A4" });
 
