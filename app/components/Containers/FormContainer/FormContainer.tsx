@@ -43,7 +43,7 @@ export default function FormContainer<T extends FieldValues>({
     defaultValues: defaultValues,
   });
 
-  const handleCloseForm = (): void => {
+  const handleCloseForm = () => {
     router.back();
     methods.reset();
   };
@@ -52,12 +52,13 @@ export default function FormContainer<T extends FieldValues>({
       const toastFormType = await findToastFormType(formType);
       if (id) {
         await onSubmitForm(data, id);
+        handleCloseForm();
         sendToast("success", toastFormType, "edit");
       } else {
         await onSubmitForm(data, undefined as any);
+        handleCloseForm();
         sendToast("success", toastFormType, "add");
       }
-      handleCloseForm();
     } catch (error) {
       console.log(error);
       console.error(error);

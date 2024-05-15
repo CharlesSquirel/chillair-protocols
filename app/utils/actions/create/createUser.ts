@@ -4,13 +4,7 @@ import { prisma } from "lib/db";
 import { revalidatePath } from "next/cache";
 
 export async function createUser(data: UserDTO) {
-  const userData = {
-    firstName: data.firstName,
-    lastName: data.lastName,
-    email: data.email,
-    userSignature: data.userSignature,
-  };
-  const { firstName, lastName, email, userSignature } = userData;
+  const { firstName, lastName, email, userSignature } = data;
   try {
     const exist = await prisma.user.findUnique({
       where: {
@@ -28,7 +22,7 @@ export async function createUser(data: UserDTO) {
         email,
       },
     });
-    console.log(`User created: ${user}`);
+    console.log("User succesfully created");
     revalidatePath("/dashboard/users");
     return user;
   } catch (error) {

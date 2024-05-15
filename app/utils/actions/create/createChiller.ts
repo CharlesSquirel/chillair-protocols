@@ -106,7 +106,7 @@ export async function createChiller(data: ChillerDTO) {
         },
       },
     });
-
+    console.log("Chiller succesfully created");
     return chiller;
   } catch (error) {
     console.log(error);

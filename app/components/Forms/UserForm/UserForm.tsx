@@ -63,7 +63,7 @@ export default function UserForm({
             />
           </InputRow>
         </InputGroup>
-        <SubmitFormButton />
+        <SubmitFormButton formType={formType} />
       </FormFieldset>
     </FormContainer>
   );

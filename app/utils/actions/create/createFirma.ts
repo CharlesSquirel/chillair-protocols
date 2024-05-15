@@ -20,7 +20,7 @@ export async function createFirma(data: FirmaDTO) {
     const firma = await prisma.firma.create({
       data: firmaData,
     });
-    console.log(`Firma created: ${firmaData}`);
+    console.log("Firma succesfully created");
     revalidatePath("/dashboard/firma");
     return firma;
   } catch (error) {

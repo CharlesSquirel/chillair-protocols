@@ -9,16 +9,6 @@ export async function createValve(data: CreateValveCredentials) {
   const { userFirstName, userLastName, userInfoSignature, userMongoId } =
     await getUserInfo();
 
-  const valvesData: CreateValveCredentials = {
-    firma: data.firma,
-    type: data.type,
-    serialNumber: data.serialNumber,
-    infoBlocks: data.infoBlocks,
-    clientEmail: data.clientEmail,
-    clientEmailPerm: data.clientEmailPerm,
-    description: data.description,
-  };
-
   const {
     firma,
     type,
@@ -27,7 +17,7 @@ export async function createValve(data: CreateValveCredentials) {
     clientEmail,
     clientEmailPerm,
     description,
-  } = valvesData;
+  } = data;
   try {
     await prisma.valve.create({
       data: {
@@ -49,8 +39,8 @@ export async function createValve(data: CreateValveCredentials) {
       },
     });
     revalidatePath("/dashboard/valves");
-    console.log("created");
-    console.log(valvesData);
+    console.log("Valve succesfully created");
+    console.log(data);
   } catch (error) {
     console.error("Błąd podczas tworzenia danych:", error);
   }
