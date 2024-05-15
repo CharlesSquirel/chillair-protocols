@@ -3,11 +3,14 @@
 import { FormType } from "@/utils/types/form";
 
 interface SubmitButtonProps {
-  formType: FormType;
+  formType?: FormType;
 }
 
 export default function SubmitFormButton({ formType }: SubmitButtonProps) {
-  const findButtonText = (formType: FormType) => {
+  const findButtonText = (formType: FormType | undefined) => {
+    if (typeof formType === "undefined") {
+      return;
+    }
     const type = formType.toLowerCase();
     switch (true) {
       case type.includes("add") &&
