@@ -107,7 +107,7 @@ export default function FirmaForm({
           </InputRow>
         </InputGroup>
       </FormFieldset>
-      <SubmitFormButton />
+      <SubmitFormButton formType={formType} />
     </FormContainer>
   );
 }
