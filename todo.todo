@@ -1,7 +1,7 @@
 ✔ RWD dashboard, protocol @done (24.04.2024, 15:37:03)
 ☐ gdzie można to usunąć use client
 ✔ opcja z wieloma stronami pdfa @done (11.05.2024, 23:49:10)
-☐ nodemailer
+✔ nodemailer @done (15.05.2024, 14:44:08)
 ☐ lepsze loga svg
 ☐ podstawowe metadane
 ☐ walidacja valveSerialNumber unikalnych
@@ -26,3 +26,6 @@
 ☐ Promise.all w deletach i innych
 ✔ w edycji usera button submit z tekstem Zapisz a jest utwórz @done (15.05.2024, 11:00:03)
 ☐ Ujednolicić w jednym języku error messages
+☐ ciemniejszy placeholder
+☐ edit chiller i valve
+☐ minus na valvie extra infos ma małe pole do klikania

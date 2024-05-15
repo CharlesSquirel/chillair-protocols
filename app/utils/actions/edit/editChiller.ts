@@ -175,7 +175,7 @@ export async function editChiller(data: ChillerDTO, id: string) {
       }),
     );
     revalidatePath("/dashboard/chillers");
-    console.log("edited");
+    console.log(`Chiller edited: ${data}`);
   } catch (error) {
     console.log(error);
   }

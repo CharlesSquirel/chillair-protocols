@@ -9,7 +9,13 @@ import InputRow from "../../Containers/InputRow/InputRow";
 import NumberInput from "../../Inputs/NumberInput/NumberInput";
 import SelectInput from "../../Inputs/SelectInput/SelectInput";
 
-export default function ExtraChillerCollingCircuits({}) {
+interface ExtraChillerCollingCircuitsProps {
+  defaultValues?: any;
+}
+
+export default function ExtraChillerCollingCircuits({
+  defaultValues,
+}: ExtraChillerCollingCircuitsProps) {
   const [count, setCount] = useState(1);
 
   const handleOnMinus = () => {
@@ -26,8 +32,10 @@ export default function ExtraChillerCollingCircuits({}) {
         <InputRow key={index} title={`Obieg chłodniczy ${index + 1}`}>
           <NumberInput
             name={`refrigerationCircuits.${index}`}
+            arrayName="refrigerationCircuits"
             placeholder="Wpisz wartość"
             label={`Obieg ${index + 1}`}
+            defaultValues={defaultValues}
           />
 
           {index === count - 1 && (
@@ -55,6 +63,7 @@ export default function ExtraChillerCollingCircuits({}) {
         label="Czynnik chłodzony"
         placeholder="Wybierz czynnik"
         data={chillerRefrigerationOptions}
+        defaultValues={defaultValues}
       />
     </InputGroup>
   );

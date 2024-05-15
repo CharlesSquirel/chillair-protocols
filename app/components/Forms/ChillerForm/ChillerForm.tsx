@@ -9,7 +9,6 @@ import {
   chillerWaterOptions,
 } from "@/data/selectOptions";
 import { getSubmitHandler } from "@/utils/switch/getSubmitHandler";
-import { ChillerDTO } from "@/utils/types/chiller";
 import { FormType } from "@/utils/types/form";
 import { ChillerValidationSchema } from "@/utils/zod/chillerValidationSchema";
 import { Circuit, PowerConsumption } from "@prisma/client";
@@ -51,7 +50,7 @@ export default function ChillerForm<T extends FieldValues>({
       closeUrl="/dashboard/chillers"
       validationSchema={ChillerValidationSchema}
       onSubmitForm={onSubmitForm}
-      defaultValues={defaultValues as ChillerDTO}
+      defaultValues={defaultValues}
     >
       <FormFieldset title="Informacje podstawowe">
         <InputGroup>
@@ -60,21 +59,25 @@ export default function ChillerForm<T extends FieldValues>({
             data={["Obiekt 1", "Obiekt 2", "Obiekt 3"]}
             placeholder="Wybierz obiekt"
             label="Obiekt"
+            defaultValues={defaultValues}
           />
           <TextInput
             name="type"
             placeholder="Wpisz typ urządzenia"
             label="Typ"
+            defaultValues={defaultValues}
           />
           <TextInput
             name="serialNumber"
             placeholder="Wpisz nr seryjny urządzenia"
             label="Nr seryjny"
+            defaultValues={defaultValues}
           />
           <TextInput
             name="driverType"
             placeholder="Wpisz typ sterownika"
             label="Typ sterownika"
+            defaultValues={defaultValues}
           />
         </InputGroup>
       </FormFieldset>
@@ -86,48 +89,56 @@ export default function ChillerForm<T extends FieldValues>({
             data={chillerPollutionOptions}
             label="Stopień zanieczyszczenia powierzchni wymiany ciepła"
             placeholder="Wybierz stopień"
+            defaultValues={defaultValues}
           />
           <SelectInput
             name="termalInsulation"
             data={chillerTermalInsulationOptions}
             label="Stan techniczny izolacji termicznej"
             placeholder="Wybierz stan"
+            defaultValues={defaultValues}
           />
           <SelectInput
             name="termalAndPressureControl"
             data={chillerValidOptions}
             label="Kontrola podpór, drgań i przemieszczeń powodowanych temperaturą i ciśnieniem"
             placeholder="Wybierz opcję"
+            defaultValues={defaultValues}
           />
           <SelectInput
             name="oilLevel"
             data={chillerValidOptions}
             label="Poziom oleju w sprężarkach"
             placeholder="Wybierz opcję"
+            defaultValues={defaultValues}
           />
           <SelectInput
             name="indicatorColor"
             data={chillerValidOptions}
             label="Kolor wskaźnika wilgotności"
             placeholder="Wybierz opcję"
+            defaultValues={defaultValues}
           />
           <SelectInput
             name="tightSystem"
             data={chillerValidOptions}
             label="Szczelność układu chłodniczego"
             placeholder="Wybierz opcję"
+            defaultValues={defaultValues}
           />
           <SelectInput
             name="currentConsumption"
             data={chillerValidOptions}
             label="Pobór prądu przez sprężarki"
             placeholder="Wybierz opcję"
+            defaultValues={defaultValues}
           />
           <SelectInput
             name="fansConsumption"
             data={chillerValidOptions}
             label="Pobór prądu przez wentylatory"
             placeholder="Wybierz opcję"
+            defaultValues={defaultValues}
           />
         </InputGroup>
 
@@ -138,11 +149,13 @@ export default function ChillerForm<T extends FieldValues>({
               data={chillerFreonOptions}
               label="Rodzaj freonu"
               placeholder="Wybierz opcję"
+              defaultValues={defaultValues}
             />
             <NumberInput
               name="freonAmount"
               label="Ilość czynnika"
               placeholder="Wpisz wartość"
+              defaultValues={defaultValues}
             />
           </InputRow>
         </InputGroup>
@@ -152,6 +165,7 @@ export default function ChillerForm<T extends FieldValues>({
             name="airTemperature"
             label="Temperatura powietrza zewnętrznego (°C)"
             placeholder="Wpisz wartość"
+            defaultValues={defaultValues}
           />
         </InputGroup>
 
@@ -161,11 +175,13 @@ export default function ChillerForm<T extends FieldValues>({
               name="supplyVoltage"
               label="Napięcie zasilające (V)"
               placeholder="Wpisz wartość"
+              defaultValues={defaultValues}
             />
             <NumberInput
               name="supplyPhase"
               label="Faz"
               placeholder="Wpisz wartość"
+              defaultValues={defaultValues}
             />
           </InputRow>
           <InputRow>
@@ -173,21 +189,25 @@ export default function ChillerForm<T extends FieldValues>({
               name="measuredVoltage_1"
               label="Napięcie L1-L2 (V)"
               placeholder="Wpisz wartość"
+              defaultValues={defaultValues}
             />
             <NumberInput
               name="measuredVoltage_2"
               label="Napięcie L1-L (V)"
               placeholder="Wpisz wartość"
+              defaultValues={defaultValues}
             />
             <NumberInput
               name="measuredVoltage_3"
               label="Napięcie L2-L3 (V)"
               placeholder="Wpisz wartość"
+              defaultValues={defaultValues}
             />
           </InputRow>
           <SelectWithNumberInput
             selectName="interphaseOK"
             numberName="interphase"
+            defaultValues={defaultValues}
           />
         </InputGroup>
 
@@ -198,31 +218,35 @@ export default function ChillerForm<T extends FieldValues>({
               data={chillerSwitchOptions}
               label="Wyłącznik wysokiego ciśnienia"
               placeholder="Wybierz opcję"
+              defaultValues={defaultValues}
             />
             <SelectInput
               name="lowPressure"
               data={chillerSwitchOptions}
               label="Wyłącznik niskiego ciśnienia"
               placeholder="Wybierz opcję"
+              defaultValues={defaultValues}
             />
             <SelectInput
               name="antiFrezzeTermostat"
               data={chillerSwitchOptions}
               label="Termostat przeciwzamrożeniowy"
               placeholder="Wybierz opcję"
+              defaultValues={defaultValues}
             />
           </InputRow>
         </InputGroup>
 
-        <ExtraChillerCollingCircuits />
+        <ExtraChillerCollingCircuits defaultValues={defaultValues} />
 
         <InputGroup title="System sterowania">
-          <ExtraChillerSettingTemp />
+          <ExtraChillerSettingTemp defaultValues={defaultValues} />
           <SelectInput
             name="controlledParameter"
             data={chillerWaterOptions}
             label="Parametr kontrolowany temperatury"
             placeholder="Wybierz opcję"
+            defaultValues={defaultValues}
           />
         </InputGroup>
 
@@ -233,12 +257,14 @@ export default function ChillerForm<T extends FieldValues>({
               data={chillerMethodOptions}
               label="Zastosowana metoda kontroli szczelności"
               placeholder="Wybierz opcję"
+              defaultValues={defaultValues}
             />
             <SelectInput
               name="leakGasTest"
               data={chillerGasMethods}
               label="Próba szczelności za pomocą gazu obojętnego"
               placeholder="Wybierz opcję"
+              defaultValues={defaultValues}
             />
           </InputRow>
         </InputGroup>
@@ -249,11 +275,13 @@ export default function ChillerForm<T extends FieldValues>({
               name="gasAdded"
               label="Ilość dodanego gazu (kg)"
               placeholder="Wpisz ilość gazu"
+              defaultValues={defaultValues}
             />
             <NumberInput
               name="gasRegain"
               label="Ilość odzyskanego gazu (kg)"
               placeholder="Wpisz ilość gazu"
+              defaultValues={defaultValues}
             />
           </InputRow>
         </InputGroup>
@@ -261,6 +289,7 @@ export default function ChillerForm<T extends FieldValues>({
 
       <FormFieldset title="Dane poboru prądu">
         <ExtraChillerCurrentInfo
+          defaultValues={defaultValues}
           extraChillerPowerDataEdit={extraChillerPowerDataEdit}
         />
       </FormFieldset>
@@ -276,6 +305,7 @@ export default function ChillerForm<T extends FieldValues>({
           name="description"
           label=""
           placeholder="Wpisz swoje uwagi"
+          defaultValues={defaultValues}
         />
       </InputGroup>
 

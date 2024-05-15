@@ -9,11 +9,13 @@ import SelectInput from "../SelectInput/SelectInput";
 interface SelectWithNumberInputProps {
   selectName: string;
   numberName: string;
+  defaultValues?: any;
 }
 
 export default function SelectWithNumberInput({
   selectName,
   numberName,
+  defaultValues,
 }: SelectWithNumberInputProps) {
   const { watch } = useFormContext();
   const selectValue = watch(selectName);
@@ -25,12 +27,14 @@ export default function SelectWithNumberInput({
         label="Różnica międzyfazowa"
         placeholder="Wybierz opcję"
         data={chillerValidOptions}
+        defaultValues={defaultValues}
       />
       {selectValue === "Niepoprawny" && (
         <NumberInput
           name={numberName}
           placeholder="Wpisz odchylenie"
           label="Odchylenie (%)"
+          defaultValues={defaultValues}
         />
       )}
     </InputRow>

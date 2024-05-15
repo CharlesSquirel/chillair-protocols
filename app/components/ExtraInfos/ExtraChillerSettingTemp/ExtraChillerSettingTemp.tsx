@@ -6,7 +6,13 @@ import React, { useState } from "react";
 import InputRow from "../../Containers/InputRow/InputRow";
 import NumberInput from "../../Inputs/NumberInput/NumberInput";
 
-export default function ExtraChillerSettingTemp() {
+interface ExtraChillerSettingTempProps {
+  defaultValues?: any;
+}
+
+export default function ExtraChillerSettingTemp({
+  defaultValues,
+}: ExtraChillerSettingTempProps) {
   const [count, setCount] = useState(1);
 
   const handleOnMinus = () => {
@@ -28,6 +34,8 @@ export default function ExtraChillerSettingTemp() {
               name={`settingsTemperature.${index}`}
               label={`Set ${index + 1} (°C)`}
               placeholder="Wpisz wartość"
+              defaultValues={defaultValues}
+              arrayName="settingsTemperature"
             />
             {index === count - 1 && (
               <button

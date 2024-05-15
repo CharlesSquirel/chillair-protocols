@@ -13,20 +13,16 @@ import SelectWithNumberInput from "../../Inputs/SelectWithNumberInput/SelectWith
 
 interface ExtraChillerCurrentInfoProps {
   extraChillerPowerDataEdit?: PowerConsumption[];
+  defaultValues?: any;
 }
 
 export default function ExtraChillerCurrentInfo({
   extraChillerPowerDataEdit,
+  defaultValues,
 }: ExtraChillerCurrentInfoProps) {
   const [count, setCount] = useState(
     extraChillerPowerDataEdit ? extraChillerPowerDataEdit.length : 1,
   );
-
-  // useEffect(() => {
-  //   if (extraChillerPowerDataEdit) {
-  //     setCount(extraChillerPowerDataEdit.length);
-  //   }
-  // }, [extraChillerPowerDataEdit]);
 
   const handleOnMinus = () => {
     setCount(count - 1);
@@ -42,30 +38,36 @@ export default function ExtraChillerCurrentInfo({
           <InputGroup title={`Urządzenie ${index + 1}`}>
             <SelectInput
               name={`powerConsumptions.${index}.deviceType`}
+              arrayName="powerConsumptions"
               label="Typ urządzenia"
               placeholder="Wybierz typ"
               data={chillerDeviceOptions}
+              defaultValues={defaultValues}
             />
             <InputRow>
               <NumberInput
                 name={`powerConsumptions.${index}.amperage_1`}
                 placeholder="Wpisz wartość"
                 label="L1 (A)"
+                defaultValues={defaultValues}
               />
               <NumberInput
                 name={`powerConsumptions.${index}.amperage_2`}
                 placeholder="Wpisz wartość"
                 label="L2 (A)"
+                defaultValues={defaultValues}
               />
               <NumberInput
                 name={`powerConsumptions.${index}.amperage_3`}
                 placeholder="Wpisz wartość"
                 label="L3 (A)"
+                defaultValues={defaultValues}
               />
             </InputRow>
             <SelectWithNumberInput
               numberName={`powerConsumptions.${index}.interphase`}
               selectName={`powerConsumptions.${index}.interphaseOk`}
+              defaultValues={defaultValues}
             />
             {index !== 0 && (
               <button
