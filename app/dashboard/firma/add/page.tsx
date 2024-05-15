@@ -7,7 +7,7 @@ import InputGroup from "@/components/Containers/InputGroup/InputGroup";
 import InputRow from "@/components/Containers/InputRow/InputRow";
 import NumberInput from "@/components/Inputs/NumberInput/NumberInput";
 import TextInput from "@/components/Inputs/TextInput/TextInput";
-import { createFirma } from "@/utils/actions/createFirma";
+import { createFirma } from "@/utils/actions/create/createFirma";
 import { FormType } from "@/utils/types/form";
 import { FirmaValidationSchema } from "@/utils/zod/firmaValidationSchema";
 

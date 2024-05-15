@@ -1,9 +1,9 @@
-import { createChiller } from "../actions/createChiller";
-import { createUser } from "../actions/createUser";
-import { createValve } from "../actions/createValve";
-import { editChiller } from "../actions/editChiller";
-import { editUser } from "../actions/editUser";
-import { editValve } from "../actions/editValve";
+import { createChiller } from "../actions/create/createChiller";
+import { createUser } from "../actions/create/createUser";
+import { createValve } from "../actions/create/createValve";
+import { editChiller } from "../actions/edit/editChiller";
+import { editUser } from "../actions/edit/editUser";
+import { editValve } from "../actions/edit/editValve";
 import { FormType } from "../types/form";
 
 export const getSubmitHandler = (formType: FormType) => {

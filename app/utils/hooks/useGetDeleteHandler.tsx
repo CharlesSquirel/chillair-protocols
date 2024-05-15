@@ -1,6 +1,6 @@
 import { usePathname } from "next/navigation";
-import { deleteValve } from "../actions/deleteValve";
-import { deleteChiller } from "../actions/deleteChiller";
+import { deleteChiller } from "../actions/delete/deleteChiller";
+import { deleteValve } from "../actions/delete/deleteValve";
 
 export const useGetDeleteHandler = () => {
   const pathname = usePathname();

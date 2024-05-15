@@ -1,7 +1,7 @@
 "use server";
 
 import { prisma } from "lib/db";
-import { FirmaDTO } from "../types/firma";
+import { FirmaDTO } from "../../types/firma";
 
 export async function createFirma(data: FirmaDTO) {
   const firmaData: FirmaDTO = {

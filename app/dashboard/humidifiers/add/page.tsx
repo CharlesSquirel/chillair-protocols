@@ -10,7 +10,7 @@ import NumberInput from "@/components/Inputs/NumberInput/NumberInput";
 import SelectInput from "@/components/Inputs/SelectInput/SelectInput";
 import TextInput from "@/components/Inputs/TextInput/TextInput";
 import TextareaInput from "@/components/Inputs/TextareaInput/TextareaInput";
-import { createHumidifier } from "@/utils/actions/createHumidifier";
+import { createHumidifier } from "@/utils/actions/create/createHumidifier";
 import { FormType } from "@/utils/types/form";
 import { HumidifierValidationSchema } from "@/utils/zod/humidifierValidation";
 

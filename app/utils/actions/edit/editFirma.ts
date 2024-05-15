@@ -1,18 +1,18 @@
 "use server";
+import { FirmaDTO } from "@/utils/types/firma";
 import { prisma } from "lib/db";
 import { revalidatePath } from "next/cache";
-import { UserDTO } from "../types/user";
 
-export async function editUser(data: UserDTO, id: string) {
+export async function editUser(data: FirmaDTO, id: string) {
   try {
-    await prisma.user.update({
+    await prisma.firma.update({
       where: {
         id,
       },
       data: data,
     });
-    revalidatePath("/dashboard/users");
-    console.log(`User edited: ${id}`);
+    revalidatePath("/dashboard/firma");
+    console.log(`Firma edited: ${id}`);
   } catch (error) {
     console.error("Błąd podczas edytowania danych:", error);
   }

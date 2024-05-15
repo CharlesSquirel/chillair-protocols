@@ -2,7 +2,7 @@
 
 import { prisma } from "lib/db";
 import { revalidatePath } from "next/cache";
-import { CreateValveCredentials } from "../types/valves";
+import { CreateValveCredentials } from "../../types/valves";
 
 export async function editValve(data: CreateValveCredentials, id: string) {
   const valvesData: CreateValveCredentials = {

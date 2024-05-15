@@ -1,6 +1,6 @@
 "use server";
 
-import { HumidifierDTO } from "../types/humidifier";
+import { HumidifierDTO } from "../../types/humidifier";
 
 export async function createHumidifier(data: HumidifierDTO) {
   const humidifiersdata: HumidifierDTO = {
