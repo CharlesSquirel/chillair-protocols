@@ -1,7 +1,7 @@
 "use client";
 
-import MinusIcon from "@/assets/icons/MinusIcon";
-import PlusIcon from "@/assets/icons/PlusIcon";
+import MinusButton from "@/components/Buttons/MinusButton/MinusButton";
+import PlusButton from "@/components/Buttons/PlusButton/PlusButton";
 import { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import InputGroup from "../../Containers/InputGroup/InputGroup";
@@ -23,6 +23,10 @@ export default function ExtraValvesInfo({
     defaultValues ? defaultValues.length : 1,
   );
 
+  const handleOnPlus = () => {
+    setInfoCount(infoCount + 1);
+  };
+
   useEffect(() => {
     if (defaultValues) {
       setInfoCount(defaultValues.length);
@@ -42,13 +46,10 @@ export default function ExtraValvesInfo({
       {Array.from({ length: infoCount }, (_, index) => (
         <InputGroup key={index}>
           {index !== 0 && (
-            <button
-              className="absolute right-3 top-2 h-6 w-6 md:right-4 md:top-4 md:h-7 md:w-7"
-              type="button"
+            <MinusButton
+              className="absolute right-3 top-2 size-6 md:right-4 md:top-4 md:size-7"
               onClick={handleOnMinus}
-            >
-              <MinusIcon />
-            </button>
+            />
           )}
           <InputRow>
             <TextInput
@@ -100,13 +101,7 @@ export default function ExtraValvesInfo({
           />
         </InputGroup>
       ))}
-      <button
-        className="h-10 w-10 self-center"
-        type="button"
-        onClick={() => setInfoCount(infoCount + 1)}
-      >
-        <PlusIcon />
-      </button>
+      <PlusButton className="self-center" onClick={handleOnPlus} />
     </>
   );
 }

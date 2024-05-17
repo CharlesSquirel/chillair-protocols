@@ -1,7 +1,7 @@
 "use client";
 
-import MinusIcon from "@/assets/icons/MinusIcon";
-import PlusIcon from "@/assets/icons/PlusIcon";
+import MinusButton from "@/components/Buttons/MinusButton/MinusButton";
+import PlusButton from "@/components/Buttons/PlusButton/PlusButton";
 import { chillerRefrigerationOptions } from "@/data/selectOptions";
 import { useState } from "react";
 import InputGroup from "../../Containers/InputGroup/InputGroup";
@@ -39,22 +39,13 @@ export default function ExtraChillerCollingCircuits({
           />
 
           {index === count - 1 && (
-            <button
-              className="h-10 w-10 self-center md:absolute md:bottom-[6px] md:left-[525px]"
-              type="button"
-              onClick={handleOnPlus}
-            >
-              <PlusIcon />
-            </button>
+            <PlusButton className="self-end pb-2" onClick={handleOnPlus} />
           )}
           {index !== 0 && (
-            <button
-              className="absolute right-0 top-0 h-6 w-6 md:right-4 md:top-4 md:h-7 md:w-7"
-              type="button"
+            <MinusButton
+              className="absolute right-0 top-0 size-6 md:right-4 md:top-4 md:size-7"
               onClick={handleOnMinus}
-            >
-              <MinusIcon />
-            </button>
+            />
           )}
         </InputRow>
       ))}

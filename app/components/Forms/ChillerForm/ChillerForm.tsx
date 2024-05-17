@@ -283,12 +283,16 @@ export default function ChillerForm({
 
       <FormFieldset title="Dane poboru prądu">
         <ExtraChillerCurrentInfo
-          defaultValues={defaultValues.powerConsumptions}
+          defaultValues={
+            defaultValues ? defaultValues.powerConsumptions : undefined
+          }
         />
       </FormFieldset>
 
       <FormFieldset title="Parametry obiegów">
-        <ExtraChillerCircuits defaultValues={defaultValues.circuits} />
+        <ExtraChillerCircuits
+          defaultValues={defaultValues ? defaultValues.circuits : undefined}
+        />
       </FormFieldset>
 
       <InputGroup title="Uwagi (opcjonalnie)">

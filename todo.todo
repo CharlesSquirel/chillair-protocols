@@ -20,8 +20,8 @@
 ☐ analogicnzie zrobić links do sideMenu
 ☐ refactor inline handlers
 ☐ initial state object for useGet hook in edit
-☐ wszystkie buttony do komponentów osobno
-☐ sizes wszędzie do loga
+✔ wszystkie buttony do komponentów osobno @done (17.05.2024, 12:16:14)
+✔ sizes wszędzie do loga @done (17.05.2024, 11:32:05)
 ☐ hovery w tabelach
 ☐ Promise.all w deletach i innych
 ✔ w edycji usera button submit z tekstem Zapisz a jest utwórz @done (15.05.2024, 11:00:03)

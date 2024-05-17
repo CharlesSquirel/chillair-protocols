@@ -1,7 +1,7 @@
 "use client";
 
-import MinusIcon from "@/assets/icons/MinusIcon";
-import PlusIcon from "@/assets/icons/PlusIcon";
+import MinusButton from "@/components/Buttons/MinusButton/MinusButton";
+import PlusButton from "@/components/Buttons/PlusButton/PlusButton";
 import React, { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import InputGroup from "../../Containers/InputGroup/InputGroup";
@@ -118,23 +118,14 @@ export default function ExtraChillerCircuits({
               />
             </InputRow>
             {index !== 0 && (
-              <button
-                className="absolute right-4 top-4 h-6 w-6 md:h-7 md:w-7"
-                type="button"
+              <MinusButton
+                className="absolute right-4 top-4 size-6 md:size-7"
                 onClick={handleOnMinus}
-              >
-                <MinusIcon />
-              </button>
+              />
             )}
           </InputGroup>
           {index === count - 1 && (
-            <button
-              className="h-10 w-10 self-center "
-              type="button"
-              onClick={handleOnPlus}
-            >
-              <PlusIcon />
-            </button>
+            <PlusButton className="self-center" onClick={handleOnPlus} />
           )}
         </React.Fragment>
       ))}
