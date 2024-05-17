@@ -77,7 +77,7 @@ export default function FormContainer<T extends FieldValues>({
         </h2>
         {children}
         <Link href={closeUrl} className="absolute right-6 top-6 z-10">
-          <CloseIcon className="h-7 w-7 sm:h-8 sm:w-8 md:h-10 md:w-10" />
+          <CloseIcon className="size-7 sm:size-8 md:size-10" />
         </Link>
       </form>
     </FormProvider>

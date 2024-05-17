@@ -20,7 +20,7 @@ export default function ActionTableButtons({
     <td className="z-10 gap-2 bg-transparent bg-white p-0 min-[915px]:absolute min-[915px]:right-3 min-[915px]:top-3 min-[1390px]:right-8 flex">
       {tableName === TableNames.FIRMA && <DeleteFirmaButton id={id} />}
       <Link href={actionUrl}>
-        <ArrowRightIcon />
+        <ArrowRightIcon className="size-7" />
       </Link>
     </td>
   );

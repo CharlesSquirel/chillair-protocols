@@ -6,7 +6,7 @@ export default function PlusIcon({ className }: SvgProps) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="#1e73be"
-      className={`h-full w-full ${className}`}
+      className={`size-full ${className}`}
     >
       <path
         fillRule="evenodd"

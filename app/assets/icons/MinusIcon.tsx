@@ -8,7 +8,7 @@ export default function MinusIcon({ className }: SvgProps) {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="#FF0000"
-      className={`h-full w-full ${className}`}
+      className={`size-full ${className}`}
     >
       <path
         strokeLinecap="round"

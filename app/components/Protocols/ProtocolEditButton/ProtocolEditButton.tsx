@@ -19,7 +19,7 @@ export default function ProtocolEditButton({
       href={path + id}
       className={`${isInProtocol ? "flex items-center gap-2 uppercase hover:text-primary" : ""}`}
     >
-      <EditIcon className="h-8 w-8 cursor-pointer hover:stroke-primary" />
+      <EditIcon className="size-8 cursor-pointer hover:stroke-primary" />
       {isInProtocol && "Edytuj"}
     </Link>
   );

@@ -1,8 +1,7 @@
 import { Circuit } from "@prisma/client";
 import ProtocolBoardContainer from "../ProtocolBoardContainer/ProtocolBoardContainer";
-import ProtocolBoardInfoContainer from "../ProtocolBoardInfoContainer/ProtocolBoardInfoContainer";
-
 import ProtocolBoardField from "../ProtocolBoardField/ProtocolBoardField";
+import ProtocolBoardInfoContainer from "../ProtocolBoardInfoContainer/ProtocolBoardInfoContainer";
 
 interface CircuitBoardProps {
   data: Circuit[];
