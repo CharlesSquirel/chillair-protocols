@@ -3,7 +3,7 @@
 ✔ opcja z wieloma stronami pdfa @done (11.05.2024, 23:49:10)
 ✔ nodemailer @done (15.05.2024, 14:44:08)
 ✔ lepsze loga svg @done (17.05.2024, 12:50:34)
-☐ podstawowe metadane
+✔ podstawowe metadane @done (17.05.2024, 16:06:59)
 ☐ walidacja valveSerialNumber unikalnych
 ☐ RWD pod mobilke z mniejszym width
 ✔ All protokoły wyświetlanie @done (2.05.2024, 11:12:22)
@@ -25,7 +25,7 @@
 ☐ Promise.all w deletach i innych
 ✔ w edycji usera button submit z tekstem Zapisz a jest utwórz @done (15.05.2024, 11:00:03)
 ☐ Ujednolicić w jednym języku error messages
-☐ ciemniejszy placeholder
+✔ ciemniejszy placeholder @done (17.05.2024, 16:07:04)
 ☐ edit chiller i valve
 ☐ minus na valvie extra infos ma małe pole do klikania
 ☐ dodać suspensy/loadingi

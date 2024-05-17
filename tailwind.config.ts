@@ -17,7 +17,7 @@ const config: Config = {
         grayPrint: "#6F6F84",
         grayTable: "#FAFAFC",
         grayStroke: "#BCB0C4",
-        placeholder: "#8D98AA",
+        placeholder: "#545b66",
         inputBg: "#EDF2F6",
         green: "#009000",
         error: "#FF0000",
