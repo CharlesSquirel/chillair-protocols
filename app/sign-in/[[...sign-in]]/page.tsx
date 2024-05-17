@@ -2,7 +2,7 @@
 
 import EnvelopeIcon from "@/assets/icons/EnvelopeIcon";
 import KeyIcon from "@/assets/icons/KeyIcon";
-import logo from "@/assets/images/chillair_logo.png";
+import logo from "@/assets/images/chillair_logo.svg";
 import LoginSubmitButton from "@/components/Buttons/LoginSubmitButton/LoginSubmitButton";
 import LoginTextInput from "@/components/Inputs/LoginTextInput/LoginTextInput";
 import { useSignIn } from "@clerk/nextjs";
@@ -66,7 +66,7 @@ export default function SignInForm() {
       onSubmit={(e) => handleSubmit(e)}
       className="mx-5 flex w-[600px] flex-col items-center gap-5 rounded-lg border border-secondary bg-secondary p-5 shadow-lg"
     >
-      <Image src={logo} alt="Chillair logo" priority />
+      <Image src={logo} alt="Chillair logo" width={255} priority />
 
       <LoginTextInput placeholder="Email" name="email" onChange={setEmail}>
         <EnvelopeIcon />

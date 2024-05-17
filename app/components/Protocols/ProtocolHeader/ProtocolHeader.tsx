@@ -1,7 +1,7 @@
 "use client";
 
 import MoreIcon from "@/assets/icons/MoreIcon";
-import logoImg from "@/assets/images/chillair-print.png";
+import logoImg from "@/assets/images/chillair-print.svg";
 import Image from "next/image";
 import { useState } from "react";
 import ProtocolMobileMenu from "../ProtocolMobileMenu/ProtocolMobileMenus";

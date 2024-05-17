@@ -2,7 +2,7 @@
 ☐ gdzie można to usunąć use client
 ✔ opcja z wieloma stronami pdfa @done (11.05.2024, 23:49:10)
 ✔ nodemailer @done (15.05.2024, 14:44:08)
-☐ lepsze loga svg
+✔ lepsze loga svg @done (17.05.2024, 12:50:34)
 ☐ podstawowe metadane
 ☐ walidacja valveSerialNumber unikalnych
 ☐ RWD pod mobilke z mniejszym width
@@ -14,7 +14,7 @@
 ☐ nie rewaliduje chillers po utworzeniu formularza
 ☐ nie daje defaultValues w edicie chillers
 ☐ w jednym miejscu messages do toastów
-☐ porządek w components
+✔ porządek w components @done (17.05.2024, 12:38:25)
 ☐ tost w logout w hamburgerze
 ☐ podmienić interfejsy FormProps
 ☐ analogicnzie zrobić links do sideMenu
