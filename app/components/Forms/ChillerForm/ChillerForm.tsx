@@ -1,3 +1,5 @@
+"use client";
+
 import {
   chillerFreonOptions,
   chillerGasMethods,
@@ -9,7 +11,8 @@ import {
   chillerWaterOptions,
 } from "@/data/selectOptions";
 import { getSubmitHandler } from "@/utils/switch/getSubmitHandler";
-import { FormType } from "@/utils/types/form";
+import { ChillerDTO } from "@/utils/types/chiller";
+import { FormProps } from "@/utils/types/form";
 import { ChillerValidationSchema } from "@/utils/zod/chillerValidationSchema";
 import SubmitFormButton from "../../Buttons/SubmitFormButton/SubmitFormButton";
 import FormContainer from "../../Containers/FormContainer/FormContainer";
@@ -26,10 +29,8 @@ import SelectWithNumberInput from "../../Inputs/SelectWithNumberInput/SelectWith
 import TextInput from "../../Inputs/TextInput/TextInput";
 import TextareaInput from "../../Inputs/TextareaInput/TextareaInput";
 
-interface ChillerFormProps {
-  defaultValues?: any;
-  formType: FormType;
-  id?: string;
+interface ChillerFormProps extends FormProps {
+  defaultValues?: ChillerDTO;
 }
 
 export default function ChillerForm({

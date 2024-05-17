@@ -1,6 +1,8 @@
-import { getSubmitHandler } from "@/utils/switch/getSubmitHandler";
-import { FormType } from "@/utils/types/form";
+"use client";
 
+import { getSubmitHandler } from "@/utils/switch/getSubmitHandler";
+import { FormProps } from "@/utils/types/form";
+import { ValveDTO } from "@/utils/types/valves";
 import { ValvesValidationSchema } from "@/utils/zod/valvesValidationSchema";
 import SubmitFormButton from "../../Buttons/SubmitFormButton/SubmitFormButton";
 import FormContainer from "../../Containers/FormContainer/FormContainer";
@@ -13,10 +15,8 @@ import SendClientEmail from "../../Inputs/SendClientEmail/SendClientEmail";
 import TextInput from "../../Inputs/TextInput/TextInput";
 import TextareaInput from "../../Inputs/TextareaInput/TextareaInput";
 
-interface ValveFormProps {
-  defaultValues?: any;
-  formType: FormType;
-  id?: string;
+interface ValveFormProps extends FormProps {
+  defaultValues?: ValveDTO;
 }
 
 export default function ValveForm({

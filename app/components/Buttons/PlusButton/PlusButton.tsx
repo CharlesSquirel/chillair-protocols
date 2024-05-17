@@ -1,5 +1,5 @@
 import PlusIcon from "@/assets/icons/PlusIcon";
-import { FormIncrementalButtonsProps } from "@/utils/types/buttons";
+import { FormIncrementalButtonsProps } from "@/utils/types/common";
 
 export default function PlusButton({
   onClick,

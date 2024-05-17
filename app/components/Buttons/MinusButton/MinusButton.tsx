@@ -1,5 +1,5 @@
 import MinusIcon from "@/assets/icons/MinusIcon";
-import { FormIncrementalButtonsProps } from "@/utils/types/buttons";
+import { FormIncrementalButtonsProps } from "@/utils/types/common";
 
 export default function MinusButton({
   className,

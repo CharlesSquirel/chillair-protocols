@@ -11,18 +11,17 @@
 ☐ cachować
 ☐ number walidacja do dwóch miejsc nie przepuszcza
 ☐ jeśli prisma chiller create rzuci błędem to toast success
-☐ nie rewaliduje chillers po utworzeniu formularza
+✔ nie rewaliduje chillers po utworzeniu formularza @done (17.05.2024, 13:57:58)
 ☐ nie daje defaultValues w edicie chillers
 ☐ w jednym miejscu messages do toastów
 ✔ porządek w components @done (17.05.2024, 12:38:25)
 ☐ tost w logout w hamburgerze
-☐ podmienić interfejsy FormProps
-☐ analogicnzie zrobić links do sideMenu
+✔ podmienić interfejsy FormProps @done (17.05.2024, 14:02:17)
 ☐ refactor inline handlers
 ☐ initial state object for useGet hook in edit
 ✔ wszystkie buttony do komponentów osobno @done (17.05.2024, 12:16:14)
 ✔ sizes wszędzie do loga @done (17.05.2024, 11:32:05)
-☐ hovery w tabelach
+✔ hovery w tabelach @done (17.05.2024, 15:58:18)
 ☐ Promise.all w deletach i innych
 ✔ w edycji usera button submit z tekstem Zapisz a jest utwórz @done (15.05.2024, 11:00:03)
 ☐ Ujednolicić w jednym języku error messages
@@ -30,3 +29,4 @@
 ☐ edit chiller i valve
 ☐ minus na valvie extra infos ma małe pole do klikania
 ☐ dodać suspensy/loadingi
+☐ podtytuł w path z side menu

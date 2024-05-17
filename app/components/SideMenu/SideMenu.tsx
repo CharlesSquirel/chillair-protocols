@@ -12,18 +12,18 @@ export default function SideMenu() {
         <span className="text-2xl">protocols</span>
       </h1>
       <ul className="flex flex-col gap-[15px] uppercase">
-        <li className="flex cursor-pointer gap-3 text-lg text-secondary hover:font-medium hover:text-primary">
+        <li className="flex cursor-pointer gap-3 text-lg text-secondary hover:text-primary">
           <HomeIcon className="size-6" /> Home
         </li>
         <Link
           href="/dashboard/firma"
-          className="flex cursor-pointer gap-3 text-lg text-secondary hover:font-medium hover:text-primary"
+          className="flex cursor-pointer gap-3 text-lg text-secondary hover:text-primary"
         >
           <LocalIcon className="size-6" /> Obiekty
         </Link>
         <Link
           href="/dashboard/users"
-          className="flex cursor-pointer gap-3 text-lg text-secondary hover:font-medium hover:text-primary"
+          className="flex cursor-pointer gap-3 text-lg text-secondary hover:text-primary"
         >
           <UserIcon className="size-6" /> Użytkownicy
         </Link>

@@ -23,7 +23,7 @@ export default function DeleteFirmaButton({ id }: DeleteFirmaButtonProps) {
   };
   return (
     <button onClick={handleOnDelete}>
-      <DeleteIcon className="size-7" />
+      <DeleteIcon className="size-7 hover:text-error" />
     </button>
   );
 }

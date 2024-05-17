@@ -8,15 +8,16 @@ import ProtocolFieldContainer from "@/components/Protocols/ProtocolFieldContaine
 import ProtocolHeader from "@/components/Protocols/ProtocolHeader/ProtocolHeader";
 import ProtocolUserSign from "@/components/Protocols/ProtocolUserSign/ProtocolUserSign";
 import ProtocolValveBoard from "@/components/Protocols/ProtocolValveBoard/ProtocolValveBoard";
+import { metaTitle } from "@/data/metaTitles";
 import getValve from "@/utils/actions/getValve";
 import { formatDateToString } from "@/utils/helpers/formatDateToString";
+import { FormEditPropsAsParams } from "@/utils/types/common";
 import { inter } from "lib/font";
+import { Metadata } from "next";
 
-interface ValveProtocolProps {
-  params: {
-    id: string;
-  };
-}
+export const metadata: Metadata = {
+  title: metaTitle.PROTOCOL_VIEW,
+};
 
 enum ValveHeader {
   LP = "Lp",
@@ -59,7 +60,7 @@ const valveHeaders: ValveHeader[] = [
 
 export default async function ValveProtocol({
   params: { id },
-}: ValveProtocolProps) {
+}: FormEditPropsAsParams) {
   const { valve, valveBlocks } = await getValve(id);
   if (!valve || !valveBlocks) {
     throw new Error("Nie znaleziono rekordu w bazie danych");
