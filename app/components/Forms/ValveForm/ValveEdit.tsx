@@ -6,7 +6,7 @@ import { FormEditProps } from "@/utils/types/common";
 import { FormType } from "@/utils/types/form";
 import { ValveDTO } from "@/utils/types/valves";
 
-const ValveEdit: React.FC<FormEditProps> = ({ id }) => {
+const ValveEdit: React.FC<FormEditProps> = ({ id, firma }) => {
   const { valve, valveBlocks } = useGetValve(id);
 
   const editValues: ValveDTO = {
@@ -31,6 +31,7 @@ const ValveEdit: React.FC<FormEditProps> = ({ id }) => {
       defaultValues={editValues}
       formType={FormType.VALVE_EDIT}
       id={id}
+      firma={firma}
     />
   );
 };

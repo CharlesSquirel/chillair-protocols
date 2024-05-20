@@ -31,12 +31,14 @@ import TextareaInput from "../../Inputs/TextareaInput/TextareaInput";
 
 interface ChillerFormProps extends FormProps {
   defaultValues?: ChillerDTO;
+  firma: string[];
 }
 
 export default function ChillerForm({
   formType,
   defaultValues,
   id,
+  firma,
 }: ChillerFormProps) {
   const onSubmitForm = getSubmitHandler(formType);
   return (
@@ -53,7 +55,7 @@ export default function ChillerForm({
         <InputGroup>
           <SelectInput
             name="firma"
-            data={["Obiekt 1", "Obiekt 2", "Obiekt 3"]}
+            data={firma}
             placeholder="Wybierz obiekt"
             label="Obiekt"
             defaultValues={defaultValues}
@@ -285,17 +287,11 @@ export default function ChillerForm({
       </FormFieldset>
 
       <FormFieldset title="Dane poboru prądu">
-        <ExtraChillerCurrentInfo
-          defaultValues={
-            defaultValues ? defaultValues.powerConsumptions : undefined
-          }
-        />
+        <ExtraChillerCurrentInfo defaultValues={defaultValues} />
       </FormFieldset>
 
       <FormFieldset title="Parametry obiegów">
-        <ExtraChillerCircuits
-          defaultValues={defaultValues ? defaultValues.circuits : undefined}
-        />
+        <ExtraChillerCircuits defaultValues={defaultValues} />
       </FormFieldset>
 
       <InputGroup title="Uwagi (opcjonalnie)">

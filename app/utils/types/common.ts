@@ -17,5 +17,6 @@ export interface FormEditPropsAsParams {
 }
 
 export interface FormEditProps {
+  firma: string[];
   id: string;
 }

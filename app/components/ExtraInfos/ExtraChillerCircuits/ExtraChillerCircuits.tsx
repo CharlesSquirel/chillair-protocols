@@ -20,7 +20,7 @@ export default function ExtraChillerCircuits({
 
   useEffect(() => {
     if (defaultValues) {
-      setCount(defaultValues.length);
+      setCount(defaultValues.circuits.length);
     }
   }, [defaultValues]);
 

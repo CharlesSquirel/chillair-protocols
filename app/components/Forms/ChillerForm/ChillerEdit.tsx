@@ -6,9 +6,10 @@ import { ChillerDTO } from "@/utils/types/chiller";
 import { FormEditProps } from "@/utils/types/common";
 import { FormType } from "@/utils/types/form";
 
-const ChillerEdit: React.FC<FormEditProps> = ({ id }) => {
+const ChillerEdit: React.FC<FormEditProps> = ({ id, firma }) => {
   const { chiller, chillerCircuits, chillerPowerConsumption } =
     useGetChillers(id);
+  console.log(chillerPowerConsumption);
 
   const editValues: ChillerDTO = {
     firma: chiller.firma,
@@ -67,11 +68,13 @@ const ChillerEdit: React.FC<FormEditProps> = ({ id }) => {
       interphase: power.interphase || undefined,
     })),
   };
+  console.log(editValues.circuits);
   return (
     <ChillerForm
       defaultValues={editValues}
       formType={FormType.CHILLER_EDIT}
       id={id}
+      firma={firma}
     />
   );
 };

@@ -17,12 +17,14 @@ import TextareaInput from "../../Inputs/TextareaInput/TextareaInput";
 
 interface ValveFormProps extends FormProps {
   defaultValues?: ValveDTO;
+  firma: string[];
 }
 
 export default function ValveForm({
   defaultValues,
   formType,
   id,
+  firma,
 }: ValveFormProps) {
   const onSubmitForm = getSubmitHandler(formType);
   return (
@@ -41,7 +43,7 @@ export default function ValveForm({
             placeholder="Wybierz obiekt"
             name="firma"
             label="Obiekt"
-            data={["Obiekt 1", "Obiekt 2", "Obiekt 3"]}
+            data={firma}
             className="w-[520px]"
             defaultValues={defaultValues}
           />

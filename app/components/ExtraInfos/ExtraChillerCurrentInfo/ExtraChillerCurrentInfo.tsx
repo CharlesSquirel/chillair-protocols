@@ -21,7 +21,7 @@ export default function ExtraChillerCurrentInfo({
 
   useEffect(() => {
     if (defaultValues) {
-      setCount(defaultValues.length);
+      setCount(defaultValues.powerConsumptions.length);
     }
   }, [defaultValues]);
 
