@@ -51,24 +51,28 @@ export default function ExtraChillerCurrentInfo({
                 placeholder="Wpisz wartość"
                 label="L1 (A)"
                 defaultValues={defaultValues}
+                arrayName="powerConsumptions"
               />
               <NumberInput
                 name={`powerConsumptions.${index}.amperage_2`}
                 placeholder="Wpisz wartość"
                 label="L2 (A)"
                 defaultValues={defaultValues}
+                arrayName="powerConsumptions"
               />
               <NumberInput
                 name={`powerConsumptions.${index}.amperage_3`}
                 placeholder="Wpisz wartość"
                 label="L3 (A)"
                 defaultValues={defaultValues}
+                arrayName="powerConsumptions"
               />
             </InputRow>
             <SelectWithNumberInput
               numberName={`powerConsumptions.${index}.interphase`}
               selectName={`powerConsumptions.${index}.interphaseOk`}
               defaultValues={defaultValues}
+              arrayName="powerConsumptions"
             />
             {index !== 0 && (
               <MinusButton

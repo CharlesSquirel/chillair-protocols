@@ -10,12 +10,14 @@ interface SelectWithNumberInputProps {
   selectName: string;
   numberName: string;
   defaultValues?: any;
+  arrayName?: string;
 }
 
 export default function SelectWithNumberInput({
   selectName,
   numberName,
   defaultValues,
+  arrayName,
 }: SelectWithNumberInputProps) {
   const { watch } = useFormContext();
   const selectValue = watch(selectName);
@@ -28,6 +30,7 @@ export default function SelectWithNumberInput({
         placeholder="Wybierz opcję"
         data={chillerValidOptions}
         defaultValues={defaultValues}
+        arrayName={arrayName}
       />
       {selectValue === "Niepoprawny" && (
         <NumberInput
@@ -35,6 +38,7 @@ export default function SelectWithNumberInput({
           placeholder="Wpisz odchylenie"
           label="Odchylenie (%)"
           defaultValues={defaultValues}
+          arrayName={arrayName}
         />
       )}
     </InputRow>

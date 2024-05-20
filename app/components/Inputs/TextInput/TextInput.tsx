@@ -25,12 +25,11 @@ export default function TextInput({
     formState: { errors },
     setValue,
   } = useFormContext();
-
   useEffect(() => {
     if (defaultValues && arrayName) {
       const index = name.charAt(arrayName.length + 1);
       const restOfName = name.slice(name.indexOf(index) + 2);
-      // setValue(name, defaultValues[arrayName][index][restOfName]);
+      setValue(name, defaultValues[index][restOfName]);
     } else if (defaultValues) {
       setValue(name, defaultValues[name]);
     }

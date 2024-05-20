@@ -47,12 +47,14 @@ export default function ExtraChillerCircuits({
                 placeholder="Wpisz wartość"
                 label="Ciśnienie tłoczenia (bar)"
                 defaultValues={defaultValues}
+                arrayName="circuits"
               />
               <NumberInput
                 name={`circuits.${index}.condensationTemperature`}
                 placeholder="Wpisz wartość"
                 label="Temperatura skraplania (°C)"
                 defaultValues={defaultValues}
+                arrayName="circuits"
               />
             </InputRow>
             <InputRow>
@@ -61,12 +63,14 @@ export default function ExtraChillerCircuits({
                 placeholder="Wpisz wartość"
                 label="Dochłodzenie (°C)"
                 defaultValues={defaultValues}
+                arrayName="circuits"
               />
               <NumberInput
                 name={`circuits.${index}.airTemperature`}
                 placeholder="Wpisz wartość"
                 label="Temperatura wylotowa powietrza (°C)"
                 defaultValues={defaultValues}
+                arrayName="circuits"
               />
             </InputRow>
             <InputRow title="Parametry ssania">
@@ -75,18 +79,21 @@ export default function ExtraChillerCircuits({
                 placeholder="Wpisz wartość"
                 label="Ciśnienie ssania (bar)"
                 defaultValues={defaultValues}
+                arrayName="circuits"
               />
               <NumberInput
                 name={`circuits.${index}.suctionTemperature`}
                 placeholder="Wpisz wartość"
                 label="Temperatura ssania (°C)"
                 defaultValues={defaultValues}
+                arrayName="circuits"
               />
               <NumberInput
                 name={`circuits.${index}.overHeat`}
                 placeholder="Wpisz wartość"
                 label="Przegrzanie (°C)"
                 defaultValues={defaultValues}
+                arrayName="circuits"
               />
             </InputRow>
             <InputRow title="Parametry parownika (po stronie wody)">
@@ -95,12 +102,14 @@ export default function ExtraChillerCircuits({
                 placeholder="Wpisz wartość"
                 label="Temperatura wejściowa (°C)"
                 defaultValues={defaultValues}
+                arrayName="circuits"
               />
               <NumberInput
                 name={`circuits.${index}.outTemperature`}
                 placeholder="Wpisz wartość"
                 label="Temperatura wyjściowa (°C)"
                 defaultValues={defaultValues}
+                arrayName="circuits"
               />
             </InputRow>
             <InputRow>
@@ -109,12 +118,14 @@ export default function ExtraChillerCircuits({
                 placeholder="Wpisz wartość"
                 label="Ciśnienie wody wejścia (bar)"
                 defaultValues={defaultValues}
+                arrayName="circuits"
               />
               <NumberInput
                 name={`circuits.${index}.outWaterPressure`}
                 placeholder="Wpisz wartość"
                 label="Ciśnienie wody wyjścia (bar)"
                 defaultValues={defaultValues}
+                arrayName="circuits"
               />
             </InputRow>
             {index !== 0 && (

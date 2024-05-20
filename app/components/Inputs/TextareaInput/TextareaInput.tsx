@@ -8,6 +8,7 @@ interface TextareaInputProps {
   name: string;
   placeholder: string;
   defaultValues?: any;
+  arrayName?: string;
 }
 
 export default function TextareaInput({
@@ -15,14 +16,19 @@ export default function TextareaInput({
   name,
   placeholder,
   defaultValues,
+  arrayName,
 }: TextareaInputProps) {
   const { register, setValue } = useFormContext();
 
   useEffect(() => {
-    if (defaultValues) {
+    if (defaultValues && arrayName) {
+      const index = name.charAt(arrayName.length + 1);
+      const restOfName = name.slice(name.indexOf(index) + 2);
+      setValue(name, defaultValues[index][restOfName]);
+    } else if (defaultValues) {
       setValue(name, defaultValues[name]);
     }
-  }, [setValue, name, defaultValues]);
+  }, [setValue, name, defaultValues, arrayName]);
 
   return (
     <div className="flex w-full flex-col gap-2">

@@ -8,7 +8,6 @@ interface NumberInputProps {
   name: string;
   defaultValues?: any;
   arrayName?: string;
-  isInArray?: boolean;
 }
 
 export default function NumberInput({
@@ -17,7 +16,6 @@ export default function NumberInput({
   name,
   defaultValues,
   arrayName,
-  isInArray,
 }: NumberInputProps) {
   const {
     register,
@@ -26,10 +24,16 @@ export default function NumberInput({
   } = useFormContext();
 
   useEffect(() => {
-    const index = name.at(-1);
-    if (defaultValues && arrayName && index) {
+    if (
+      arrayName === "refrigerationCircuits" ||
+      arrayName === "settingsTemperature"
+    ) {
+      const index = Number(name.at(-1));
       setValue(name, defaultValues[arrayName][index]);
-      console.log(defaultValues[arrayName][index]);
+    } else if (defaultValues && arrayName) {
+      const index = name.charAt(arrayName.length + 1);
+      const restOfName = name.slice(name.indexOf(index) + 2);
+      setValue(name, defaultValues[index][restOfName]);
     } else if (defaultValues) {
       setValue(name, defaultValues[name]);
     }

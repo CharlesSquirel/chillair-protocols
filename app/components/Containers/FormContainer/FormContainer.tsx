@@ -37,6 +37,7 @@ export default function FormContainer<T extends FieldValues>({
   id,
   formType,
 }: FormContainerProps<T>) {
+  console.log(id);
   const router = useRouter();
   const methods = useForm<T>({
     resolver: zodResolver(validationSchema),

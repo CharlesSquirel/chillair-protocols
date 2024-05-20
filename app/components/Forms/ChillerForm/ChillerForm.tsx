@@ -36,10 +36,12 @@ interface ChillerFormProps extends FormProps {
 export default function ChillerForm({
   formType,
   defaultValues,
+  id,
 }: ChillerFormProps) {
   const onSubmitForm = getSubmitHandler(formType);
   return (
     <FormContainer
+      id={id}
       formType={formType}
       title="Protokół przegląd agregatu chłodniczego z kontrolą szczelności"
       closeUrl="/dashboard/chillers"

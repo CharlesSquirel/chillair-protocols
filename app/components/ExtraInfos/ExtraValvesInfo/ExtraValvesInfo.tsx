@@ -65,12 +65,14 @@ export default function ExtraValvesInfo({
               name={`infoBlocks.${index}.valveType`}
               placeholder="Wybierz typ"
               defaultValues={defaultValues}
+              arrayName="infoBlocks"
             />
             <TextInput
               label="Nr fabryczny"
               name={`infoBlocks.${index}.valveSerialNumber`}
               placeholder="Wpisz nr"
               defaultValues={defaultValues}
+              arrayName="infoBlocks"
             />
           </InputRow>
           <InputRow title="Ciśnienia (Bar)">
@@ -79,18 +81,21 @@ export default function ExtraValvesInfo({
               name={`infoBlocks.${index}.pressureSetting`}
               placeholder="Bar"
               defaultValues={defaultValues}
+              arrayName="infoBlocks"
             />
             <NumberInput
               label="Otwarcie"
               name={`infoBlocks.${index}.pressureOpen`}
               placeholder="Bar"
               defaultValues={defaultValues}
+              arrayName="infoBlocks"
             />
             <NumberInput
               label="Zamknięcie"
               name={`infoBlocks.${index}.pressureClose`}
               placeholder="Bar"
               defaultValues={defaultValues}
+              arrayName="infoBlocks"
             />
           </InputRow>
           <TextareaInput
@@ -98,6 +103,7 @@ export default function ExtraValvesInfo({
             name={`infoBlocks.${index}.description`}
             placeholder="Wpisz swoje uwagi"
             defaultValues={defaultValues}
+            arrayName="infoBlocks"
           />
         </InputGroup>
       ))}

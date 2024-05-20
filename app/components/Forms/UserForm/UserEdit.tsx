@@ -11,10 +11,10 @@ const UserEdit: React.FC<FormEditProps> = ({ id }) => {
     throw Error("Nie znaleziono użytkownika o podanym id!");
   }
   const editValues = {
-    firstName: userData?.firstName,
-    lastName: userData?.lastName,
-    userSignature: userData?.userSignature,
-    email: userData?.email,
+    firstName: userData.firstName,
+    lastName: userData.lastName,
+    userSignature: userData.userSignature,
+    email: userData.email,
   };
 
   return (
