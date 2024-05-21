@@ -4,6 +4,7 @@ import MinusButton from "@/components/Buttons/MinusButton/MinusButton";
 import PlusButton from "@/components/Buttons/PlusButton/PlusButton";
 import { chillerDeviceOptions } from "@/data/selectOptions";
 import React, { useEffect, useState } from "react";
+import { useFormContext } from "react-hook-form";
 import InputGroup from "../../Containers/InputGroup/InputGroup";
 import InputRow from "../../Containers/InputRow/InputRow";
 import NumberInput from "../../Inputs/NumberInput/NumberInput";
@@ -17,6 +18,7 @@ interface ExtraChillerCurrentInfoProps {
 export default function ExtraChillerCurrentInfo({
   defaultValues,
 }: ExtraChillerCurrentInfoProps) {
+  const { setValue, getValues } = useFormContext();
   const [count, setCount] = useState(defaultValues ? defaultValues.length : 1);
 
   useEffect(() => {
@@ -27,6 +29,10 @@ export default function ExtraChillerCurrentInfo({
 
   const handleOnMinus = () => {
     setCount(count - 1);
+    if (defaultValues) {
+      const powerBlocks = getValues("powerConsumptions").slice(0, count - 1);
+      setValue("powerConsumptions", powerBlocks);
+    }
   };
 
   const handleOnPlus = () => {

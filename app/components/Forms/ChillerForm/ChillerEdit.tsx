@@ -58,6 +58,7 @@ const ChillerEdit: React.FC<FormEditProps> = ({ id, firma }) => {
       outTemperature: circuit.outTemperature,
       inWaterPressure: circuit.inWaterPressure,
       outWaterPressure: circuit.outWaterPressure,
+      editKey: circuit.editKey,
     })),
     powerConsumptions: chillerPowerConsumption.map((power: any) => ({
       deviceType: power.deviceType,
@@ -66,9 +67,10 @@ const ChillerEdit: React.FC<FormEditProps> = ({ id, firma }) => {
       amperage_3: power.amperage_3,
       interphaseOk: power.interphaseOk,
       interphase: power.interphase || undefined,
+      editKey: power.editKey,
     })),
   };
-  console.log(editValues.circuits);
+
   return (
     <ChillerForm
       defaultValues={editValues}

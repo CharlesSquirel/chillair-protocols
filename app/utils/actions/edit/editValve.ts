@@ -1,10 +1,10 @@
 "use server";
 
-import { CreateValveCredentials } from "@/utils/types/valves";
+import { ValveDTO } from "@/utils/types/valves";
 import { prisma } from "lib/db";
 import { revalidatePath } from "next/cache";
 
-export async function editValve(data: CreateValveCredentials, id: string) {
+export async function editValve(data: ValveDTO, id: string) {
   const {
     firma,
     type,

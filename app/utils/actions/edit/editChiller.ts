@@ -1,47 +1,105 @@
 "use server";
 
+import { generateRandomString } from "@/utils/helpers/generateRandomString";
 import { ChillerDTO } from "@/utils/types/chiller";
 import { prisma } from "lib/db";
 import { revalidatePath } from "next/cache";
 
 export async function editChiller(data: ChillerDTO, id: string) {
-  const {
-    firma,
-    type,
-    serialNumber,
-    pollution,
-    interphaseOK,
-    termalInsulation,
-    termalAndPressureControl,
-    supplyVoltage,
-    supplyPhase,
-    measuredVoltage_1,
-    measuredVoltage_2,
-    measuredVoltage_3,
-    interphase,
-    freonType,
-    freonAmount,
-    refrigerationCircuits,
-    driverType,
-    refrigerant,
-    airTemperature,
-    oilLevel,
-    indicatorColor,
-    tightSystem,
-    currentConsumption,
-    fansConsumption,
-    highPressure,
-    lowPressure,
-    antiFrezzeTermostat,
-    settingsTemperature,
-    controlledParameter,
-    controlMethod,
-    leakGasTest,
-    gasAdded,
-    gasRegain,
-    description,
-  } = data;
   try {
+    const circuitsEditKeys = await prisma.circuit.findMany({
+      where: { circuitId: id },
+      select: { editKey: true },
+    });
+    const powerEditKeys = await prisma.powerConsumption.findMany({
+      where: { powerConsumptionId: id },
+      select: { editKey: true },
+    });
+
+    const editValues = {
+      firma: data.firma,
+      type: data.type,
+      serialNumber: data.serialNumber,
+      pollution: data.pollution,
+      interphaseOK: data.interphaseOK,
+      termalInsulation: data.termalInsulation,
+      termalAndPressureControl: data.termalAndPressureControl,
+      supplyVoltage: data.supplyVoltage,
+      supplyPhase: data.supplyPhase,
+      measuredVoltage_1: data.measuredVoltage_1,
+      measuredVoltage_2: data.measuredVoltage_2,
+      measuredVoltage_3: data.measuredVoltage_3,
+      interphase: data.interphase,
+      freonType: data.freonType,
+      freonAmount: data.freonAmount,
+      refrigerationCircuits: data.refrigerationCircuits,
+      driverType: data.driverType,
+      refrigerant: data.refrigerant,
+      airTemperature: data.airTemperature,
+      oilLevel: data.oilLevel,
+      indicatorColor: data.indicatorColor,
+      tightSystem: data.tightSystem,
+      currentConsumption: data.currentConsumption,
+      fansConsumption: data.fansConsumption,
+      highPressure: data.highPressure,
+      lowPressure: data.lowPressure,
+      antiFrezzeTermostat: data.antiFrezzeTermostat,
+      settingsTemperature: data.settingsTemperature,
+      controlledParameter: data.controlledParameter,
+      controlMethod: data.controlMethod,
+      leakGasTest: data.leakGasTest,
+      gasAdded: data.gasAdded,
+      gasRegain: data.gasRegain,
+      description: data.description,
+      circuits: data.circuits.map((circuit, index) => ({
+        ...circuit,
+        editKey: circuitsEditKeys[index]
+          ? circuitsEditKeys[index].editKey
+          : generateRandomString(),
+      })),
+      powerConsumptions: data.powerConsumptions.map((power, index) => ({
+        ...power,
+        editKey: powerEditKeys[index]
+          ? powerEditKeys[index].editKey
+          : generateRandomString(),
+      })),
+    };
+    const {
+      firma,
+      type,
+      serialNumber,
+      pollution,
+      interphaseOK,
+      termalInsulation,
+      termalAndPressureControl,
+      supplyVoltage,
+      supplyPhase,
+      measuredVoltage_1,
+      measuredVoltage_2,
+      measuredVoltage_3,
+      interphase,
+      freonType,
+      freonAmount,
+      refrigerationCircuits,
+      driverType,
+      refrigerant,
+      airTemperature,
+      oilLevel,
+      indicatorColor,
+      tightSystem,
+      currentConsumption,
+      fansConsumption,
+      highPressure,
+      lowPressure,
+      antiFrezzeTermostat,
+      settingsTemperature,
+      controlledParameter,
+      controlMethod,
+      leakGasTest,
+      gasAdded,
+      gasRegain,
+      description,
+    } = editValues;
     const currentpowerBlocks = await prisma.powerConsumption.findMany({
       where: {
         powerConsumptionId: id,
@@ -98,7 +156,7 @@ export async function editChiller(data: ChillerDTO, id: string) {
 
     await Promise.all(
       currentpowerBlocks.map(async (currentBlock) => {
-        const foundBlock = data.powerConsumptions.find(
+        const foundBlock = editValues.powerConsumptions.find(
           (newBlock) => newBlock.editKey === currentBlock.editKey,
         );
 
@@ -119,7 +177,7 @@ export async function editChiller(data: ChillerDTO, id: string) {
 
     await Promise.all(
       currentcircuitBlocks.map(async (currentBlock) => {
-        const foundBlock = data.circuits.find(
+        const foundBlock = editValues.circuits.find(
           (newBlock) => newBlock.editKey === currentBlock.editKey,
         );
 
@@ -140,7 +198,7 @@ export async function editChiller(data: ChillerDTO, id: string) {
 
     // Dodaj nowe bloki informacji, jeśli istnieją w danych wejściowych, ale nie w aktualnych danych
     await Promise.all(
-      data.powerConsumptions.map(async (newBlock) => {
+      editValues.powerConsumptions.map(async (newBlock) => {
         const foundBlock = currentpowerBlocks.find(
           (currentBlock) => currentBlock.editKey === newBlock.editKey,
         );
@@ -158,7 +216,7 @@ export async function editChiller(data: ChillerDTO, id: string) {
     );
 
     await Promise.all(
-      data.circuits.map(async (newBlock) => {
+      editValues.circuits.map(async (newBlock) => {
         const foundBlock = currentcircuitBlocks.find(
           (currentBlock) => currentBlock.editKey === newBlock.editKey,
         );

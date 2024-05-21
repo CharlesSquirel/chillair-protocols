@@ -17,12 +17,11 @@ export default function ExtraChillerCircuits({
 }: ExtraChillerCircuitsProps) {
   const { getValues, setValue } = useFormContext();
   const [count, setCount] = useState(1);
-
   useEffect(() => {
     if (defaultValues) {
       setCount(defaultValues.circuits.length);
     }
-  }, [defaultValues]);
+  }, [defaultValues, getValues]);
 
   const handleOnMinus = () => {
     setCount(count - 1);
