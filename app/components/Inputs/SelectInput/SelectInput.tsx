@@ -1,7 +1,7 @@
 "use client";
 
 import { ErrorMessage } from "@hookform/error-message";
-import { SetStateAction, useEffect } from "react";
+import { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
 interface SelectInputProps {
@@ -10,6 +10,8 @@ interface SelectInputProps {
   name: string;
   data: string[];
   className?: string;
+  defaultValues?: any;
+  arrayName?: string;
 }
 
 export default function SelectInput({
@@ -18,11 +20,32 @@ export default function SelectInput({
   name,
   data,
   className,
+  defaultValues,
+  arrayName,
 }: SelectInputProps) {
   const {
     register,
     formState: { errors },
+    setValue,
   } = useFormContext();
+  useEffect(() => {
+    if (
+      defaultValues &&
+      (arrayName === "refrigerationCircuits" ||
+        arrayName === "settingsTemperature")
+    ) {
+      const index = Number(name.at(-1));
+      setValue(name, defaultValues[arrayName][index]);
+    } else if (defaultValues && arrayName) {
+      const index = name.charAt(arrayName.length + 1);
+      if (defaultValues[arrayName][index]) {
+        const restOfName = name.slice(name.indexOf(index) + 2);
+        setValue(name, defaultValues[arrayName][index][restOfName]);
+      }
+    } else if (defaultValues) {
+      setValue(name, defaultValues[name]);
+    }
+  }, [setValue, name, defaultValues, arrayName]);
 
   return (
     <div className="flex flex-col gap-1">

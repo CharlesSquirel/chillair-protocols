@@ -8,7 +8,7 @@ export default function HamburgerButton() {
 
   return (
     <button className="lg:hidden" onClick={() => handleMobileOpen(true)}>
-      <HamburgerIcon />
+      <HamburgerIcon className="size-11" />
     </button>
   );
 }

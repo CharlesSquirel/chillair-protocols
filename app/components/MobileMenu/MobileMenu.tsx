@@ -20,7 +20,7 @@ export default function MobileMenu() {
         className="flex cursor-pointer items-center gap-3 pt-[1px] text-2xl text-secondary hover:text-primary"
         onClick={() => handleMobileClose}
       >
-        <HomeIcon className="h-8 w-8" />
+        <HomeIcon className="size-8" />
         <p className="pt-[2px]">Home</p>
       </li>
       <Link
@@ -28,14 +28,14 @@ export default function MobileMenu() {
         className="flex cursor-pointer items-center gap-3 text-2xl text-secondary hover:text-primary"
         onClick={() => handleMobileClose}
       >
-        <LocalIcon className="h-8 w-8" />
+        <LocalIcon className="size-8" />
         <p className="pt-[2px]">Obiekty</p>
       </Link>
       <li
         className="flex cursor-pointer items-center gap-3 border-b pb-3 text-2xl text-secondary hover:text-primary"
         onClick={() => handleMobileClose}
       >
-        <UserIcon className="h-8 w-8" />
+        <UserIcon className="size-8" />
         <p className="pt-[2px]">Użytkownicy</p>
       </li>
       <LogoutMobileButton />

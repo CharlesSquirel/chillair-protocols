@@ -6,7 +6,13 @@ import InputRow from "../../Containers/InputRow/InputRow";
 import CheckboxInput from "../CheckboxInput/CheckboxInput";
 import TextInput from "../TextInput/TextInput";
 
-export default function SendClientEmail() {
+interface SendClientEmailProps {
+  defaultValues?: any;
+}
+
+export default function SendClientEmail({
+  defaultValues,
+}: SendClientEmailProps) {
   const { reset } = useFormContext();
   const [isActive, setIsActive] = useState(false);
   const handleOnCheck = () => {
@@ -21,8 +27,14 @@ export default function SendClientEmail() {
         label="Wyślij do klienta"
         name="clientEmailPerm"
         onCheck={handleOnCheck}
+        defaultValues={defaultValues}
       />
-      <TextInput placeholder="Email" name="clientEmail" disabled={!isActive} />
+      <TextInput
+        placeholder="Email"
+        name="clientEmail"
+        disabled={!isActive}
+        defaultValues={defaultValues}
+      />
     </InputRow>
   );
 }

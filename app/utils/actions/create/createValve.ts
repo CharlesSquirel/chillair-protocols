@@ -2,14 +2,14 @@
 
 import { prisma } from "lib/db";
 import { revalidatePath } from "next/cache";
-import { CreateValveCredentials } from "../../types/valves";
+import { ValveDTO } from "../../types/valves";
 import { getUserInfo } from "../getUserInfo";
 
-export async function createValve(data: CreateValveCredentials) {
+export async function createValve(data: ValveDTO) {
   const { userFirstName, userLastName, userInfoSignature, userMongoId } =
     await getUserInfo();
 
-  const valvesData: CreateValveCredentials = {
+  const valvesData: ValveDTO = {
     firma: data.firma,
     type: data.type,
     serialNumber: data.serialNumber,

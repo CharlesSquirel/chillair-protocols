@@ -17,4 +17,5 @@ export type SubmitHandlerType<T> = SubmitFunction<T> | SubmitEditFunction<T>;
 
 export interface FormProps {
   formType: FormType;
+  id?: string;
 }

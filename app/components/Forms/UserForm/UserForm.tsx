@@ -13,7 +13,6 @@ import { UserValidationSchema } from "@/utils/zod/userValidationSchema";
 
 interface UserFormProps extends FormProps {
   defaultValues?: UserDTO;
-  id?: string;
 }
 
 export default function UserForm({

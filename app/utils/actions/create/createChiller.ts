@@ -1,6 +1,7 @@
 "use server";
 
 import { prisma } from "lib/db";
+import { revalidatePath } from "next/cache";
 import { generateRandomString } from "../../helpers/generateRandomString";
 import { ChillerDTO } from "../../types/chiller";
 import { getUserInfo } from "../getUserInfo";
@@ -106,7 +107,8 @@ export async function createChiller(data: ChillerDTO) {
         },
       },
     });
-
+    revalidatePath("/dashboard/chiller");
+    console.log("Chiller succesfully created");
     return chiller;
   } catch (error) {
     console.log(error);

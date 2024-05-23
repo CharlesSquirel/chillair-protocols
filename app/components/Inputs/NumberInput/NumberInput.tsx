@@ -7,6 +7,7 @@ interface NumberInputProps {
   placeholder: string;
   name: string;
   defaultValues?: any;
+  arrayName?: string;
 }
 
 export default function NumberInput({
@@ -14,6 +15,7 @@ export default function NumberInput({
   placeholder,
   name,
   defaultValues,
+  arrayName,
 }: NumberInputProps) {
   const {
     register,
@@ -22,10 +24,24 @@ export default function NumberInput({
   } = useFormContext();
 
   useEffect(() => {
-    if (defaultValues) {
+    if (
+      defaultValues &&
+      (arrayName === "refrigerationCircuits" ||
+        arrayName === "settingsTemperature")
+    ) {
+      const index = Number(name.at(-1));
+      setValue(name, defaultValues[arrayName][index]);
+    } else if (defaultValues && arrayName) {
+      const index = name.charAt(arrayName.length + 1);
+      if (defaultValues[arrayName][index]) {
+        const restOfName = name.slice(name.indexOf(index) + 2);
+        const editValue = defaultValues[arrayName][index][restOfName];
+        setValue(name, editValue);
+      }
+    } else if (defaultValues) {
       setValue(name, defaultValues[name]);
     }
-  }, [setValue, name, defaultValues]);
+  }, [setValue, name, defaultValues, arrayName]);
 
   return (
     <div className="h-min-[106px] flex flex-col gap-1">

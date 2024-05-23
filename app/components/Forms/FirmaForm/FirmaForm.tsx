@@ -14,7 +14,6 @@ import { FirmaValidationSchema } from "@/utils/zod/firmaValidationSchema";
 
 interface FirmaFormProps extends FormProps {
   defaultValues?: FirmaDTO;
-  id?: string;
 }
 
 export default function FirmaForm({

@@ -1,16 +1,11 @@
 import { useEffect, useState } from "react";
-import { Valve, ValvesInfoBlock } from "@prisma/client";
 import getValve from "../actions/getValve";
-
-interface ValveData {
-  valve: Valve | null;
-  valveBlocks: ValvesInfoBlock[];
-}
+import { initialValveEdit, initialValveInfoBlockEdit } from "../types/valves";
 
 export const useGetValve = (id: string) => {
-  const [valveData, setValveData] = useState<ValveData>({
-    valve: null,
-    valveBlocks: [],
+  const [valveData, setValveData] = useState<any>({
+    valve: initialValveEdit,
+    valveBlocks: initialValveInfoBlockEdit,
   });
 
   useEffect(() => {

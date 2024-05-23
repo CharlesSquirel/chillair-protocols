@@ -1,53 +1,16 @@
-"use client";
+import ValveEdit from "@/components/Forms/ValveForm/ValveEdit";
+import { metaTitle } from "@/data/metaTitles";
+import { getFirmaShortName } from "@/utils/actions/getFirmaShortName";
+import { FormEditPropsAsParams } from "@/utils/types/common";
+import { Metadata } from "next";
 
-import ValveForm from "@/components/Forms/ValveForm/ValveForm";
-import { useGetValve } from "@/utils/hooks/useGetValve";
-import { FormType } from "@/utils/types/form";
-import { useEffect, useState } from "react";
-
-interface ValveEditProps {
-  params: {
-    id: string;
-  };
-}
-
-const ValveEdit: React.FC<ValveEditProps> = ({ params: { id } }) => {
-  const { valve, valveBlocks } = useGetValve(id);
-  const [editValues, setEditValues] = useState<any>(null);
-
-  useEffect(() => {
-    if (valve && valveBlocks) {
-      const initialValues = {
-        firma: valve.firma ?? undefined,
-        type: valve.type ?? undefined,
-        serialNumber: valve.serialNumber ?? undefined,
-        description: valve.description ?? undefined,
-        infoBlocks: valveBlocks.map((block) => ({
-          valveLocation: block.valveLocation ?? undefined,
-          valveType: block.valveType ?? undefined,
-          valveSerialNumber: block.valveSerialNumber ?? undefined,
-          pressureOpen: block.pressureOpen ?? undefined,
-          pressureClose: block.pressureClose ?? undefined,
-          pressureSetting: block.pressureSetting ?? undefined,
-          description: block.description ?? undefined,
-        })),
-      };
-      setEditValues(initialValues);
-    }
-  }, [valve, valveBlocks]);
-
-  if (!editValues) {
-    return <p>Loading...</p>;
-  }
-
-  return (
-    <ValveForm
-      defaultValues={editValues}
-      formType={FormType.VALVE_EDIT}
-      id={id}
-      extraValvesDataEdit={valveBlocks}
-    />
-  );
+export const metadata: Metadata = {
+  title: metaTitle.PROTOCOL_EDIT,
 };
 
-export default ValveEdit;
+export default async function ValveEdition({
+  params: { id },
+}: FormEditPropsAsParams) {
+  const firma = await getFirmaShortName();
+  return <ValveEdit id={id} firma={firma ? firma : []} />;
+}

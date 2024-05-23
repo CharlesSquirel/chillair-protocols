@@ -1,18 +1,22 @@
 import { useEffect, useState } from "react";
-import { Chiller, Circuit, PowerConsumption } from "@prisma/client";
 import getChiller from "../actions/getChiller";
+import {
+  initialChillerCircuitEdit,
+  initialChillerDataEdit,
+  initialChillerPowerEdit,
+} from "../types/chiller";
 
-interface ChillerData {
-  chiller: Chiller | null;
-  chillerPowerConsumption: PowerConsumption[];
-  chillerCircuits: Circuit[];
-}
+// interface ChillerData {
+//   chiller: Chiller | null;
+//   chillerPowerConsumption: PowerConsumption[];
+//   chillerCircuits: Circuit[];
+// }
 
 export const useGetChillers = (id: string) => {
-  const [chillerData, setChillerData] = useState<ChillerData>({
-    chiller: null,
-    chillerPowerConsumption: [],
-    chillerCircuits: [],
+  const [chillerData, setChillerData] = useState<any>({
+    chiller: initialChillerDataEdit,
+    chillerPowerConsumption: initialChillerPowerEdit,
+    chillerCircuits: initialChillerCircuitEdit,
   });
 
   useEffect(() => {
@@ -28,6 +32,5 @@ export const useGetChillers = (id: string) => {
 
     fetchData();
   }, [id]);
-
   return chillerData;
 };

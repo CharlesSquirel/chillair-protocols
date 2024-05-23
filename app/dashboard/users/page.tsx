@@ -1,7 +1,7 @@
-import ActionTableButtons from "@/components/Buttons/ActionTableButtons/ActionTableButtons";
 import TableContainer from "@/components/Containers/TableContainer/TableContainer";
 import { userHeaders } from "@/data/tableHeaders";
 import getAllUsers from "@/utils/actions/getAllUsers";
+import RenderUserRows from "@/utils/renderTableRows/RenderUserRows";
 import { TableNames } from "@/utils/types/tableNames";
 
 export default async function Users() {
@@ -11,20 +11,7 @@ export default async function Users() {
       tableName={TableNames.USERS}
       headers={userHeaders}
       renderRows={() => (
-        <>
-          {users?.map((user, index) => (
-            <tr
-              key={index}
-              className="relative hover:cursor-pointer hover:text-primary"
-            >
-              <td>{user.firstName}</td>
-              <td>{user.lastName}</td>
-              <td>{user.email}</td>
-              <td>{user.userSignature}</td>
-              <ActionTableButtons id={user.id} tableName={TableNames.USERS} />
-            </tr>
-          ))}
-        </>
+        <RenderUserRows users={users} tableName={TableNames.USERS} />
       )}
     />
   );

@@ -1,12 +1,12 @@
 "use client";
 
 import MoreIcon from "@/assets/icons/MoreIcon";
+import { generateLinkClasses } from "@/utils/switch/generateNavLinkClasses";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import MobileNavbar from "../MobileNavbar/MobileNavbar";
-import { generateLinkClasses } from "@/utils/switch/generateNavLinkClasses";
 import { navLinks } from "../../data/navLinks";
+import MobileNavbar from "../MobileNavbar/MobileNavbar";
 
 export default function NavBar() {
   const [isMobileActive, setIsMobileActive] = useState(false);
@@ -24,7 +24,7 @@ export default function NavBar() {
           </Link>
         ))}
         <li className="md:hidden" onClick={() => setIsMobileActive(true)}>
-          <MoreIcon className="h-11 w-11" />
+          <MoreIcon className="size-11" />
         </li>
       </ul>
       {isMobileActive && <MobileNavbar onClick={setIsMobileActive} />}

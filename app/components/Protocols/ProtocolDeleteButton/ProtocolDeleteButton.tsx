@@ -27,7 +27,7 @@ export default function ProtocolDeleteButton({
       onClick={handleOnDelete}
       className={`${isInProtocol ? "flex items-center gap-2 uppercase hover:text-primary" : ""}`}
     >
-      <DeleteIcon className="h-8 w-8 cursor-pointer hover:stroke-primary" />
+      <DeleteIcon className="size-8 cursor-pointer hover:stroke-primary" />
       {isInProtocol && "Usuń"}
     </button>
   );

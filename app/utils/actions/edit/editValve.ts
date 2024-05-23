@@ -1,20 +1,10 @@
 "use server";
 
+import { ValveDTO } from "@/utils/types/valves";
 import { prisma } from "lib/db";
 import { revalidatePath } from "next/cache";
-import { CreateValveCredentials } from "../../types/valves";
 
-export async function editValve(data: CreateValveCredentials, id: string) {
-  const valvesData: CreateValveCredentials = {
-    firma: data.firma,
-    type: data.type,
-    serialNumber: data.serialNumber,
-    infoBlocks: data.infoBlocks,
-    clientEmail: data.clientEmail,
-    clientEmailPerm: data.clientEmailPerm,
-    description: data.description,
-  };
-
+export async function editValve(data: ValveDTO, id: string) {
   const {
     firma,
     type,
@@ -23,7 +13,7 @@ export async function editValve(data: CreateValveCredentials, id: string) {
     clientEmail,
     clientEmailPerm,
     description,
-  } = valvesData;
+  } = data;
   try {
     const currentInfoBlocks = await prisma.valvesInfoBlock.findMany({
       where: {
@@ -87,8 +77,7 @@ export async function editValve(data: CreateValveCredentials, id: string) {
       }),
     );
     revalidatePath("/dashboard/valves");
-    console.log("Valve edited");
-    console.log(valvesData);
+    console.log(`Valve edited: ${data}`);
   } catch (error) {
     console.log(error);
   }

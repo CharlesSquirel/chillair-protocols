@@ -40,7 +40,7 @@ type DeviceType =
   | "Silnik"
   | "Falownik";
 
-interface PowerConsumption {
+export interface PowerConsumption {
   deviceType: DeviceType;
   amperage_1: number;
   amperage_2: number;
@@ -50,7 +50,7 @@ interface PowerConsumption {
   editKey: string;
 }
 
-interface Circuit {
+export interface Circuit {
   dischargePressure: number;
   condensationTemperature: number;
   subcooling: number;
@@ -103,3 +103,69 @@ export interface ChillerDTO {
   circuits: Circuit[];
   powerConsumptions: PowerConsumption[];
 }
+
+export const initialChillerPowerEdit = [
+  {
+    deviceType: "Sprężarka",
+    amperage_1: 0,
+    amperage_2: 0,
+    amperage_3: 0,
+    interphaseOk: "",
+    interphase: undefined,
+    editKey: "",
+  },
+];
+
+export const initialChillerCircuitEdit = [
+  {
+    dischargePressure: 0,
+    condensationTemperature: 0,
+    subcooling: 0,
+    airTemperature: 0,
+    suctionPressure: 0,
+    suctionTemperature: 0,
+    overHeat: 0,
+    inTemperature: 0,
+    outTemperature: 0,
+    inWaterPressure: 0,
+    outWaterPressure: 0,
+    editKey: "",
+  },
+];
+
+export const initialChillerDataEdit = {
+  firma: "",
+  type: "",
+  serialNumber: "",
+  description: undefined,
+  pollution: "Brudny",
+  termalInsulation: "Bardzo słaby",
+  termalAndPressureControl: "Prawidłowy",
+  supplyVoltage: 0,
+  supplyPhase: 0,
+  measuredVoltage_1: 0,
+  measuredVoltage_2: 0,
+  measuredVoltage_3: 0,
+  interphaseOK: "",
+  interphase: undefined,
+  freonType: "R134A",
+  freonAmount: 0,
+  refrigerationCircuits: [],
+  driverType: "",
+  refrigerant: "Woda",
+  airTemperature: 0,
+  oilLevel: "Prawidłowy",
+  indicatorColor: "Prawidłowy",
+  tightSystem: "Prawidłowy",
+  currentConsumption: "Prawidłowy",
+  fansConsumption: "Prawidłowy",
+  highPressure: "Wyłączony",
+  lowPressure: "Wyłączony",
+  antiFrezzeTermostat: "Wyłączony",
+  settingsTemperature: [],
+  controlledParameter: "Wejście wody",
+  controlMethod: "Bezpośrednio",
+  leakGasTest: "Konieczna",
+  gasAdded: 0,
+  gasRegain: 0,
+};

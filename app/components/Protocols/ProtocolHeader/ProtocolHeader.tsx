@@ -1,7 +1,7 @@
 "use client";
 
 import MoreIcon from "@/assets/icons/MoreIcon";
-import logoImg from "@/assets/images/chillair-print.png";
+import logoImg from "@/assets/images/chillair-print.svg";
 import Image from "next/image";
 import { useState } from "react";
 import ProtocolMobileMenu from "../ProtocolMobileMenu/ProtocolMobileMenus";
@@ -27,7 +27,7 @@ export default function ProtocolHeader({ title, id }: ProtocolHeaderProps) {
         className="md:hidden print:hidden"
         onClick={() => setIsMobileActive(true)}
       >
-        <MoreIcon className="h-11 w-11" />
+        <MoreIcon className="size-11" />
       </button>
       {isMobileActive && (
         <ProtocolMobileMenu onClick={() => setIsMobileActive(false)} id={id} />

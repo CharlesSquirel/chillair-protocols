@@ -1,9 +1,9 @@
+"use client";
+
 import { getSubmitHandler } from "@/utils/switch/getSubmitHandler";
-import { FormType } from "@/utils/types/form";
-import { CreateValveCredentials } from "@/utils/types/valves";
+import { FormProps } from "@/utils/types/form";
+import { ValveDTO } from "@/utils/types/valves";
 import { ValvesValidationSchema } from "@/utils/zod/valvesValidationSchema";
-import { ValvesInfoBlock } from "@prisma/client";
-import { DefaultValues, FieldValues } from "react-hook-form";
 import SubmitFormButton from "../../Buttons/SubmitFormButton/SubmitFormButton";
 import FormContainer from "../../Containers/FormContainer/FormContainer";
 import FormFieldset from "../../Containers/FormFieldset/FormFieldset";
@@ -15,19 +15,17 @@ import SendClientEmail from "../../Inputs/SendClientEmail/SendClientEmail";
 import TextInput from "../../Inputs/TextInput/TextInput";
 import TextareaInput from "../../Inputs/TextareaInput/TextareaInput";
 
-interface ValveFormProps<T extends FieldValues> {
-  defaultValues?: DefaultValues<T>;
-  formType: FormType;
-  id?: string;
-  extraValvesDataEdit?: ValvesInfoBlock[];
+interface ValveFormProps extends FormProps {
+  defaultValues?: ValveDTO;
+  firma: string[];
 }
 
-export default function ValveForm<T extends FieldValues>({
+export default function ValveForm({
   defaultValues,
   formType,
   id,
-  extraValvesDataEdit,
-}: ValveFormProps<T>) {
+  firma,
+}: ValveFormProps) {
   const onSubmitForm = getSubmitHandler(formType);
   return (
     <FormContainer
@@ -35,7 +33,7 @@ export default function ValveForm<T extends FieldValues>({
       onSubmitForm={onSubmitForm}
       validationSchema={ValvesValidationSchema}
       closeUrl="/dashboard/valves"
-      defaultValues={defaultValues as CreateValveCredentials}
+      defaultValues={defaultValues}
       id={id}
       formType={formType}
     >
@@ -45,23 +43,26 @@ export default function ValveForm<T extends FieldValues>({
             placeholder="Wybierz obiekt"
             name="firma"
             label="Obiekt"
-            data={["Obiekt 1", "Obiekt 2", "Obiekt 3"]}
+            data={firma}
             className="w-[520px]"
+            defaultValues={defaultValues}
           />
           <TextInput
             placeholder="Wpisz typ urządzenia"
             name="type"
             label="Typ urządzenia"
+            defaultValues={defaultValues}
           />
           <TextInput
             placeholder="Wpisz numer seryjny urządzenia"
             name="serialNumber"
             label="Numer seryjny"
+            defaultValues={defaultValues}
           />
         </InputGroup>
       </FormFieldset>
       <FormFieldset title="Informacje dodatkowe">
-        <ExtraValvesInfo extraValvesDataEdit={extraValvesDataEdit} />
+        <ExtraValvesInfo defaultValues={defaultValues} />
       </FormFieldset>
       <FormFieldset>
         <InputGroup>
@@ -70,6 +71,7 @@ export default function ValveForm<T extends FieldValues>({
               placeholder="Wpisz swoje uwagi"
               label=""
               name="description"
+              defaultValues={defaultValues}
             />
           </InputRow>
         </InputGroup>

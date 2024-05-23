@@ -11,19 +11,20 @@ import ProtocolField from "@/components/Protocols/ProtocolField/ProtocolField";
 import ProtocolHeader from "@/components/Protocols/ProtocolHeader/ProtocolHeader";
 import ProtocolUserSign from "@/components/Protocols/ProtocolUserSign/ProtocolUserSign";
 import { PROTOCOL_INFO } from "@/data/chillairInfo";
+import { metaTitle } from "@/data/metaTitles";
 import getChiller from "@/utils/actions/getChiller";
 import { formatDateToString } from "@/utils/helpers/formatDateToString";
+import { FormEditPropsAsParams } from "@/utils/types/common";
 import { inter } from "lib/font";
+import { Metadata } from "next";
 
-interface ChillerProtocolProps {
-  params: {
-    id: string;
-  };
-}
+export const metadata: Metadata = {
+  title: metaTitle.PROTOCOL_VIEW,
+};
 
 export default async function ChillerProtocol({
   params: { id },
-}: ChillerProtocolProps) {
+}: FormEditPropsAsParams) {
   const { chiller, chillerCircuits, chillerPowerConsumption } =
     await getChiller(id);
   if (!chiller || !chillerCircuits || !chillerPowerConsumption) {

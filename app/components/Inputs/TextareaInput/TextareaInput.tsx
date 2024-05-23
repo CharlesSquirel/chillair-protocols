@@ -1,19 +1,37 @@
 "use client";
 
+import { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
 interface TextareaInputProps {
   label: string;
   name: string;
   placeholder: string;
+  defaultValues?: any;
+  arrayName?: string;
 }
 
 export default function TextareaInput({
   label,
   name,
   placeholder,
+  defaultValues,
+  arrayName,
 }: TextareaInputProps) {
-  const { register } = useFormContext();
+  const { register, setValue } = useFormContext();
+
+  useEffect(() => {
+    if (defaultValues && arrayName) {
+      const index = name.charAt(arrayName.length + 1);
+      if (defaultValues[arrayName][index]) {
+        const restOfName = name.slice(name.indexOf(index) + 2);
+        setValue(name, defaultValues[arrayName][index][restOfName]);
+      }
+    } else if (defaultValues) {
+      setValue(name, defaultValues[name]);
+    }
+  }, [setValue, name, defaultValues, arrayName]);
+
   return (
     <div className="flex w-full flex-col gap-2">
       <label htmlFor={name} className="md:text-1 text-[14px] sm:text-[15px]">

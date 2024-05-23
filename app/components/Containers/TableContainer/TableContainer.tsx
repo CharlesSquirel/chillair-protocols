@@ -42,7 +42,7 @@ export default function TableContainer({
                   </Link>
                 )}
               <button className="min-h-[40px] border-none bg-transparent hover:opacity-70 ">
-                <Filter />
+                <Filter className="size-8" />
               </button>
             </th>
           </tr>

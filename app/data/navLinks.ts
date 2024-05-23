@@ -1,9 +1,6 @@
-interface NavLinks {
-  href: string;
-  text: string;
-}
+import { Links } from "@/utils/types/common";
 
-export const navLinks: NavLinks[] = [
+export const navLinks: Links[] = [
   {
     href: "/dashboard",
     text: "Wszystkie",
