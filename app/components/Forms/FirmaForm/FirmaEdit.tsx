@@ -2,10 +2,13 @@
 
 import FirmaForm from "@/components/Forms/FirmaForm/FirmaForm";
 import { useGetFirma } from "@/utils/hooks/useGetFirma";
-import { FormEditProps } from "@/utils/types/common";
 import { FormType } from "@/utils/types/form";
 
-const FirmaEdit: React.FC<FormEditProps> = ({ id }) => {
+interface FormFirmaProps {
+  id: string;
+}
+
+const FirmaEdit: React.FC<FormFirmaProps> = ({ id }) => {
   const firmaData = useGetFirma(id);
 
   if (!firmaData) {
