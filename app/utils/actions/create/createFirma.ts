@@ -5,7 +5,7 @@ import { FirmaDTO } from "../../types/firma";
 
 export async function createFirma(data: FirmaDTO) {
   const firmaData: FirmaDTO = {
-    name: data.name,
+    fullName: data.fullName,
     shortName: data.shortName,
     street: data.street,
     houseNumber: data.houseNumber,
