@@ -62,9 +62,7 @@ export default function ValveForm({
         </InputGroup>
       </FormFieldset>
       <FormFieldset title="Informacje dodatkowe">
-        <ExtraValvesInfo
-          defaultValues={defaultValues ? defaultValues.infoBlocks : undefined}
-        />
+        <ExtraValvesInfo defaultValues={defaultValues} />
       </FormFieldset>
       <FormFieldset>
         <InputGroup>

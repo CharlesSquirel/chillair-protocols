@@ -20,7 +20,7 @@ export default function ExtraValvesInfo({
 }: ExtraValvesInfoProps) {
   const { getValues, setValue } = useFormContext();
   const [infoCount, setInfoCount] = useState(
-    defaultValues ? defaultValues.length : 1,
+    defaultValues ? defaultValues.infoBlocks.length : 1,
   );
 
   const handleOnPlus = () => {
@@ -29,9 +29,9 @@ export default function ExtraValvesInfo({
 
   useEffect(() => {
     if (defaultValues) {
-      setInfoCount(defaultValues.length);
+      setInfoCount(defaultValues.infoBlocks.length);
     }
-  }, [defaultValues]);
+  }, [defaultValues, getValues]);
 
   const handleOnMinus = () => {
     setInfoCount(infoCount - 1);

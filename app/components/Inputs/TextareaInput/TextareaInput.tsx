@@ -23,8 +23,10 @@ export default function TextareaInput({
   useEffect(() => {
     if (defaultValues && arrayName) {
       const index = name.charAt(arrayName.length + 1);
-      const restOfName = name.slice(name.indexOf(index) + 2);
-      setValue(name, defaultValues[index][restOfName]);
+      if (defaultValues[arrayName][index]) {
+        const restOfName = name.slice(name.indexOf(index) + 2);
+        setValue(name, defaultValues[arrayName][index][restOfName]);
+      }
     } else if (defaultValues) {
       setValue(name, defaultValues[name]);
     }
