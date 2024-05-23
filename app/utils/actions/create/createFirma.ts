@@ -1,12 +1,11 @@
 "use server";
 
-import { FirmaDTO } from "@/utils/types/firma";
 import { prisma } from "lib/db";
-import { revalidatePath } from "next/cache";
+import { FirmaDTO } from "../../types/firma";
 
 export async function createFirma(data: FirmaDTO) {
   const firmaData: FirmaDTO = {
-    fullName: data.fullName,
+    name: data.name,
     shortName: data.shortName,
     street: data.street,
     houseNumber: data.houseNumber,
@@ -20,8 +19,8 @@ export async function createFirma(data: FirmaDTO) {
     const firma = await prisma.firma.create({
       data: firmaData,
     });
-    console.log("Firma succesfully created");
-    revalidatePath("/dashboard/firma");
+    console.log("created");
+    console.log(firmaData);
     return firma;
   } catch (error) {
     console.error("Błąd podczas tworzenia danych:", error);

@@ -1,7 +1,7 @@
 "use server";
+import { FirmaDTO } from "@/utils/types/firma";
 import { prisma } from "lib/db";
 import { revalidatePath } from "next/cache";
-import { FirmaDTO } from "../../types/firma";
 
 export async function editFirma(data: FirmaDTO, id: string) {
   try {
