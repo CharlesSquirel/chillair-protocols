@@ -1,13 +1,23 @@
 "use server";
 
-import { CreateValveCredentials } from "@/utils/types/valves";
 import { prisma } from "lib/db";
 import { revalidatePath } from "next/cache";
+import { CreateValveCredentials } from "../../types/valves";
 import { getUserInfo } from "../getUserInfo";
 
 export async function createValve(data: CreateValveCredentials) {
   const { userFirstName, userLastName, userInfoSignature, userMongoId } =
     await getUserInfo();
+
+  const valvesData: CreateValveCredentials = {
+    firma: data.firma,
+    type: data.type,
+    serialNumber: data.serialNumber,
+    infoBlocks: data.infoBlocks,
+    clientEmail: data.clientEmail,
+    clientEmailPerm: data.clientEmailPerm,
+    description: data.description,
+  };
 
   const {
     firma,
@@ -17,7 +27,7 @@ export async function createValve(data: CreateValveCredentials) {
     clientEmail,
     clientEmailPerm,
     description,
-  } = data;
+  } = valvesData;
   try {
     await prisma.valve.create({
       data: {
@@ -39,8 +49,8 @@ export async function createValve(data: CreateValveCredentials) {
       },
     });
     revalidatePath("/dashboard/valves");
-    console.log("Valve succesfully created");
-    console.log(data);
+    console.log("created");
+    console.log(valvesData);
   } catch (error) {
     console.error("Błąd podczas tworzenia danych:", error);
   }

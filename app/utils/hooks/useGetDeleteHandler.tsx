@@ -1,6 +1,5 @@
 import { usePathname } from "next/navigation";
 import { deleteChiller } from "../actions/delete/deleteChiller";
-import { deleteFirma } from "../actions/delete/deleteFirma";
 import { deleteValve } from "../actions/delete/deleteValve";
 
 export const useGetDeleteHandler = () => {
