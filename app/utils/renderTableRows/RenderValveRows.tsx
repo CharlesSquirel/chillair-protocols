@@ -1,12 +1,10 @@
 import ActionTableButtons from "@/components/Buttons/ActionTableButtons/ActionTableButtons";
 import TableRow from "@/components/TableRow/TableRow";
-import { formatDateToString } from "@/utils/helpers/formatDateToString";
 import { TableNames } from "@/utils/types/tableNames";
-import { Valve } from "@prisma/client";
 import React from "react";
 
 interface RenderValveRowsProps {
-  valves: Valve[] | undefined;
+  valves: any;
   tableName: TableNames;
 }
 
@@ -16,9 +14,9 @@ const RenderValveRows: React.FC<RenderValveRowsProps> = ({
 }) => {
   return (
     <>
-      {valves?.map((data, index) => (
+      {valves?.map((data: any, index: number) => (
         <TableRow key={index} tableName={tableName} id={data.id}>
-          <td>{formatDateToString(data.createdAt)}</td>
+          <td>{data.createdAt}</td>
           <td>{data.firma}</td>
           <td>
             {data.firstName} {data.lastName}
