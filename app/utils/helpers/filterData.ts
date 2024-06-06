@@ -10,6 +10,7 @@ export function filterData(data: any[], searchPhrase: string) {
       "lastName",
       "userSignature",
       "description",
+      "genre",
     ].some((key: string) => {
       const value = item[key];
       if (typeof value === "string") {

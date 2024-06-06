@@ -29,3 +29,11 @@ export const userHeaders: string[] = [
   "Email",
   "Nr uprawnień",
 ];
+
+export const headersAll: string[] = [
+  "Data",
+  "Firma",
+  "Rodzaj",
+  "Autor",
+  "Nr uprawnień",
+];
