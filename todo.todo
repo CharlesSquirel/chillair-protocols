@@ -8,11 +8,11 @@
 ☐ RWD pod mobilke z mniejszym width
 ✔ All protokoły wyświetlanie @done (2.05.2024, 11:12:22)
 ✔ tosty @done (2.05.2024, 11:12:20)
-☐ cachować
+☐ cachować??
 ☐ number walidacja do dwóch miejsc nie przepuszcza
-☐ jeśli prisma chiller create rzuci błędem to toast success
+✔ jeśli prisma chiller create rzuci błędem to toast success @done (11.06.2024, 15:11:05)
 ✔ nie rewaliduje chillers po utworzeniu formularza @done (17.05.2024, 13:57:58)
-☐ nie daje defaultValues w edicie chillers
+✔ nie daje defaultValues w edicie chillers @done (11.06.2024, 15:11:02)
 ☐ w jednym miejscu messages do toastów
 ✔ porządek w components @done (17.05.2024, 12:38:25)
 ☐ tost w logout w hamburgerze
@@ -26,8 +26,10 @@
 ✔ w edycji usera button submit z tekstem Zapisz a jest utwórz @done (15.05.2024, 11:00:03)
 ☐ Ujednolicić w jednym języku error messages
 ✔ ciemniejszy placeholder @done (17.05.2024, 16:07:04)
-☐ edit chiller i valve
+✔ edit chiller i valve @done (11.06.2024, 15:11:20)
 ☐ minus na valvie extra infos ma małe pole do klikania
 ☐ dodać suspensy/loadingi
 ☐ podtytuł w path z side menu
 ☐ przy edycji chiller usuwa podgrupy circuits i power
+☐ anuluj przy delete przechodzi do edycji zamiast nic nie robić
+☐ filtr menu RWD

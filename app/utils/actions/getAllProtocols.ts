@@ -3,7 +3,9 @@ import { formatDateToString } from "../helpers/formatDateToString";
 
 export default async function getAllProtocols() {
   try {
-    const datas = await prisma.valve.findMany();
+    const datas = await prisma.valve.findMany({
+      orderBy: { createdAt: "asc" },
+    });
     const protocols = datas.map((protocol) => ({
       firma: protocol.firma,
       createdAt: formatDateToString(protocol.createdAt),

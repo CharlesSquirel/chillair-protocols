@@ -1,8 +1,10 @@
-import Filter from "@/assets/icons/FilterIcon";
 import AddButton from "@/components/Buttons/AddButton/AddButton";
+import FilterButton from "@/components/Buttons/FilterButton/FilterButton";
+import FilterMenu from "@/components/FilterMenu/FilterMenu";
 import Searchbar from "@/components/Inputs/Searchbar/Searchbar";
 import { TableNames } from "@/utils/types/tableNames";
 import Link from "next/link";
+import { useState } from "react";
 
 interface TableContainerProps {
   headers: string[];
@@ -15,6 +17,7 @@ export default function TableContainer({
   renderRows,
   tableName,
 }: TableContainerProps) {
+  const [isFilterActive, setIsFilterActive] = useState(false);
   return (
     <main className="relative mt-2 flex flex-col gap-3 overflow-x-auto overflow-y-auto px-2 pb-8 md:mt-5 md:px-8 lg:pl-[225px] lg:pr-[25px]">
       <div
@@ -41,14 +44,13 @@ export default function TableContainer({
                     +
                   </Link>
                 )}
-              <button className="min-h-[40px] border-none bg-transparent hover:opacity-70 ">
-                <Filter className="size-8" />
-              </button>
+              <FilterButton onClick={() => setIsFilterActive(true)} />
             </th>
           </tr>
         </thead>
         <tbody className="text-lg">{renderRows()}</tbody>
       </table>
+      {isFilterActive && <FilterMenu onClick={setIsFilterActive} />}
     </main>
   );
 }
