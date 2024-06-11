@@ -1,9 +1,12 @@
 import { prisma } from "lib/db";
+import { formatDate } from "../helpers/formatSearchDate";
 
 export const getAllFirma = async () => {
   try {
     const firmas = await prisma.firma.findMany();
-    return firmas;
+    return firmas.map((firma) => {
+      return { ...firma, createdAt: formatDate(firma.createdAt) };
+    });
   } catch (error) {
     console.log(error);
   }

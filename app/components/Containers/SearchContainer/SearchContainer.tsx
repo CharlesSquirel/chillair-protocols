@@ -3,6 +3,8 @@ import { useSearchContext } from "@/components/Providers/SearchContext";
 import { filterData } from "@/utils/helpers/filterData";
 import RenderAllRows from "@/utils/renderTableRows/RenderAll";
 import RenderChillerRows from "@/utils/renderTableRows/RenderChillerRows";
+import RenderFirmaRows from "@/utils/renderTableRows/RenderFirmaRows";
+import RenderUserRows from "@/utils/renderTableRows/RenderUserRows";
 import RenderValveRows from "@/utils/renderTableRows/RenderValveRows";
 import { TableNames } from "@/utils/types/tableNames";
 import TableContainer from "../TableContainer/TableContainer";
@@ -20,18 +22,22 @@ export default function SearchContainer({
 }: SearchContainerProps) {
   const { searchPhrase } = useSearchContext();
 
-  console.log(data);
-
   const dataToRender = searchPhrase ? filterData(data, searchPhrase) : data;
 
   const findRenderRows = () => {
     switch (tableName) {
       case TableNames.VALVES:
         return <RenderValveRows valves={dataToRender} tableName={tableName} />;
+      case TableNames.USERS:
+        return (
+          <RenderUserRows users={dataToRender} tableName={TableNames.USERS} />
+        );
       case TableNames.CHILLERS:
         return (
           <RenderChillerRows chillers={dataToRender} tableName={tableName} />
         );
+      case TableNames.FIRMA:
+        return <RenderFirmaRows tableName={tableName} firma={dataToRender} />;
       case TableNames.ALL:
         return <RenderAllRows all={dataToRender} tableName={tableName} />;
       default:
